@@ -75,24 +75,24 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage.AssertValidDressQuantity_When_AddedToCart();
         }
 
-        [Test]
-        public void ChangeColorAndSizeAndAddToCart_When_InQuickViewMenu()
-        {
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureSecondItem, _mainPage.QuickViewButtonSecondItem);
-            // Change color
-            //_quickViewPage.ColorSelectButton.Click();
-            //_quickViewPage.ColorSelectButton.SendKeys(Keys.Tab);
-            //_quickViewPage.ColorSelectButton.SendKeys(Keys.Enter);
-            // Change size
-            _quickViewPage.SizeDropDown.Click();
-            _quickViewPage.SizeDropDown.SendKeys("M");
-            _quickViewPage.SizeDropDown.SendKeys(Keys.Enter);
-            // Add to cart  
-            _quickViewPage.AddNewProductToCart();
+        //[Test]
+        //public void ChangeColorAndSizeAndAddToCart_When_InQuickViewMenu()
+        //{
+        //    _mainPage.Open();
+        //    _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureSecondItem, _mainPage.QuickViewButtonSecondItem);
+        //    // Change color
+        //    _quickViewPage.ColorSelectButton.Click();
+        //    _quickViewPage.ColorSelectButton.SendKeys(Keys.Tab);
+        //    _quickViewPage.ColorSelectButton.SendKeys(Keys.Enter);
+        //    // Change size
+        //    _quickViewPage.SizeDropDown.Click();
+        //    _quickViewPage.SizeDropDown.SendKeys("M");
+        //    _quickViewPage.SizeDropDown.SendKeys(Keys.Enter);
+        //    // Add to cart  
+        //    _quickViewPage.AddNewProductToCart();
 
-            _quickViewPage.AssertValidDressColorAndSize_When_AddedToCart();
-        }
+        //    _quickViewPage.AssertValidDressColorAndSize_When_AddedToCart();
+        //}
 
         [Test]
         public void ChangeQuantityAndAddToCart_When_InQuickViewMenu_CheckPrice()
