@@ -85,7 +85,7 @@ namespace FunctionalTests_AutomationPracticeCom
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
             _quickViewPage.AddToCartButton.Click();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
@@ -102,7 +102,7 @@ namespace FunctionalTests_AutomationPracticeCom
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
             _quickViewPage.AddToCartButton.Click();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
