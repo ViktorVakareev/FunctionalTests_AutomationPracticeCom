@@ -107,23 +107,6 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
-
-        //[Test]
-        //public void ValidateForPrintedDress_When_QuickViewButtonClicked()
-        //{
-
-        //}
-
-        //[Test]
-        //public void ValidateForPrintedSummerDress_When_QuickViewButtonClicked()
-        //{
-
-        //}
-
-        //[Test]
-        //public void ValidateForPrintedChiffonDress_When_QuickViewButtonClicked()
-        //{
-
-        //}        
+            // TODO Change Order Parameters ANd Assert If Valid On Pre-Checkout    
     }
 }

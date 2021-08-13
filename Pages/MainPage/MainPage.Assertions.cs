@@ -17,8 +17,6 @@ namespace FunctionalTests_AutomationPracticeCom
             Assert.AreEqual(expectedDressInfo.ColorAndSize, DressColorAndSizeBeforeCheckout.Text);
             Assert.AreEqual(expectedDressInfo.Price, DressPriceBeforeCheckout.Text);
         }
-
-
         //TODO assertions through OrderDressInfo(Dto) class =>
         //AssertValidDressQuantity(Order string DressName, string Color, string Size, int Quantity)
 
