@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FunctionalTests_AutomationPracticeCom
+﻿namespace FunctionalTests_AutomationPracticeCom
 {
     public class OrderDressInfo
     {
         public string DressName { get; set; }
 
-        public string Color { get; set; }
+        public string ColorAndSize { get; set; }   // Color, Size( ex. "Orange, S")
 
-        public string Size { get; set; } // S, M, L, XL
+        public string Quantity { get; set; }  // > 0
 
-        public int Quantity { get; set; }  // > 0
+        public string Price { get; set; }
     }
 }

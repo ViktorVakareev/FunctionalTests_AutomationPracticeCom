@@ -12,64 +12,42 @@ namespace FunctionalTests_AutomationPracticeCom
         public QuickViewPage()
         {
         }
-
-        public void AssertValidDressName_When_EnteringQuickView()
+             public void AssertQuickViewPageNavigationToPrintedDress(string dressName)
         {
-            Assert.AreEqual("Printed Dress", DressName.Text);
-        }
-        public void AssertValidDressQuantity_When_EnteringQuickView()
-        {
-            Assert.AreEqual("1", QuantityTextBox.Text);
+            Assert.AreEqual(dressName, PrintedDressNameTextFieldInQuickView.Text);
         }
 
-        public void AssertValidDressPrice_When_EnteringQuickView()
+        public void AssertQuickViewPageNavigationToPrintedSummerDress(string dressName)
         {
-            Assert.AreEqual("$26.00", DressPrice.Text);
+            Assert.AreEqual(dressName, PrintedSummerDressNameTextFieldInQuickView.Text);
         }
 
-        public void AssertValidDressSize_When_EnteringQuickView()
+        public void AssertQuickViewPageNavigationToPrintedChiffonDress(string dressName)
         {
-            Assert.AreEqual("S", SizeDropDown.Text);
+            Assert.AreEqual(dressName, PrintedChiffonDressNameTextFieldInQuickView.Text);
         }
+        //public void AssertValidDressName_When_EnteringQuickView()
+        //{
+        //    Assert.AreEqual("Printed Dress", DressName.Text);
+        //}
+        //public void AssertValidDressQuantity_When_EnteringQuickView()
+        //{
+        //    Assert.AreEqual("1", QuantityTextBox.Text);
+        //}
 
-        public void AssertValidDressInfoText_When_EnteringQuickView()
-        {
-            Assert.AreEqual("100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom.", DressInfoText.Text);
-        }
+        //public void AssertValidDressPrice_When_EnteringQuickView()
+        //{
+        //    Assert.AreEqual("$26.00", DressPrice.Text);
+        //}
 
-        public void AssertValidDressQuantity_When_AddingToCartInQuickView()
-        {
-            Assert.AreEqual("1", DressName.Text);
-        }
+        //public void AssertValidDressSize_When_EnteringQuickView()
+        //{
+        //    Assert.AreEqual("S", SelectedSize.Text);
+        //}
 
-        public void AssertValidDressName_When_AddingToCartInQuickView()
-        {
-            Assert.AreEqual("Printed Dress", DressName.Text);
-        }
-
-        public void AssertValidDressPrice_When_AddingToCartInQuickView()
-        {
-            Assert.AreEqual("$26.00", DressPrice.Text);
-        }
-        
-        public void AssertValidationMessageForAddingToCart_When_AddingToCartInQuickView()
-        {
-            Assert.AreEqual("Product successfully added to your shopping cart", ProductSuccesfullyAdded.Text);
-        }
-
-        public void AssertValidDressColorAndSize_When_AddedToCart()
-        {
-            Assert.AreEqual("Pink, M", DressSizeAndColorBeforeCheckout.Text);
-        }             
-
-        public void AssertValidDressQuantity_When_AddedToCart()
-        {
-            Assert.AreEqual("2", DressQuantityBeforeCheckout.Text);
-        }
-
-        public void AssertValidDressPrice_When_AddedToCart()
-        {
-            Assert.AreEqual("$101.98", DressPriceBeforeCheckout.Text);
-        }
+        //public void AssertValidDressInfoText_When_EnteringQuickView()
+        //{
+        //    Assert.AreEqual("100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom.", DressInfoText.Text);
+        //}        
     }
 }

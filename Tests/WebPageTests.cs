@@ -12,15 +12,13 @@ namespace FunctionalTests_AutomationPracticeCom
         private IWebDriver _driver;
         private MainPage _mainPage;
         private QuickViewPage _quickViewPage;
-        private ChromeOptions _options;
 
         [SetUp]
         public void Setup()
         {
-            _options = new ChromeOptions();
-            _options.AddArgument("--start-maximized");
-            _driver = new ChromeDriver(_options);
+            _driver = new ChromeDriver();
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);
+            _driver.Manage().Window.Maximize();
             _mainPage = new MainPage(_driver);
             _quickViewPage = new QuickViewPage(_driver);
         }
@@ -32,87 +30,100 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         [Test]
-        public void NavigationToQuickViewMenu_When_QuickViewButtonClicked()
+        public void NavigationToQuickViewForPrintedDress_When_QuickViewButtonClicked()
         {
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureFirstItem, _mainPage.QuickViewButtonFirstItem);
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
 
-            _quickViewPage.AssertValidDressName_When_EnteringQuickView();            
+            _quickViewPage.AssertQuickViewPageNavigationToPrintedDress("Printed Dress");
         }
 
         [Test]
-        public void ValidateDressInformation_When_QuickViewButtonClicked()
+        public void NavigationToQuickViewForPrintedSummerDress_When_QuickViewButtonClicked()
         {
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureFirstItem, _mainPage.QuickViewButtonFirstItem);                        
-            
-            _quickViewPage.AssertValidDressPrice_When_EnteringQuickView();
-            _quickViewPage.AssertValidDressInfoText_When_EnteringQuickView();
-            _quickViewPage.AssertValidDressSize_When_EnteringQuickView();
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
+
+            _quickViewPage.AssertQuickViewPageNavigationToPrintedSummerDress("Printed Summer Dress");
         }
 
         [Test]
-        public void AddCorrectItemInCart_When_AddToCartButtonClicked()
+        public void NavigationToQuickViewForPrintedChiffonDress_When_QuickViewButtonClicked()
         {
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureFirstItem, _mainPage.QuickViewButtonFirstItem);
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
 
-            _quickViewPage.AssertValidDressQuantity_When_AddingToCartInQuickView();
-            _quickViewPage.AssertValidDressName_When_AddingToCartInQuickView();
-            _quickViewPage.AssertValidDressPrice_When_AddingToCartInQuickView();
-            _quickViewPage.AssertValidationMessageForAddingToCart_When_AddingToCartInQuickView();
+            _quickViewPage.AssertQuickViewPageNavigationToPrintedChiffonDress("Printed Chiffon Dress");
         }
 
         [Test]
-        public void ChangeQuantityAndAddToCart_When_InQuickViewMenu()
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedDressAddedToCart()
         {
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureSecondItem, _mainPage.QuickViewButtonSecondItem);
-            _quickViewPage.QuantityTextBox.Clear();
-            _quickViewPage.QuantityTextBox.SendKeys("2");   
-            _quickViewPage.AddNewProductToCart();
+            var expectedDressInfo = new OrderDressInfo()
+            {
+                DressName = "Printed Dress",
+                ColorAndSize = "Orange, S",
+                Quantity = "1",
+                Price = "$26.00"
+            };
 
-            _quickViewPage.AssertValidDressQuantity_When_AddedToCart();
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
+            _quickViewPage.AddToCartButton.Click();
+
+            _mainPage.AssertValidDressName(expectedDressInfo);
+        }
+
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressAddedToCart()
+        {
+            var expectedDressInfo = new OrderDressInfo()
+            {
+                DressName = "Printed Summer Dress",
+                ColorAndSize = "Yellow, S",                
+                Quantity = "1",
+                Price = "$28.98"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
+            _quickViewPage.AddToCartButton.Click();
+
+            _mainPage.AssertValidDressName(expectedDressInfo);
+        }
+
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressAddedToCart()
+        {
+            var expectedDressInfo = new OrderDressInfo()
+            {
+                DressName = "Printed Chifron Dress",
+                ColorAndSize = "Yellow, S",
+                Quantity = "1",
+                Price = "$16.40"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
+            _quickViewPage.AddToCartButton.Click();
+
+            _mainPage.AssertValidDressName(expectedDressInfo);
         }
 
         //[Test]
-        //public void ChangeColorAndSizeAndAddToCart_When_InQuickViewMenu()
+        //public void ValidateForPrintedDress_When_QuickViewButtonClicked()
         //{
-        //    _mainPage.Open();
-        //    _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureSecondItem, _mainPage.QuickViewButtonSecondItem);
-        //    // Change color
-        //    _quickViewPage.ColorSelectButton.Click();
-        //    _quickViewPage.ColorSelectButton.SendKeys(Keys.Tab);
-        //    _quickViewPage.ColorSelectButton.SendKeys(Keys.Enter);
-        //    // Change size
-        //    _quickViewPage.SizeDropDown.Click();
-        //    _quickViewPage.SizeDropDown.SendKeys("M");
-        //    _quickViewPage.SizeDropDown.SendKeys(Keys.Enter);
-        //    // Add to cart  
-        //    _quickViewPage.AddNewProductToCart();
 
-        //    _quickViewPage.AssertValidDressColorAndSize_When_AddedToCart();
         //}
-
-        [Test]
-        public void ChangeQuantityAndAddToCart_When_InQuickViewMenu_CheckPrice()
-        {
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureSecondItem, _mainPage.QuickViewButtonSecondItem);
-            _quickViewPage.QuantityTextBox.Clear();
-            _quickViewPage.QuantityTextBox.SendKeys("2");
-            _quickViewPage.AddNewProductToCart();
-
-            _quickViewPage.AssertValidDressPrice_When_AddedToCart();
-        }
 
         //[Test]
-        //public void VerifyCorrectProductAdded_When_AddToCartButtonClicked()
+        //public void ValidateForPrintedSummerDress_When_QuickViewButtonClicked()
         //{
-        //    _mainPage.Open();
-        //    _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPictureFirstItem, _mainPage.QuickViewButtonFirstItem);
 
-        //    _quickViewPage.AddNewProductToCart();
         //}
+
+        //[Test]
+        //public void ValidateForPrintedChiffonDress_When_QuickViewButtonClicked()
+        //{
+
+        //}        
     }
 }

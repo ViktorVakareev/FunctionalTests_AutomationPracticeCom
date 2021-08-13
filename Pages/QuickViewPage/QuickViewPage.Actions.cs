@@ -10,8 +10,7 @@ namespace FunctionalTests_AutomationPracticeCom
     public partial class QuickViewPage
     {
         private IWebDriver _driver;
-        private MainPage _mainPage => new MainPage();
-
+        
         public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public QuickViewPage(IWebDriver driver) => _driver = driver;
@@ -19,12 +18,6 @@ namespace FunctionalTests_AutomationPracticeCom
         public void Open()
         {
             _driver.Navigate().GoToUrl(Url);
-        }
-
-        public void AddNewProductToCart()
-        {
-            AddToCartButton.Click();
-        }
-        
+        }             
     }
 }

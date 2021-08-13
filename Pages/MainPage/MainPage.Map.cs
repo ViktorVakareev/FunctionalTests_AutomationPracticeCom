@@ -13,24 +13,39 @@ namespace FunctionalTests_AutomationPracticeCom
         {
         }
 
-        public IWebElement CompareButton => _driver.FindElement(By.XPath("//form[@class='compare-form']/button[@type='submit']"));
-
-        public IWebElement MoreButton => _driver.FindElement(By.XPath("//a/span[text()='More']"));
-
-        public IWebElement AddToCompareButtonFirstItem => _driver.FindElement(By.XPath("(//a[@class='add_to_compare'])[1]"));
-
-        public IWebElement AddToCompareButtonSecondItem => _driver.FindElement(By.XPath("(//a[@class='add_to_compare'])[2]"));
-
-        public IWebElement QuickViewButtonFirstItem => _driver.FindElement(By.XPath("(//a[@class='quick-view']/span)[1]"));
-
-        public IWebElement QuickViewButtonSecondItem => _driver.FindElement(By.XPath("(//a[@class='quick-view']/span)[2]"));
-
-        public IWebElement HoverOverDressPictureFirstItem => _driver.FindElement(By.XPath("(//img[@title='Printed Dress'])[1]"));
-
-        public IWebElement HoverOverDressPictureSecondItem => _driver.FindElement(By.XPath("(//img[@title='Printed Dress'])[2]"));
-
         public IWebElement QuickViewIframeWindow => _driver.FindElement(By.XPath("//iframe[@class='fancybox-iframe']"));
 
+        public IWebElement CompareButton => _driver.FindElement(By.XPath("//form[@class='compare-form']/button[@type='submit']"));       
+
+        public IWebElement DressNameBeforeCheckout => _driver.FindElement(By.XPath("//span[@id='layer_cart_product_title']"));
+
+        public IWebElement DressQuantityBeforeCheckout => _driver.FindElement(By.XPath("//span[@id='layer_cart_product_quantity']"));
+
+        public IWebElement DressColorAndSizeBeforeCheckout => _driver.FindElement(By.XPath("//span[@id='layer_cart_product_attributes']"));
+
+        public IWebElement DressPriceBeforeCheckout => _driver.FindElement(By.XPath("//span[@id='layer_cart_product_price']"));
+
+        public IWebElement ProductSuccesfullyAdded => _driver.FindElement(By.XPath("//i[@class='icon-ok']/following::text()[1]"));
+
         public IWebElement ContinueShoppingButton => _driver.FindElement(By.XPath("//span[@title='Continue shopping']"));
+
+        public IWebElement QuickViewButtonPrintedDress => 
+            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Dress']//parent::h5//parent::div//preceding-sibling::div//a/span"));
+
+        public IWebElement HoverOverDressPicturePrintedDress => 
+            _driver.FindElement(By.XPath("(//a[@class='product-name' and @title='Printed Dress'])[1]"));
+
+        public IWebElement QuickViewButtonPrintedSummerDress => 
+            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Summer Dress']//parent::h5//parent::div//preceding-sibling::div//a/span"));
+
+        public IWebElement HoverOverDressPicturePrintedSummerDress => 
+            _driver.FindElement(By.XPath("(//a[@class='product-name' and @title='Printed Summer Dress'])[1]"));
+
+        public IWebElement QuickViewButtonPrintedChiffonDress =>
+            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Chiffon Dress']//parent::h5//parent::div//preceding-sibling::div//a/span"));
+
+        public IWebElement HoverOverDressPicturePrintedChiffonDress =>
+            _driver.FindElement(By.XPath("(//a[@class='product-name' and @title='Printed Chiffon Dress'])[1]"));
     }
 }
+
