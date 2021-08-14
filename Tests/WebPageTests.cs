@@ -74,6 +74,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
 
+        [Test]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressAddedToCart()
         {
             var expectedDressInfo = new OrderDressInfo()
@@ -91,6 +92,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
 
+        [Test]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressAddedToCart()
         {
             var expectedDressInfo = new OrderDressInfo()
