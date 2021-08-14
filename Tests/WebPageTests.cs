@@ -17,7 +17,7 @@ namespace FunctionalTests_AutomationPracticeCom
         public void Setup()
         {
             _driver = new ChromeDriver();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             _driver.Manage().Window.Maximize();
             _mainPage = new MainPage(_driver);
             _quickViewPage = new QuickViewPage(_driver);
@@ -97,7 +97,7 @@ namespace FunctionalTests_AutomationPracticeCom
         {
             var expectedDressInfo = new OrderDressInfo()
             {
-                DressName = "Printed Chifron Dress",
+                DressName = "Printed Chiffon Dress",
                 ColorAndSize = "Yellow, S",
                 Quantity = "1",
                 Price = "$16.40"
