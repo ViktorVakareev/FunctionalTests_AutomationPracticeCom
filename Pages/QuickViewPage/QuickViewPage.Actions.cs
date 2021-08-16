@@ -36,6 +36,6 @@ namespace FunctionalTests_AutomationPracticeCom
             var selectElement = new SelectElement(sizeDropdown);
             selectElement.SelectByText(size);
             this.AddToCartButton.Click();
-        }        
+        }
     }
 }

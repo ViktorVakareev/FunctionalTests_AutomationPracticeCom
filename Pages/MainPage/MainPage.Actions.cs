@@ -29,10 +29,7 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         public void OpenQuickViewPage(IWebElement hoverElement, IWebElement quickViewElement)
-        {           
-            //_actions.MoveToElement(hoverElement)
-            //    .Build()
-            //    .Perform();           
+        {          
             _actions.MoveToElement(hoverElement).MoveToElement(quickViewElement)
                 .Click()
                 .Perform();

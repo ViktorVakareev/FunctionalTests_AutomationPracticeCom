@@ -128,10 +128,12 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
-            _quickViewPage.ChangeParametersAndAddOrderToCart_WithoutColor(
+            _quickViewPage.ChangeParametersAndAddOrderToCart_WithoutColor
+                (
                 _quickViewPage.PrintedDressIncreaseQuantityButtonInQuickView,
            _quickViewPage.PrintedDressSizeDropDownButtonInQuickView,
-           "L");
+           "L"
+           );
             _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
@@ -150,11 +152,13 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
-            _quickViewPage.ChangeParametersAndAddOrderToCart(
+            _quickViewPage.ChangeParametersAndAddOrderToCart
+                (
                 _quickViewPage.PrintedSummerDressIncreaseQuantityButtonInQuickView,
                  _quickViewPage.PrintedSummerDressSelectColorButtonInQuickView,
            _quickViewPage.PrintedSummerDressSizeDropDownButtonInQuickView,
-           "L");
+           "L"
+           );
             _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
@@ -173,11 +177,13 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
-            _quickViewPage.ChangeParametersAndAddOrderToCart(
+            _quickViewPage.ChangeParametersAndAddOrderToCart
+                (
                 _quickViewPage.PrintedChiffonDressIncreaseQuantityButtonInQuickView,
                  _quickViewPage.PrintedChiffonDressSelectColorButtonInQuickView,
            _quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView,
-           "M");
+           "M"
+           );
             _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
