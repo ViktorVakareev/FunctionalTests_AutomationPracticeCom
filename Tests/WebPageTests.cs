@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Threading;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
@@ -18,7 +19,7 @@ namespace FunctionalTests_AutomationPracticeCom
         public void Setup()
         {
             _driver = new ChromeDriver();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             _driver.Manage().Window.Maximize();
             _mainPage = new MainPage(_driver);
             _quickViewPage = new QuickViewPage(_driver);
@@ -71,7 +72,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
             _quickViewPage.AddToCartButton.Click();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
@@ -90,7 +91,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
             _quickViewPage.AddToCartButton.Click();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
@@ -109,6 +110,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
             _quickViewPage.AddToCartButton.Click();
+            _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
@@ -119,18 +121,18 @@ namespace FunctionalTests_AutomationPracticeCom
             var expectedDressInfo = new OrderDressInfo()
             {
                 DressName = "Printed Dress",
-                ColorAndSize = "Orangee, L",
+                ColorAndSize = "Orange, L",
                 Quantity = "2",
                 Price = "$52.00"
             };
-            
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
             _quickViewPage.PrintedDressIncreaseQuantityButtonInQuickView.Click();
             var selectElement = new SelectElement(_quickViewPage.PrintedDressSizeDropDownButtonInQuickView);
             selectElement.SelectByText("L");
             _quickViewPage.AddToCartButton.Click();
+            _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
@@ -144,7 +146,7 @@ namespace FunctionalTests_AutomationPracticeCom
                 ColorAndSize = "Blue, L",
                 Quantity = "2",
                 Price = "$57.96"
-            };            
+            };
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
@@ -153,7 +155,7 @@ namespace FunctionalTests_AutomationPracticeCom
             var selectElement = new SelectElement(_quickViewPage.PrintedSummerDressSizeDropDownButtonInQuickView);
             selectElement.SelectByText("L");
             _quickViewPage.AddToCartButton.Click();
-
+            _mainPage.WaitUntilProductIsAddeToCart();           
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
@@ -161,6 +163,7 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressWithChangedParametersAddedToCart()
         {
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             var expectedDressInfo = new OrderDressInfo()
             {
                 DressName = "Printed Chiffon Dress",
@@ -168,7 +171,7 @@ namespace FunctionalTests_AutomationPracticeCom
                 Quantity = "2",
                 Price = "$32.80"
             };
-            
+
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
             _quickViewPage.PrintedChiffonDressIncreaseQuantityButtonInQuickView.Click();
@@ -176,6 +179,7 @@ namespace FunctionalTests_AutomationPracticeCom
             var selectElement = new SelectElement(_quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView);
             selectElement.SelectByText("M");
             _quickViewPage.AddToCartButton.Click();
+            _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }

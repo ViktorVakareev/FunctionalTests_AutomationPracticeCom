@@ -54,23 +54,15 @@ namespace FunctionalTests_AutomationPracticeCom
                 .Perform();
         }
 
-        public void ReturnToMainPage_When_InQuickView()
+        public void ReturnToMainPage()
         {
             _driver.SwitchTo().DefaultContent();
         }
 
-        public IWebElement waitForElementToAppearUsingXpath(IWebElement quickView)
+        public void WaitUntilProductIsAddeToCart()
         {
-            var globalTimeout = TimeSpan.FromSeconds(10);
-            var sleepInterval = TimeSpan.FromSeconds(3);
-
-            var wait = new WebDriverWait
-                (new SystemClock(), _driver, globalTimeout, sleepInterval);
-
-            var element = wait.Until(ExpectedConditions.ElementToBeClickable(quickView));
-
-            //waitForElementToAppearUsingXpath(quickViewElement);
-            return element;
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//i[@class='icon-ok']")));
         }
     }
 }

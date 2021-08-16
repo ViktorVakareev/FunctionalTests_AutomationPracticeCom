@@ -8,11 +8,7 @@ using System.Threading.Tasks;
 namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class MainPage
-    {
-        public MainPage()
-        {
-        }
-
+    {       
         public IWebElement QuickViewIframeWindow => _driver.FindElement(By.XPath("//iframe[@class='fancybox-iframe']"));
 
         public IWebElement CompareButton => _driver.FindElement(By.XPath("//form[@class='compare-form']/button[@type='submit']"));       
@@ -46,6 +42,9 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement HoverOverDressPicturePrintedChiffonDress =>
             _driver.FindElement(By.XPath("//div[@class='right-block']//a[@class='product-name' and @title='Printed Chiffon Dress']"));
+
+        public IWebElement ProductAddedToCartFromQuickView =>
+            _driver.FindElement(By.XPath("//i[@class='icon-ok']"));
     }
 }
 
