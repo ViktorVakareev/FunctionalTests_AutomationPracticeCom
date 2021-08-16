@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,12 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void OpenQuickViewPage(IWebElement hoverElement, IWebElement quickViewElement)
         {
-            _actions.MoveToElement(hoverElement).MoveToElement(quickViewElement)
+
+            _actions.MoveToElement(hoverElement)
+                .Build()
+                .Perform();
+            
+            _actions.MoveToElement(quickViewElement)
                 .Click()
                 .Perform();
 
@@ -38,6 +44,7 @@ namespace FunctionalTests_AutomationPracticeCom
         public void CompareItems(IWebElement hoverElement1, IWebElement quickViewElement1, IWebElement hoverElement2, IWebElement quickViewElement2)
         {
             // Click First item Add to Compare button
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             _actions.MoveToElement(hoverElement1).MoveToElement(quickViewElement1)
                .Click()
                .Perform();
@@ -51,6 +58,20 @@ namespace FunctionalTests_AutomationPracticeCom
         public void ReturnToMainPage_When_InQuickView()
         {
             _driver.SwitchTo().DefaultContent();
+        }
+
+        public IWebElement waitForElementToAppearUsingXpath(IWebElement quickView)
+        {
+            var globalTimeout = TimeSpan.FromSeconds(10);
+            var sleepInterval = TimeSpan.FromSeconds(3);
+
+            var wait = new WebDriverWait
+                (new SystemClock(), _driver, globalTimeout, sleepInterval);
+
+            var element = wait.Until(ExpectedConditions.ElementToBeClickable(quickView));
+
+            //waitForElementToAppearUsingXpath(quickViewElement);
+            return element;
         }
     }
 }

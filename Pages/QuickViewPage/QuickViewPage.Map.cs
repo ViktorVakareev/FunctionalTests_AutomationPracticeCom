@@ -16,5 +16,31 @@ namespace FunctionalTests_AutomationPracticeCom
         public IWebElement PrintedChiffonDressNameTextFieldInQuickView => _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Chiffon Dress')]"));
 
         public IWebElement AddToCartButton => _driver.FindElement(By.XPath("//*[@id='add_to_cart']/button/span"));
+
+        public IWebElement PrintedDressIncreaseQuantityButtonInQuickView => 
+            _driver.FindElement(By.XPath("(//h1[contains(text(),'Printed Dress')]//following::form//following::p//following::a/span)[2]"));
+
+        public IWebElement PrintedSummerDressIncreaseQuantityButtonInQuickView =>
+          _driver.FindElement(By.XPath("(//h1[contains(text(),'Printed Summer Dress')]//following::form//following::p//following::a/span)[2]"));
+
+        public IWebElement PrintedChiffonDressIncreaseQuantityButtonInQuickView =>
+          _driver.FindElement(By.XPath("(//h1[contains(text(),'Printed Chiffon Dress')]//following::form//following::p//following::a/span)[2]"));
+                
+        public IWebElement PrintedSummerDressSelectColorButtonInQuickView =>
+          _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Summer Dress')]//following::form//following::p//following::ul//a[@name='Blue']"));
+
+        public IWebElement PrintedChiffonDressSelectColorButtonInQuickView =>
+          _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Chiffon Dress')]//following::form//following::p//following::ul//a[@name='Green']"));
+
+        public IWebElement PrintedDressSizeDropDownButtonInQuickView =>
+           _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Dress')]//following::form//following::p//following::div[@class='selector']"));
+
+        public IWebElement PrintedSummerDressSizeDropDownButtonButtonInQuickView =>
+          _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Summer Dress')]//following::form//following::p//following::div[@class='selector']"));
+
+        public IWebElement PrintedChiffonDressSizeDropDownButtonButtonInQuickView =>
+          _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Chiffon Dress')]//following::form//following::p//following::div[@class='selector']"));
+
     }
 }
+

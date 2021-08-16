@@ -17,7 +17,7 @@ namespace FunctionalTests_AutomationPracticeCom
         public void Setup()
         {
             _driver = new ChromeDriver();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
             _driver.Manage().Window.Maximize();
             _mainPage = new MainPage(_driver);
             _quickViewPage = new QuickViewPage(_driver);
@@ -70,6 +70,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
             _quickViewPage.AddToCartButton.Click();
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
@@ -88,6 +89,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
             _quickViewPage.AddToCartButton.Click();
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
@@ -109,6 +111,50 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
-            // TODO Change Order Parameters ANd Assert If Valid On Pre-Checkout    
+
+        [Test]
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressWithChangedParametersAddedToCart()
+        {
+            var expectedDressInfo = new OrderDressInfo()
+            {
+                DressName = "Printed Summer Dress",
+                ColorAndSize = "Blue, M",
+                Quantity = "2",
+                Price = "$57.96"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
+            _quickViewPage.PrintedSummerDressIncreaseQuantityButtonInQuickView.Click();
+            _quickViewPage.PrintedSummerDressSelectColorButtonInQuickView.Click();
+            _quickViewPage.PrintedSummerDressSizeDropDownButtonButtonInQuickView.Click();      //SendKeys(Keys.ArrowDown+Keys.Enter);
+
+            _quickViewPage.AddToCartButton.Click();
+
+
+            _mainPage.AssertValidDressName(expectedDressInfo);
+        }
+
+        [Test]
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressWithChangedParametersAddedToCart()
+        {
+            var expectedDressInfo = new OrderDressInfo()
+            {
+                DressName = "Printed Chiffon Dress",
+                ColorAndSize = "Green, M",
+                Quantity = "2",
+                Price = "$32.80"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
+            _quickViewPage.PrintedChiffonDressIncreaseQuantityButtonInQuickView.Click();            
+            _quickViewPage.PrintedChiffonDressSelectColorButtonInQuickView.Click();
+            _quickViewPage.PrintedChiffonDressSizeDropDownButtonButtonInQuickView.Click();
+            _quickViewPage.AddToCartButton.Click();
+
+            _mainPage.AssertValidDressName(expectedDressInfo);
+        }
+        // TODO Change Order Parameters And Assert If Valid On Pre-Checkout    
     }
 }
