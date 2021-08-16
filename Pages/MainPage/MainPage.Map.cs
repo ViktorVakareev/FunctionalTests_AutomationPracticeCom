@@ -11,7 +11,7 @@ namespace FunctionalTests_AutomationPracticeCom
     {       
         public IWebElement QuickViewIframeWindow => _driver.FindElement(By.XPath("//iframe[@class='fancybox-iframe']"));
 
-        public IWebElement CompareButton => _driver.FindElement(By.XPath("//form[@class='compare-form']/button[@type='submit']"));       
+        public IWebElement CompareButton => _driver.FindElement(By.XPath("(//form[@class='compare-form']/button[@type='submit'])[2]"));       
 
         public IWebElement DressNameBeforeCheckout => _driver.FindElement(By.XPath("//span[@id='layer_cart_product_title']"));
 
@@ -45,6 +45,15 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement ProductAddedToCartFromQuickView =>
             _driver.FindElement(By.XPath("//i[@class='icon-ok']"));
+
+        public IWebElement AddToCompareButtonPrintedDress =>
+           _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Dress']//following::a[@class='add_to_compare' and @data-id-product='3']"));
+
+        public IWebElement AddToCompareButtonPrintedSummerDress =>
+            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Summer Dress']//following::a[@class='add_to_compare' and @data-id-product='5']"));
+
+        public IWebElement AddToCompareButtonPrintedChiffonDress =>
+            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Chiffon Dress']//following::a[@class='add_to_compare' and @data-id-product='7']"));
     }
 }
 

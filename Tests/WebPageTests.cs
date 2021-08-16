@@ -14,6 +14,7 @@ namespace FunctionalTests_AutomationPracticeCom
         private IWebDriver _driver;
         private MainPage _mainPage;
         private QuickViewPage _quickViewPage;
+        private ProductComparisonPage _productComparisonPage;
 
         [SetUp]
         public void Setup()
@@ -23,6 +24,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _driver.Manage().Window.Maximize();
             _mainPage = new MainPage(_driver);
             _quickViewPage = new QuickViewPage(_driver);
+            _productComparisonPage = new ProductComparisonPage(_driver);
         }
 
         [TearDown]
@@ -189,13 +191,21 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
 
-        //[Test]
-        //public void CompareTwoItems()
-        //{          
-        //    _mainPage.Open();
-        //    _mainPage.AddToCompare(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress, _mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
+        [Test]
+        public void CompareTwoItems()
+        {
+            _mainPage.Open();
+            _mainPage.AddToCompare
+                (
+                _mainPage.HoverOverDressPicturePrintedChiffonDress,
+                _mainPage.AddToCompareButtonPrintedChiffonDress, 
+                _mainPage.HoverOverDressPicturePrintedDress, 
+                _mainPage.AddToCompareButtonPrintedDress
+                );            
+            _mainPage.CompareButton.Click();
+            // BUG: Adds to Compare 2 products, displays only one, when displaying Product Comparison Page
 
-        //    _mainPage.AssertValidDressName(expectedDressInfo);
-        //}
+            //_productComparisonPage.AssertValidProductComparisonPage();
+        }
     }
 }

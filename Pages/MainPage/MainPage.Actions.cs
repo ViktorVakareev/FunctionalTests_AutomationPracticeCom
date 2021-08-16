@@ -39,17 +39,16 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void AddToCompare(IWebElement hoverElement1, IWebElement addToCompare1, IWebElement hoverElement2, IWebElement addToCompare2)
         {
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             // Click First item Add to Compare button            
             _actions.MoveToElement(hoverElement1).MoveToElement(addToCompare1)
-               .Click()
-               .Perform();
-
-            // Click Second item Add to Compare button
-            _actions.MoveToElement(hoverElement1).MoveToElement(addToCompare2)
                 .Click()
                 .Perform();
-            
-            this.CompareButton.Click();
+
+            // Click Second item Add to Compare button
+            _actions.MoveToElement(hoverElement2).MoveToElement(addToCompare2)
+                .Click()
+                .Perform();            
         }              
 
         public void ReturnToMainPage()
@@ -61,6 +60,13 @@ namespace FunctionalTests_AutomationPracticeCom
         {
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//i[@class='icon-ok']")));
+        }
+
+        public void WaitUntilCompareButtonClickable()
+        {
+            var element = CompareButton;
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.TextToBePresentInElementValue(CompareButton, "2"));
         }
     }
 }
