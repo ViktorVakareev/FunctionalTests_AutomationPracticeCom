@@ -9,9 +9,9 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ProductComparisonPage
     {
-        //    public IWebElement PrintedDressNameTextFieldInQuickView => _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Dress')]"));
+        //    public IWebElement PrintedDressNameTextFieldInQuickView => _driver.FindElement(By.XPath(""));
 
-        //    public IWebElement PrintedSummerDressNameTextFieldInQuickView => _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Summer Dress')]"));
+        //    public IWebElement PrintedSummerDressNameTextFieldInQuickView => _driver.FindElement(By.XPath(""));
     }
 }
 
