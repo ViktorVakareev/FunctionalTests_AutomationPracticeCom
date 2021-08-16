@@ -30,19 +30,19 @@ namespace FunctionalTests_AutomationPracticeCom
         public IWebElement ContinueShoppingButton => _driver.FindElement(By.XPath("//span[@title='Continue shopping']"));
 
         public IWebElement QuickViewButtonPrintedDress => 
-            _driver.FindElement(By.XPath("(//a[@class='product-name' and @title='Printed Dress']//parent::h5//parent::div//preceding-sibling::div//a/span)[1]"));
+            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Dress']//parent::h5//parent::div//preceding-sibling::div//a/span[contains(text(),'Quick')]"));
 
         public IWebElement HoverOverDressPicturePrintedDress => 
             _driver.FindElement(By.XPath("//div[@class='right-block']//a[@class='product-name' and @title='Printed Dress']"));
 
         public IWebElement QuickViewButtonPrintedSummerDress => 
-            _driver.FindElement(By.XPath("(//a[@class='product-name' and @title='Printed Summer Dress']//parent::h5//parent::div//preceding-sibling::div//a/span)[1]"));
+            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Summer Dress']//parent::h5//parent::div//preceding-sibling::div//a/span[contains(text(),'Quick')]"));
 
         public IWebElement HoverOverDressPicturePrintedSummerDress => 
             _driver.FindElement(By.XPath("//div[@class='right-block']//a[@class='product-name' and @title='Printed Summer Dress']"));
 
         public IWebElement QuickViewButtonPrintedChiffonDress =>
-            _driver.FindElement(By.XPath("(//a[@class='product-name' and @title='Printed Chiffon Dress']//parent::h5//parent::div//preceding-sibling::div//a/span)[1]"));
+            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Chiffon Dress']//parent::h5//parent::div//preceding-sibling::div//a/span[contains(text(),'Quick')]"));
 
         public IWebElement HoverOverDressPicturePrintedChiffonDress =>
             _driver.FindElement(By.XPath("//div[@class='right-block']//a[@class='product-name' and @title='Printed Chiffon Dress']"));

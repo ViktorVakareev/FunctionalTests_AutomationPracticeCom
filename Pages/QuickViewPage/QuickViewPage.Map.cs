@@ -33,10 +33,10 @@ namespace FunctionalTests_AutomationPracticeCom
           _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Chiffon Dress')]//following::form//following::p//following::ul//a[@name='Green']"));
 
         public IWebElement PrintedDressSizeDropDownButtonInQuickView =>
-           _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Dress')]//following::form//following::p//following::div[@class='selector']"));
+           _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Dress')]//following::form//following::p//following::div[@class='selector']//following::select"));
 
         public IWebElement PrintedSummerDressSizeDropDownButtonInQuickView =>
-          _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Summer Dress')]//following::form//following::p//following::div[@class='selector']"));
+          _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Summer Dress')]//following::form//following::p//following::div[@class='selector']//following::select"));
 
         public IWebElement PrintedChiffonDressSizeDropDownButtonInQuickView =>
          _driver.FindElement(By.XPath("//h1[contains(text(),'Printed Chiffon Dress')]//following::form//following::p//following::div[@class='selector']//following::select"));  

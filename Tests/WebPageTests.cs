@@ -123,11 +123,12 @@ namespace FunctionalTests_AutomationPracticeCom
                 Quantity = "2",
                 Price = "$52.00"
             };
-            var selectElement = new SelectElement(_quickViewPage.PrintedDressSizeDropDownButtonInQuickView);
+            
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
             _quickViewPage.PrintedDressIncreaseQuantityButtonInQuickView.Click();
+            var selectElement = new SelectElement(_quickViewPage.PrintedDressSizeDropDownButtonInQuickView);
             selectElement.SelectByText("L");
             _quickViewPage.AddToCartButton.Click();
 
@@ -143,13 +144,13 @@ namespace FunctionalTests_AutomationPracticeCom
                 ColorAndSize = "Blue, L",
                 Quantity = "2",
                 Price = "$57.96"
-            };
-            var selectElement = new SelectElement(_quickViewPage.PrintedSummerDressSizeDropDownButtonInQuickView);
+            };            
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
             _quickViewPage.PrintedSummerDressIncreaseQuantityButtonInQuickView.Click();
             _quickViewPage.PrintedSummerDressSelectColorButtonInQuickView.Click();
+            var selectElement = new SelectElement(_quickViewPage.PrintedSummerDressSizeDropDownButtonInQuickView);
             selectElement.SelectByText("L");
             _quickViewPage.AddToCartButton.Click();
 
@@ -167,12 +168,12 @@ namespace FunctionalTests_AutomationPracticeCom
                 Quantity = "2",
                 Price = "$32.80"
             };
-            var selectElement = new SelectElement(_quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView);
-
+            
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
             _quickViewPage.PrintedChiffonDressIncreaseQuantityButtonInQuickView.Click();
             _quickViewPage.PrintedChiffonDressSelectColorButtonInQuickView.Click();
+            var selectElement = new SelectElement(_quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView);
             selectElement.SelectByText("M");
             _quickViewPage.AddToCartButton.Click();
 
