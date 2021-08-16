@@ -127,8 +127,7 @@ namespace FunctionalTests_AutomationPracticeCom
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);           
             _quickViewPage.ChangeParametersAndAddOrderToCart_WithoutColor
                 (_quickViewPage.PrintedDressIncreaseQuantityButtonInQuickView,
            _quickViewPage.PrintedDressSizeDropDownButtonInQuickView,
@@ -149,9 +148,7 @@ namespace FunctionalTests_AutomationPracticeCom
                 Price = "$57.96"
             };
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
-
+            _mainPage.Open();           
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
             _quickViewPage.ChangeParametersAndAddOrderToCart
                 (_quickViewPage.PrintedSummerDressIncreaseQuantityButtonInQuickView,
