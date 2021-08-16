@@ -82,7 +82,7 @@ namespace FunctionalTests_AutomationPracticeCom
             var expectedDressInfo = new OrderDressInfo()
             {
                 DressName = "Printed Summer Dress",
-                ColorAndSize = "Yellow, S",                
+                ColorAndSize = "Yellow, S",
                 Quantity = "1",
                 Price = "$28.98"
             };
@@ -114,22 +114,43 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         [Test]
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedDressWithChangedParametersAddedToCart()
+        {
+            var expectedDressInfo = new OrderDressInfo()
+            {
+                DressName = "Printed Dress",
+                ColorAndSize = "Orangee, L",
+                Quantity = "2",
+                Price = "$52.00"
+            };
+            var selectElement = new SelectElement(_quickViewPage.PrintedDressSizeDropDownButtonInQuickView);
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
+            _quickViewPage.PrintedDressIncreaseQuantityButtonInQuickView.Click();
+            selectElement.SelectByText("L");
+            _quickViewPage.AddToCartButton.Click();
+
+            _mainPage.AssertValidDressName(expectedDressInfo);
+        }
+
+        [Test]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressWithChangedParametersAddedToCart()
         {
             var expectedDressInfo = new OrderDressInfo()
             {
                 DressName = "Printed Summer Dress",
-                ColorAndSize = "Blue, M",
+                ColorAndSize = "Blue, L",
                 Quantity = "2",
                 Price = "$57.96"
             };
+            var selectElement = new SelectElement(_quickViewPage.PrintedSummerDressSizeDropDownButtonInQuickView);
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
             _quickViewPage.PrintedSummerDressIncreaseQuantityButtonInQuickView.Click();
             _quickViewPage.PrintedSummerDressSelectColorButtonInQuickView.Click();
-            _quickViewPage.PrintedSummerDressSizeDropDownButtonInQuickView.Click();      
-            
+            selectElement.SelectByText("L");
             _quickViewPage.AddToCartButton.Click();
 
 
@@ -146,20 +167,16 @@ namespace FunctionalTests_AutomationPracticeCom
                 Quantity = "2",
                 Price = "$32.80"
             };
+            var selectElement = new SelectElement(_quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView);
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
-            _quickViewPage.PrintedChiffonDressIncreaseQuantityButtonInQuickView.Click();            
+            _quickViewPage.PrintedChiffonDressIncreaseQuantityButtonInQuickView.Click();
             _quickViewPage.PrintedChiffonDressSelectColorButtonInQuickView.Click();
-           
-            var selectElement = new SelectElement(_quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView);    
             selectElement.SelectByText("M");
-            //_quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView.Click();
-            //_quickViewPage.PrintedChiffonDressSizeFieldInQuickView.SendKeys(Keys.ArrowDown + Keys.Enter);
             _quickViewPage.AddToCartButton.Click();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
         }
-        // TODO Change Order Parameters And Assert If Valid On Pre-Checkout    
     }
 }
