@@ -11,7 +11,7 @@ namespace FunctionalTests_AutomationPracticeCom
     public partial class QuickViewPage
     {
         private IWebDriver _driver;
-        
+
         public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public QuickViewPage(IWebDriver driver) => _driver = driver;
@@ -27,15 +27,15 @@ namespace FunctionalTests_AutomationPracticeCom
             color.Click();
             var selectElement = new SelectElement(sizeDropdown);
             selectElement.SelectByText(size);
-            this.AddToCartButton.Click();           
+            this.AddToCartButton.Click();
         }
 
         public void ChangeParametersAndAddOrderToCart_WithoutColor(IWebElement quantity, IWebElement sizeDropdown, string size)
         {
-            quantity.Click();            
+            quantity.Click();
             var selectElement = new SelectElement(sizeDropdown);
             selectElement.SelectByText(size);
             this.AddToCartButton.Click();
-        }
+        }        
     }
 }

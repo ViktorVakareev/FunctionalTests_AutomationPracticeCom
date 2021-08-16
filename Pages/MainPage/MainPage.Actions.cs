@@ -30,29 +30,30 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void OpenQuickViewPage(IWebElement hoverElement, IWebElement quickViewElement)
         {           
-            _actions.MoveToElement(hoverElement)
-                .Build()
-                .Perform();           
-            _actions.MoveToElement(quickViewElement)
+            //_actions.MoveToElement(hoverElement)
+            //    .Build()
+            //    .Perform();           
+            _actions.MoveToElement(hoverElement).MoveToElement(quickViewElement)
                 .Click()
                 .Perform();
 
             _driver.SwitchTo().Frame(QuickViewIframeWindow);
         }
 
-        public void CompareItems(IWebElement hoverElement1, IWebElement quickViewElement1, IWebElement hoverElement2, IWebElement quickViewElement2)
+        public void AddToCompare(IWebElement hoverElement1, IWebElement addToCompare1, IWebElement hoverElement2, IWebElement addToCompare2)
         {
-            // Click First item Add to Compare button
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            _actions.MoveToElement(hoverElement1).MoveToElement(quickViewElement1)
+            // Click First item Add to Compare button            
+            _actions.MoveToElement(hoverElement1).MoveToElement(addToCompare1)
                .Click()
                .Perform();
 
             // Click Second item Add to Compare button
-            _actions.MoveToElement(hoverElement1).MoveToElement(quickViewElement1)
+            _actions.MoveToElement(hoverElement1).MoveToElement(addToCompare2)
                 .Click()
                 .Perform();
-        }
+            
+            this.CompareButton.Click();
+        }              
 
         public void ReturnToMainPage()
         {
