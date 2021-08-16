@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace FunctionalTests_AutomationPracticeCom
@@ -127,8 +128,8 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
             _quickViewPage.PrintedSummerDressIncreaseQuantityButtonInQuickView.Click();
             _quickViewPage.PrintedSummerDressSelectColorButtonInQuickView.Click();
-            _quickViewPage.PrintedSummerDressSizeDropDownButtonButtonInQuickView.Click();      //SendKeys(Keys.ArrowDown+Keys.Enter);
-
+            _quickViewPage.PrintedSummerDressSizeDropDownButtonInQuickView.Click();      
+            
             _quickViewPage.AddToCartButton.Click();
 
 
@@ -150,7 +151,11 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
             _quickViewPage.PrintedChiffonDressIncreaseQuantityButtonInQuickView.Click();            
             _quickViewPage.PrintedChiffonDressSelectColorButtonInQuickView.Click();
-            _quickViewPage.PrintedChiffonDressSizeDropDownButtonButtonInQuickView.Click();
+           
+            var selectElement = new SelectElement(_quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView);    
+            selectElement.SelectByText("M");
+            //_quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView.Click();
+            //_quickViewPage.PrintedChiffonDressSizeFieldInQuickView.SendKeys(Keys.ArrowDown + Keys.Enter);
             _quickViewPage.AddToCartButton.Click();
 
             _mainPage.AssertValidDressName(expectedDressInfo);

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FunctionalTests_AutomationPracticeCom
@@ -28,12 +29,10 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         public void OpenQuickViewPage(IWebElement hoverElement, IWebElement quickViewElement)
-        {
-
+        {           
             _actions.MoveToElement(hoverElement)
                 .Build()
-                .Perform();
-            
+                .Perform();           
             _actions.MoveToElement(quickViewElement)
                 .Click()
                 .Perform();
