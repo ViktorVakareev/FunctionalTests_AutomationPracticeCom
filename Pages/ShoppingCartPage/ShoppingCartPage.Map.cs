@@ -14,7 +14,10 @@ namespace FunctionalTests_AutomationPracticeCom
         
         public IWebElement QuantityField => _driver.FindElement(By.XPath("(//td[@class='cart_quantity text-center']//following::input[@type='text'])[1]"));   
         
-        public IWebElement DressNameField => _driver.FindElement(By.XPath("//td[@class='cart_description']//following::p[@class='product-name']/a"));              
+        public IWebElement DressNameField => _driver.FindElement(By.XPath("//td[@class='cart_description']//following::p[@class='product-name']/a"));  
+        
+        public IWebElement ShoppingCartPageHeading => _driver.FindElement(By.XPath("//h1[@class='page-heading']"));  
+        
     }
 }
 

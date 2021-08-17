@@ -5,25 +5,24 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ShoppingCartPage
     {
-        public ProductComparisonPage()
+        public ShoppingCartPage()
         {
         }
 
         public void AssertComparisonPageLoaded()
         {
-            Assert.AreEqual("PRODUCT COMPARISON", ComparisonPageHeading.Text);
+            Assert.AreEqual("SHOPPING-CART SUMMARY", ShoppingCartPageHeading.Text);
         }
 
-        public void AssertCorrectProductAddedToProductComparisonPage(List<OrderDressInfo> dressesToCompare)
+        public void AssertCorrectProductAddedToShoppingCart(OrderDressInfo order)
         {
-            for (int i = 0; i < dressesToCompare.Count; i++)
-            {
-                string currentDressName = dressesToCompare[i].DressName;
-                string currentDressPrice = dressesToCompare[i].Price;
-
-                Assert.AreEqual(currentDressPrice, DressPriceField(currentDressName).Text);
-                Assert.AreEqual(currentDressName, DressNameField(currentDressName).Text);                
-            }
+            // TODO
         }
+
+        public void AssertCorrectTotalPriceInShoppingCart()
+        {
+            // TODO
+        }
+
     }
 }
