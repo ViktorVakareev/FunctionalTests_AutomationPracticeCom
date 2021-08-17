@@ -14,6 +14,7 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         private IWebDriver _driver;
         private Actions _actions;
+        WebDriverWait wait;
 
         public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
@@ -21,6 +22,7 @@ namespace FunctionalTests_AutomationPracticeCom
         {
             _driver = driver;
             _actions = new Actions(driver);
+            wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }
 
         public void Open()
@@ -28,29 +30,41 @@ namespace FunctionalTests_AutomationPracticeCom
             _driver.Navigate().GoToUrl(Url);
         }
 
-        public void OpenQuickViewPage(IWebElement hoverElement, IWebElement quickViewElement)
-        {          
-            _actions.MoveToElement(hoverElement).MoveToElement(quickViewElement)
+        public void OpenQuickViewPage(string dressName)
+        {
+            _actions.MoveToElement(HoverDressByName(dressName)).MoveToElement(QuickViewButtonDressByName(dressName))
                 .Click()
                 .Perform();
 
             _driver.SwitchTo().Frame(QuickViewIframeWindow);
         }
 
-        public void AddToCompare(IWebElement hoverElement1, IWebElement addToCompare1, IWebElement hoverElement2, IWebElement addToCompare2)
+        public void OpenQuickViewPage(string dressName, string type)
         {
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            // Click First item Add to Compare button            
-            _actions.MoveToElement(hoverElement1).MoveToElement(addToCompare1)
+            _actions.MoveToElement(HoverDressByName(dressName, type)).MoveToElement(QuickViewButtonDressByName(dressName))
                 .Click()
                 .Perform();
 
-            // Click Second item Add to Compare button
-            _actions.MoveToElement(hoverElement2).MoveToElement(addToCompare2)
-                .Click()
-                .Perform();            
-        }              
+            _driver.SwitchTo().Frame(QuickViewIframeWindow);
+        }
 
+        public void AddToCompare(string dressName, int productId)
+        {
+            _actions.MoveToElement(HoverDressByName(dressName)).MoveToElement(AddToCompareButtonDressByName(dressName, productId))
+                .Click()
+                .Perform();
+        }
+        public void AddToCompare(string dressName, string type, int productId)
+        {
+            _actions.MoveToElement(HoverDressByName(dressName, type)).MoveToElement(AddToCompareButtonDressByName(dressName, productId))
+                .Click()
+                .Perform();           
+        }
+
+        public void CompareItems()
+        {
+            CompareButton.Click();
+        }
         public void ReturnToMainPage()
         {
             _driver.SwitchTo().DefaultContent();
@@ -58,15 +72,12 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void WaitUntilProductIsAddeToCart()
         {
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//i[@class='icon-ok']")));
+            wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));
         }
 
-        public void WaitUntilCompareButtonClickable()
+        public void WaitUntilCompareButtonVisible(By locator)
         {
-            var element = CompareButton;
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
-            wait.Until(ExpectedConditions.TextToBePresentInElementValue(CompareButton, "2"));
+            wait.Until(ExpectedConditions.ElementIsVisible(locator));
         }
     }
 }

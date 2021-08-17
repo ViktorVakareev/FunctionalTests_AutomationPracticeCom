@@ -20,7 +20,7 @@ namespace FunctionalTests_AutomationPracticeCom
         public void Setup()
         {
             _driver = new ChromeDriver();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
             _driver.Manage().Window.Maximize();
             _mainPage = new MainPage(_driver);
             _quickViewPage = new QuickViewPage(_driver);
@@ -37,27 +37,27 @@ namespace FunctionalTests_AutomationPracticeCom
         public void NavigationToQuickViewForPrintedDress_When_QuickViewButtonClicked()
         {
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
+            _mainPage.OpenQuickViewPage("Printed Dress");
 
-            _quickViewPage.AssertQuickViewPageNavigationToPrintedDress("Printed Dress");
+            _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Dress");
         }
 
         [Test]
         public void NavigationToQuickViewForPrintedSummerDress_When_QuickViewButtonClicked()
         {
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
+            _mainPage.OpenQuickViewPage("Printed Summer Dress");
 
-            _quickViewPage.AssertQuickViewPageNavigationToPrintedSummerDress("Printed Summer Dress");
+            _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Summer Dress");
         }
 
         [Test]
         public void NavigationToQuickViewForPrintedChiffonDress_When_QuickViewButtonClicked()
         {
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
 
-            _quickViewPage.AssertQuickViewPageNavigationToPrintedChiffonDress("Printed Chiffon Dress");
+            _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Chiffon Dress");
         }
 
         [Test]
@@ -72,8 +72,8 @@ namespace FunctionalTests_AutomationPracticeCom
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
-            _quickViewPage.AddToCartButton.Click();
+            _mainPage.OpenQuickViewPage("Printed Dress");
+            _quickViewPage.ClickAddToCart();
             _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
@@ -91,8 +91,8 @@ namespace FunctionalTests_AutomationPracticeCom
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
-            _quickViewPage.AddToCartButton.Click();
+            _mainPage.OpenQuickViewPage("Printed Summer Dress");
+            _quickViewPage.ClickAddToCart();
             _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDressName(expectedDressInfo);
@@ -110,7 +110,7 @@ namespace FunctionalTests_AutomationPracticeCom
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.AddToCartButton.Click();
             _mainPage.WaitUntilProductIsAddeToCart();
 
@@ -120,7 +120,7 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedDressWithChangedParametersAddedToCart()
         {
-            var expectedDressInfo = new OrderDressInfo()
+            var order = new OrderDressInfo()
             {
                 DressName = "Printed Dress",
                 ColorAndSize = "Orange, L",
@@ -129,22 +129,17 @@ namespace FunctionalTests_AutomationPracticeCom
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedDress, _mainPage.QuickViewButtonPrintedDress);
-            _quickViewPage.ChangeParametersAndAddOrderToCart_WithoutColor
-                (
-                _quickViewPage.PrintedDressIncreaseQuantityButtonInQuickView,
-           _quickViewPage.PrintedDressSizeDropDownButtonInQuickView,
-           "L"
-           );
+            _mainPage.OpenQuickViewPage("Printed Dress");
+            _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(expectedDressInfo);
+            _mainPage.AssertValidDressName(order);
         }
 
         [Test]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressWithChangedParametersAddedToCart()
         {
-            var expectedDressInfo = new OrderDressInfo()
+            var order = new OrderDressInfo()
             {
                 DressName = "Printed Summer Dress",
                 ColorAndSize = "Blue, L",
@@ -153,59 +148,42 @@ namespace FunctionalTests_AutomationPracticeCom
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedSummerDress, _mainPage.QuickViewButtonPrintedSummerDress);
-            _quickViewPage.ChangeParametersAndAddOrderToCart
-                (
-                _quickViewPage.PrintedSummerDressIncreaseQuantityButtonInQuickView,
-                 _quickViewPage.PrintedSummerDressSelectColorButtonInQuickView,
-           _quickViewPage.PrintedSummerDressSizeDropDownButtonInQuickView,
-           "L"
-           );
+            _mainPage.OpenQuickViewPage("Printed Summer Dress");
+            _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(expectedDressInfo);
+            _mainPage.AssertValidDressName(order);
         }
 
         [Test]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressWithChangedParametersAddedToCart()
         {
-            var expectedDressInfo = new OrderDressInfo()
+            var order = new OrderDressInfo()
             {
                 DressName = "Printed Chiffon Dress",
                 ColorAndSize = "Green, M",
-                Quantity = "2",
-                Price = "$32.80"
+                Quantity = "6",
+                Price = "$98.40"
             };
 
             _mainPage.Open();
-            _mainPage.OpenQuickViewPage(_mainPage.HoverOverDressPicturePrintedChiffonDress, _mainPage.QuickViewButtonPrintedChiffonDress);
-            _quickViewPage.ChangeParametersAndAddOrderToCart
-                (
-                _quickViewPage.PrintedChiffonDressIncreaseQuantityButtonInQuickView,
-                 _quickViewPage.PrintedChiffonDressSelectColorButtonInQuickView,
-           _quickViewPage.PrintedChiffonDressSizeDropDownButtonInQuickView,
-           "M"
-           );
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(expectedDressInfo);
+            _mainPage.AssertValidDressName(order);
         }
 
         [Test]
-        public void CompareTwoItems()
-        {
+        public void ErrorMessage_When_TryingToCompareMoreThanThreeProducts()
+        {           
             _mainPage.Open();
-            _mainPage.AddToCompare
-                (
-                _mainPage.HoverOverDressPicturePrintedChiffonDress,
-                _mainPage.AddToCompareButtonPrintedChiffonDress, 
-                _mainPage.HoverOverDressPicturePrintedDress, 
-                _mainPage.AddToCompareButtonPrintedDress
-                );            
-            _mainPage.CompareButton.Click();
-            // BUG: Adds to Compare 2 products, displays only one, when displaying Product Comparison Page
-
-            //_productComparisonPage.AssertValidProductComparisonPage();
+            _mainPage.AddToCompare("Printed Dress", 3);
+            _mainPage.AddToCompare("Printed Summer Dress", 5);
+            _mainPage.AddToCompare("Printed Chiffon Dress", 7);
+            _mainPage.AddToCompare("Printed Dress", "2", 4);            
+            
+            _mainPage.AssertProductComparisonErrorMessage();
         }
     }
 }

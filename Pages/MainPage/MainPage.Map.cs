@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class MainPage
-    {       
+    {
         public IWebElement QuickViewIframeWindow => _driver.FindElement(By.XPath("//iframe[@class='fancybox-iframe']"));
 
-        public IWebElement CompareButton => _driver.FindElement(By.XPath("(//form[@class='compare-form']/button[@type='submit'])[2]"));       
+        public IWebElement CompareButton => _driver.FindElement(By.XPath("(//form[@class='compare-form']/button[@type='submit'])[2]"));
 
         public IWebElement DressNameBeforeCheckout => _driver.FindElement(By.XPath("//span[@id='layer_cart_product_title']"));
 
@@ -25,35 +25,31 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement ContinueShoppingButton => _driver.FindElement(By.XPath("//span[@title='Continue shopping']"));
 
-        public IWebElement QuickViewButtonPrintedDress => 
-            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Dress']//parent::h5//parent::div//preceding-sibling::div//a/span[contains(text(),'Quick')]"));
+        public IWebElement ErrorMessageProductComparison => _driver.FindElement(By.XPath("//p[@class='fancybox-error']"));
 
-        public IWebElement HoverOverDressPicturePrintedDress => 
-            _driver.FindElement(By.XPath("//div[@class='right-block']//a[@class='product-name' and @title='Printed Dress']"));
+        public By ValidationMessageForSuccessfullyAddedToCart => By.XPath("//i[@class='icon-ok']");
 
-        public IWebElement QuickViewButtonPrintedSummerDress => 
-            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Summer Dress']//parent::h5//parent::div//preceding-sibling::div//a/span[contains(text(),'Quick')]"));
 
-        public IWebElement HoverOverDressPicturePrintedSummerDress => 
-            _driver.FindElement(By.XPath("//div[@class='right-block']//a[@class='product-name' and @title='Printed Summer Dress']"));
 
-        public IWebElement QuickViewButtonPrintedChiffonDress =>
-            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Chiffon Dress']//parent::h5//parent::div//preceding-sibling::div//a/span[contains(text(),'Quick')]"));
+        public IWebElement HoverDressByName(string dressName)
+        {
+            return _driver.FindElement(By.XPath($"//div[@class='right-block']//a[@class='product-name' and @title='{dressName}']"));
+        }
 
-        public IWebElement HoverOverDressPicturePrintedChiffonDress =>
-            _driver.FindElement(By.XPath("//div[@class='right-block']//a[@class='product-name' and @title='Printed Chiffon Dress']"));
+        public IWebElement HoverDressByName(string dressName, string type)
+        {
+            return _driver.FindElement(By.XPath($"(//div[@class='right-block']//a[@class='product-name' and @title='{dressName}'])[{type}]"));
+        }
 
-        public IWebElement ProductAddedToCartFromQuickView =>
-            _driver.FindElement(By.XPath("//i[@class='icon-ok']"));
+        public IWebElement QuickViewButtonDressByName(string dressName)
+        {
+            return _driver.FindElement(By.XPath($"//a[@class='product-name' and @title='{dressName}']//parent::h5//parent::div//preceding-sibling::div//a/span[contains(text(),'Quick')]"));
+        }
 
-        public IWebElement AddToCompareButtonPrintedDress =>
-           _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Dress']//following::a[@class='add_to_compare' and @data-id-product='3']"));
-
-        public IWebElement AddToCompareButtonPrintedSummerDress =>
-            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Summer Dress']//following::a[@class='add_to_compare' and @data-id-product='5']"));
-
-        public IWebElement AddToCompareButtonPrintedChiffonDress =>
-            _driver.FindElement(By.XPath("//a[@class='product-name' and @title='Printed Chiffon Dress']//following::a[@class='add_to_compare' and @data-id-product='7']"));
+        public IWebElement AddToCompareButtonDressByName(string dressName, int productId)  // productID -> 3, 4, 5, 6, 7
+        {
+            return _driver.FindElement(By.XPath($"//a[@class='product-name' and @title='{dressName}']//following::a[@class='add_to_compare' and @data-id-product='{productId}']"));
+        }
     }
 }
 

@@ -12,19 +12,10 @@ namespace FunctionalTests_AutomationPracticeCom
         public QuickViewPage()
         {
         }
-             public void AssertQuickViewPageNavigationToPrintedDress(string dressName)
+             public void AssertQuickViewPageNavigationToProduct(string dressName)
         {
-            Assert.AreEqual(dressName, PrintedDressNameTextFieldInQuickView.Text);
+            Assert.AreEqual(dressName, DressNameTextFieldInQuickView(dressName).Text);
         }
-
-        public void AssertQuickViewPageNavigationToPrintedSummerDress(string dressName)
-        {
-            Assert.AreEqual(dressName, PrintedSummerDressNameTextFieldInQuickView.Text);
-        }
-
-        public void AssertQuickViewPageNavigationToPrintedChiffonDress(string dressName)
-        {
-            Assert.AreEqual(dressName, PrintedChiffonDressNameTextFieldInQuickView.Text);
-        }       
+  
     }
 }

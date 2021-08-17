@@ -21,21 +21,28 @@ namespace FunctionalTests_AutomationPracticeCom
             _driver.Navigate().GoToUrl(Url);
         }
 
-        public void ChangeParametersAndAddOrderToCart(IWebElement quantity, IWebElement color, IWebElement sizeDropdown, string size)
+        public void ClickAddToCart()
         {
-            quantity.Click();
-            color.Click();
-            var selectElement = new SelectElement(sizeDropdown);
-            selectElement.SelectByText(size);
-            this.AddToCartButton.Click();
+            AddToCartButton.Click();
         }
 
-        public void ChangeParametersAndAddOrderToCart_WithoutColor(IWebElement quantity, IWebElement sizeDropdown, string size)
+        public void AddOrderToCart(OrderDressInfo order)
         {
-            quantity.Click();
-            var selectElement = new SelectElement(sizeDropdown);
+            // IWebElement quantity, IWebElement color, IWebElement sizeDropdown, string size
+            string dressName = order.DressName;
+            string size = order.ColorAndSize.Split(", ")[1];
+            string color = order.ColorAndSize.Split(", ")[0];
+            int quantity = Int32.Parse(order.Quantity);
+
+            for (int i = 1; i < quantity; i++)
+            {
+                IncreaseQuantityButton(dressName).Click();
+            }
+           
+            SelectColorByName(dressName,color).Click();
+            var selectElement = new SelectElement(SizeDropDownByName(dressName));
             selectElement.SelectByText(size);
-            this.AddToCartButton.Click();
-        }
+            ClickAddToCart();
+        }        
     }
 }
