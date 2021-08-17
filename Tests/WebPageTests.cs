@@ -198,7 +198,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.AddToCompare("Printed Summer Dress", 5);            
             _mainPage.AddToCompare("Printed Chiffon Dress", 7);
-            _mainPage.CompareItems();
+            _mainPage.CompareButtonClick();
 
             _productComparisonPage.AssertCorrectProductAddedToProductComparisonPage(dressesToCompare);
         }
@@ -209,7 +209,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.AddToCompare("Printed Summer Dress", 5);            
             _mainPage.AddToCompare("Printed Chiffon Dress", 7);            
-            _mainPage.CompareItems();
+            _mainPage.CompareButtonClick();
 
             _productComparisonPage.AssertComparisonPageLoaded();
         }
@@ -224,7 +224,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.AddToCompare("Printed Dress", 4, "2");
             _mainPage.AddToCompare("Printed Summer Dress", 6, "2");
             _mainPage.AddToCompare("Printed Summer Dress", 5);
-            _mainPage.CompareItems();
+            _mainPage.CompareButtonClick();
 
             _mainPage.AssertProductComparisonErrorMessage();
         }
