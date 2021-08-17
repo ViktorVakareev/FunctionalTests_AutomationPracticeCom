@@ -12,7 +12,7 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         private IWebDriver _driver;
 
-        public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
+        public string Url => "http://automationpractice.com/index.php?controller=products-comparison";
 
         public ProductComparisonPage(IWebDriver driver) => _driver = driver;
 

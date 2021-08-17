@@ -29,8 +29,6 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public By ValidationMessageForSuccessfullyAddedToCart => By.XPath("//i[@class='icon-ok']");
 
-
-
         public IWebElement HoverDressByName(string dressName)
         {
             return _driver.FindElement(By.XPath($"//div[@class='right-block']//a[@class='product-name' and @title='{dressName}']"));
@@ -49,7 +47,7 @@ namespace FunctionalTests_AutomationPracticeCom
         public IWebElement AddToCompareButtonDressByName(string dressName, int productId)  // productID -> 3, 4, 5, 6, 7
         {
             return _driver.FindElement(By.XPath($"//a[@class='product-name' and @title='{dressName}']//following::a[@class='add_to_compare' and @data-id-product='{productId}']"));
-        }
+        }               
     }
 }
 

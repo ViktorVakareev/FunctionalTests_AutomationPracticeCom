@@ -32,33 +32,37 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void OpenQuickViewPage(string dressName)
         {
-            _actions.MoveToElement(HoverDressByName(dressName)).MoveToElement(QuickViewButtonDressByName(dressName))
-                .Click()
-                .Perform();
+          _actions.MoveToElement(HoverDressByName(dressName))
+                  .MoveToElement(QuickViewButtonDressByName(dressName))
+                  .Click()
+                  .Perform();
 
             _driver.SwitchTo().Frame(QuickViewIframeWindow);
         }
 
         public void OpenQuickViewPage(string dressName, string type)
         {
-            _actions.MoveToElement(HoverDressByName(dressName, type)).MoveToElement(QuickViewButtonDressByName(dressName))
-                .Click()
-                .Perform();
+          _actions.MoveToElement(HoverDressByName(dressName, type))
+                  .MoveToElement(QuickViewButtonDressByName(dressName))
+                  .Click()
+                  .Perform();
 
             _driver.SwitchTo().Frame(QuickViewIframeWindow);
         }
 
         public void AddToCompare(string dressName, int productId)
         {
-            _actions.MoveToElement(HoverDressByName(dressName)).MoveToElement(AddToCompareButtonDressByName(dressName, productId))
-                .Click()
-                .Perform();
+          _actions.MoveToElement(HoverDressByName(dressName))                  
+                  .MoveToElement(AddToCompareButtonDressByName(dressName, productId))
+                  .Click()
+                  .Perform();
         }
-        public void AddToCompare(string dressName, string type, int productId)
+        public void AddToCompare(string dressName, int productId, string type)
         {
-            _actions.MoveToElement(HoverDressByName(dressName, type)).MoveToElement(AddToCompareButtonDressByName(dressName, productId))
-                .Click()
-                .Perform();           
+          _actions.MoveToElement(HoverDressByName(dressName, type))
+                  .MoveToElement(AddToCompareButtonDressByName(dressName, productId))
+                  .Click()
+                  .Perform();           
         }
 
         public void CompareItems()
@@ -73,11 +77,6 @@ namespace FunctionalTests_AutomationPracticeCom
         public void WaitUntilProductIsAddeToCart()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));
-        }
-
-        public void WaitUntilCompareButtonVisible(By locator)
-        {
-            wait.Until(ExpectedConditions.ElementIsVisible(locator));
         }
     }
 }

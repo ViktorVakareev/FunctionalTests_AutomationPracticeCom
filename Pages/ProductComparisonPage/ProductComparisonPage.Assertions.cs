@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using System.Collections.Generic;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
@@ -8,9 +9,22 @@ namespace FunctionalTests_AutomationPracticeCom
         public ProductComparisonPage()
         {
         }
-        public void AssertValidProductComparisonPage()
+
+        public void AssertComparisonPageLoaded()
         {
-            Assert.AreEqual("http://automationpractice.com/index.php?controller=products-comparison&compare_product_list=3%7C7", _driver.Url);
+            Assert.AreEqual("PRODUCT COMPARISON", ComparisonPageHeading.Text);
+        }
+
+        public void AssertCorrectProductAddedToProductComparisonPage(List<OrderDressInfo> dressesToCompare)
+        {
+            for (int i = 0; i < dressesToCompare.Count; i++)
+            {
+                string currentDressName = dressesToCompare[i].DressName;
+                string currentDressPrice = dressesToCompare[i].Price;
+
+                Assert.AreEqual(currentDressName, DressNameField(currentDressName));
+                Assert.AreEqual(currentDressPrice, DressPriceField(currentDressPrice));
+            }
         }
     }
 }
