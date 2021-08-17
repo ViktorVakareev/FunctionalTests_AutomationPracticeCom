@@ -22,8 +22,8 @@ namespace FunctionalTests_AutomationPracticeCom
                 string currentDressName = dressesToCompare[i].DressName;
                 string currentDressPrice = dressesToCompare[i].Price;
 
-                Assert.AreEqual(currentDressName, DressNameField(currentDressName));
-                Assert.AreEqual(currentDressPrice, DressPriceField(currentDressPrice));
+                Assert.AreEqual(currentDressPrice, DressPriceField(currentDressName).Text);
+                Assert.AreEqual(currentDressName, DressNameField(currentDressName).Text);                
             }
         }
     }

@@ -181,24 +181,25 @@ namespace FunctionalTests_AutomationPracticeCom
             var dressesToCompare = new List<OrderDressInfo>();
             var dress1 = new OrderDressInfo()
             {
-                DressName = "Printed Chiffon Dress",
-                ColorAndSize = "Yellow, S",
-                Quantity = "1",
-                Price = "$16.40"
-            };            
-            var dress2 = new OrderDressInfo()
-            {
                 DressName = "Printed Summer Dress",
                 ColorAndSize = "Yellow, S",
                 Quantity = "1",
                 Price = "$28.98"
             };
+            var dress2 = new OrderDressInfo()
+            {
+                DressName = "Printed Chiffon Dress",
+                ColorAndSize = "Yellow, S",
+                Quantity = "1",
+                Price = "$16.40"
+            };            
+            
             dressesToCompare.Add(dress1);
-            dressesToCompare.Add(dress2);
+            //dressesToCompare.Add(dress2);
 
             _mainPage.Open();
             _mainPage.AddToCompare("Printed Summer Dress", 5);            
-            _mainPage.AddToCompare("Printed Chiffon Dress", 7);
+            //_mainPage.AddToCompare("Printed Chiffon Dress", 7);
             _mainPage.CompareItems();
 
             _productComparisonPage.AssertCorrectProductAddedToProductComparisonPage(dressesToCompare);

@@ -18,9 +18,9 @@ namespace FunctionalTests_AutomationPracticeCom
             return _driver.FindElement(By.XPath($"//h5/a[@title='{dressName}']"));
         }
 
-        public IWebElement DressPriceField(string dressPrice)
+        public IWebElement DressPriceField(string dressName)
         {
-            return _driver.FindElement(By.XPath($"(//h5/a[@title='{dressPrice}']//following::span[@class='price product-price'])[1]"));
+            return _driver.FindElement(By.XPath($"(//h5/a[@title='{dressName}']//following::span[@class='price product-price'])[1]"));
         }
     }
 }

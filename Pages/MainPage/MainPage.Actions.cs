@@ -52,7 +52,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void AddToCompare(string dressName, int productId)
         {
-          _actions.MoveToElement(HoverDressByName(dressName))                  
+          _actions.MoveToElement(HoverDressByName(dressName))                                  
                   .MoveToElement(AddToCompareButtonDressByName(dressName, productId))
                   .Click()
                   .Perform();
@@ -67,6 +67,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void CompareItems()
         {
+            Thread.Sleep(3000);
             CompareButton.Click();
         }
         public void ReturnToMainPage()
@@ -75,6 +76,11 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         public void WaitUntilProductIsAddeToCart()
+        {
+            wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));
+        }
+
+        public void WaitUntilCompareButton()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));
         }
