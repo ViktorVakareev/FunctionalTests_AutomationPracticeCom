@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
@@ -28,6 +23,8 @@ namespace FunctionalTests_AutomationPracticeCom
         public IWebElement ErrorMessageProductComparison => _driver.FindElement(By.XPath("//p[@class='fancybox-error']"));
 
         public By ValidationMessageForSuccessfullyAddedToCart => By.XPath("//i[@class='icon-ok']");
+
+        public By CompareButtonLocator => By.XPath("(//form[@class='compare-form']/button[@type='submit'])[1]");
 
         public IWebElement HoverDressByName(string dressName)
         {

@@ -1,10 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
@@ -195,11 +193,11 @@ namespace FunctionalTests_AutomationPracticeCom
             };            
             
             dressesToCompare.Add(dress1);
-            //dressesToCompare.Add(dress2);
+            dressesToCompare.Add(dress2);
 
             _mainPage.Open();
             _mainPage.AddToCompare("Printed Summer Dress", 5);            
-            //_mainPage.AddToCompare("Printed Chiffon Dress", 7);
+            _mainPage.AddToCompare("Printed Chiffon Dress", 7);
             _mainPage.CompareItems();
 
             _productComparisonPage.AssertCorrectProductAddedToProductComparisonPage(dressesToCompare);

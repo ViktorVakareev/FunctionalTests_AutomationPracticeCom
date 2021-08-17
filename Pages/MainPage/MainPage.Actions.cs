@@ -2,11 +2,6 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
@@ -67,7 +62,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void CompareItems()
         {
-            Thread.Sleep(3000);
+            WaitUntilCompareButtonClickable(CompareButtonLocator);
             CompareButton.Click();
         }
         public void ReturnToMainPage()
@@ -80,9 +75,9 @@ namespace FunctionalTests_AutomationPracticeCom
             wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));
         }
 
-        public void WaitUntilCompareButton()
+        public void WaitUntilCompareButtonClickable(By locator)
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));
+            wait.Until(ExpectedConditions.ElementToBeClickable(CompareButtonLocator));
         }
     }
 }

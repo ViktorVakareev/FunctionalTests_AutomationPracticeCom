@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
 using System.Collections.Generic;
 
 namespace FunctionalTests_AutomationPracticeCom
