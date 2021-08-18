@@ -6,7 +6,7 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class CreateAccountPage
     {
-        public void AssertShoppingCartPageLoaded()
+        public void AssertCreateAccountCartPageLoaded()
         {
             Assert.AreEqual("CREATE AN ACCOUNT", CreateAccountPageHeading.Text);  
         }       

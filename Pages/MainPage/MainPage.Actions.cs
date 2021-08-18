@@ -11,7 +11,7 @@ namespace FunctionalTests_AutomationPracticeCom
         private Actions _actions;
         private WebDriverWait _wait;
 
-        public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
+        public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";        
 
         public MainPage(IWebDriver driver) : base(driver)
         {            

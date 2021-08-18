@@ -6,7 +6,7 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class AuthenticationPage
     {
-        public void AssertShppoingCartPageLoaded()
+        public void AssertAuthenticationCartPageLoaded()
         {
             Assert.AreEqual("AUTHENTICATION", AuthenticationPageHeading.Text);  
         }
