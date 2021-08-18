@@ -5,13 +5,15 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ShoppingCartPage
     {
-        public ShoppingCartPage()
-        {
-        }
+        //public ShoppingCartPage()
+        //{
+        //}
 
-        public void AssertComparisonPageLoaded()
+        public void AssertShppoingCartPageLoaded()
         {
             Assert.AreEqual("SHOPPING-CART SUMMARY", ShoppingCartPageHeading.Text);
+            Assert.AreEqual("http://automationpractice.com/index.php?controller=order", _driver.Url);
+
         }
 
         public void AssertCorrectProductAddedToShoppingCart(OrderDressInfo order)
@@ -19,9 +21,13 @@ namespace FunctionalTests_AutomationPracticeCom
             // TODO
         }
 
-        public void AssertCorrectTotalPriceInShoppingCart()
+        public void AssertCorrectTotalPriceInShoppingCart(OrderDressInfo expectedOrder)
         {
-            // TODO
+            int totalShippingCost = 2;
+            var totalPrice = double.Parse(expectedOrder.Price.Substring(1)) + totalShippingCost;            
+            var expectedTotalPrice = "$" + $"{totalPrice}" + "0";
+
+            Assert.AreEqual(expectedTotalPrice, TotalPriceField.Text);
         }
 
     }

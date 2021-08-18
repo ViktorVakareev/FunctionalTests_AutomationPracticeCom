@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using FunctionalTests_AutomationPracticeCom.Pages;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -8,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
-    public partial class QuickViewPage
+    public partial class QuickViewPage : BasePage
     {
-        private IWebDriver _driver;
-
         public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
-        public QuickViewPage(IWebDriver driver) => _driver = driver;
+        public QuickViewPage(IWebDriver driver) : base(driver)
+        {         
+        }
 
         public void Open()
         {

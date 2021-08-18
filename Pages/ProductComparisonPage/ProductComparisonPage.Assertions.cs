@@ -5,9 +5,9 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ProductComparisonPage
     {
-        public ProductComparisonPage()
-        {
-        }
+        //public ProductComparisonPage()
+        //{
+        //}
 
         public void AssertComparisonPageLoaded()
         {

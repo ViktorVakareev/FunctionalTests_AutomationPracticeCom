@@ -14,6 +14,7 @@ namespace FunctionalTests_AutomationPracticeCom
         private MainPage _mainPage;
         private QuickViewPage _quickViewPage;
         private ProductComparisonPage _productComparisonPage;
+        private ShoppingCartPage _shoppingCartPage;
 
         [SetUp]
         public void Setup()
@@ -24,6 +25,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage = new MainPage(_driver);
             _quickViewPage = new QuickViewPage(_driver);
             _productComparisonPage = new ProductComparisonPage(_driver);
+            _shoppingCartPage = new ShoppingCartPage(_driver);
         }
 
         [TearDown]
@@ -235,6 +237,26 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.CompareButtonClick();
 
             _mainPage.AssertProductComparisonErrorMessage();
+        }
+
+        [Test]
+        public void ShoppingCartPageLoaded_When_ProductsAddedToCartFromQuickView()
+        {
+            var order = new OrderDressInfo()
+            {
+                DressName = "Printed Chiffon Dress",
+                Color = "Green",
+                Size = "M",
+                Quantity = 6,
+                Price = "$98.40"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.AddOrderToCart(order);
+            _mainPage.ClickProceedToCheckoutButton();      
+
+            _shoppingCartPage.AssertCorrectTotalPriceInShoppingCart(order);
         }
     }
 }

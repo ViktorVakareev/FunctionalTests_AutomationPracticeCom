@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using FunctionalTests_AutomationPracticeCom.Pages;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -8,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
-    public partial class ShoppingCartPage
-    {
-        private IWebDriver _driver;
-
+    public partial class ShoppingCartPage : BasePage
+    {       
         public string Url => "http://automationpractice.com/index.php?controller=order";
 
-        public ShoppingCartPage(IWebDriver driver) => _driver = driver;
+        public ShoppingCartPage(IWebDriver driver) : base(driver)
+        {        
+        }
 
         public void Open()
         {
             _driver.Navigate().GoToUrl(Url);
         }
 
-        public void ProceedToCheckoutClick()
+        public void ClickProceedToCheckout()
         {
             ProceedToCheckoutButton.Click(); ;
         }

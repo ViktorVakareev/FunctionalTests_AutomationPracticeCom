@@ -1,21 +1,20 @@
-﻿using OpenQA.Selenium;
+﻿using FunctionalTests_AutomationPracticeCom.Pages;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
-    public partial class MainPage
-    {
-        private IWebDriver _driver;
+    public partial class MainPage : BasePage
+    {        
         private Actions _actions;
-        WebDriverWait _wait;
+        private WebDriverWait _wait;
 
         public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
-        public MainPage(IWebDriver driver)
-        {
-            _driver = driver;
+        public MainPage(IWebDriver driver) : base(driver)
+        {            
             _actions = new Actions(driver);
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }
@@ -66,7 +65,7 @@ namespace FunctionalTests_AutomationPracticeCom
             CompareButton.Click();
         }
 
-        public void ProceedToCheckoutButtonClick()
+        public void ClickProceedToCheckoutButton()
         {
             ProceedToCheckoutButton.Click();
         }

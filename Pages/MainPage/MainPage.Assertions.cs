@@ -1,8 +1,9 @@
-﻿using NUnit.Framework;
+﻿using FunctionalTests_AutomationPracticeCom.Pages;
+using NUnit.Framework;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
-    public partial class MainPage
+    public partial class MainPage //: Base
     {
 
         public void AssertValidDress(OrderDressInfo expectedDressInfo)
