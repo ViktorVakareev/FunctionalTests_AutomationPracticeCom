@@ -11,7 +11,7 @@ namespace FunctionalTests_AutomationPracticeCom
         private Actions _actions;
         private WebDriverWait _wait;
 
-        public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";        
+        public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";        
 
         public MainPage(IWebDriver driver) : base(driver)
         {            
@@ -19,10 +19,10 @@ namespace FunctionalTests_AutomationPracticeCom
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }
 
-        public void Open()
-        {
-            _driver.Navigate().GoToUrl(Url);
-        }
+        //public void Open()
+        //{
+        //    _driver.Navigate().GoToUrl(Url);
+        //}
 
         public void OpenQuickViewPage(string dressName)
         {

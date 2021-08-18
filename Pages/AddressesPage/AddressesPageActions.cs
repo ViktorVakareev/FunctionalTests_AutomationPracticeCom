@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class AddressesPage : BasePage
-    {       
-        public string Url => "http://automationpractice.com/index.php?controller=order&step=1&multi-shipping=0";
+    {
+        public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public AddressesPage(IWebDriver driver) : base(driver)
         {        

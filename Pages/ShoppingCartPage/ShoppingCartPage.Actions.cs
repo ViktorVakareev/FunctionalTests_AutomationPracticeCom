@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ShoppingCartPage : BasePage
-    {       
-        public string Url => "http://automationpractice.com/index.php?controller=order";
+    {
+        public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public ShoppingCartPage(IWebDriver driver) : base(driver)
         {        
         }
 
-        public void Open()
-        {
-            _driver.Navigate().GoToUrl(Url);
-        }
+        //public void Open()
+        //{
+        //    _driver.Navigate().GoToUrl(Url);
+        //}
 
         public void ClickProceedToCheckout()
         {

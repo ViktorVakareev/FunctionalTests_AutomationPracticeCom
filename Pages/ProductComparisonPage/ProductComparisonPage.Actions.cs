@@ -4,16 +4,16 @@ using OpenQA.Selenium;
 namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ProductComparisonPage : BasePage
-    {  
-        public string Url => "http://automationpractice.com/index.php?controller=products-comparison";
+    {
+        public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public ProductComparisonPage(IWebDriver driver) : base(driver)
         { 
         }
             
-        public void Open()
-        {
-            _driver.Navigate().GoToUrl(Url);
-        }
+        //public void Open()
+        //{
+        //    _driver.Navigate().GoToUrl(Url);
+        //}
     }
 }

@@ -11,7 +11,7 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class QuickViewPage : BasePage
     {
-        public string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
+        public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public QuickViewPage(IWebDriver driver) : base(driver)
         {         

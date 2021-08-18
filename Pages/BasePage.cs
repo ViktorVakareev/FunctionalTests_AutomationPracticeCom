@@ -11,13 +11,10 @@ namespace FunctionalTests_AutomationPracticeCom.Pages
     {
         protected IWebDriver _driver;
 
-        protected string Url;
+        public abstract string Url { get; }
 
-        protected BasePage(IWebDriver driver) => _driver = driver;        
-        
-        public void Open()
-        {
-            _driver.Navigate().GoToUrl(Url);
-        }
+        public void Open() => _driver.Navigate().GoToUrl(Url);
+
+        protected BasePage(IWebDriver driver) => _driver = driver;          
     }
 }
