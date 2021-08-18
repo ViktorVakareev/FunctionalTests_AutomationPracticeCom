@@ -258,5 +258,25 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _shoppingCartPage.AssertCorrectTotalPriceInShoppingCart(order);
         }
+
+        [Test]
+        public void CorrectShoppingCartPageProductInfo_When_AddedToCartFromQuickView()
+        {
+            var order = new OrderDressInfo()
+            {
+                DressName = "Printed Chiffon Dress",
+                Color = "Green",
+                Size = "M",
+                Quantity = 6,
+                Price = "$98.40"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.AddOrderToCart(order);
+            _mainPage.ClickProceedToCheckoutButton();
+
+            _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);
+        }
     }
 }

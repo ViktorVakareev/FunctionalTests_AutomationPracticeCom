@@ -5,7 +5,6 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class MainPage //: Base
     {
-
         public void AssertValidDress(OrderDressInfo expectedDressInfo)
         {
             var expectedColorAndSize = $"{expectedDressInfo.Color}, {expectedDressInfo.Size}";

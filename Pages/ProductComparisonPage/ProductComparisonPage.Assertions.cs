@@ -5,10 +5,6 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ProductComparisonPage
     {
-        //public ProductComparisonPage()
-        //{
-        //}
-
         public void AssertComparisonPageLoaded()
         {
             Assert.AreEqual("PRODUCT COMPARISON", ComparisonPageHeading.Text);
