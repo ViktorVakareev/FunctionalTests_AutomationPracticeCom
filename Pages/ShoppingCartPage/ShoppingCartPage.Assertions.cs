@@ -6,7 +6,7 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ShoppingCartPage
     {
-        public void AssertShppoingCartPageLoaded()
+        public void AssertShoppingCartPageLoaded()
         {
             Assert.AreEqual("SHOPPING-CART SUMMARY", ShoppingCartPageHeading.Text);
             Assert.AreEqual("http://automationpractice.com/index.php?controller=order", _driver.Url);

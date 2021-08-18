@@ -247,7 +247,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage.ClickAddToCart();
             _mainPage.ClickProceedToCheckoutButton();
 
-            _shoppingCartPage.AssertShppoingCartPageLoaded();
+            _shoppingCartPage.AssertShoppingCartPageLoaded();
         }
 
         [Test]
