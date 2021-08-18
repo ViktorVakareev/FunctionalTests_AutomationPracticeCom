@@ -18,6 +18,6 @@
 
         public string MobilePhone { get; }   // 123123123
 
-        public string AddressAllias { get; }   // Test address
+        public string AddressAlias { get; }   // Test address
     }
 }

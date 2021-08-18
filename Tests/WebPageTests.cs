@@ -34,6 +34,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _driver.Quit();
         }
 
+        // MainPage and QuickViewPage Tests
         [Test]
         public void NavigationToQuickViewForPrintedDress_When_QuickViewButtonClicked()
         {
@@ -181,6 +182,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.AssertValidDress(order);
         }
 
+        // ProductComparisonPage Tests
         [Test]
         public void CorrectProductsAreCompared_When_ProductComparisonPageLoaded()
         {
@@ -239,6 +241,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.AssertProductComparisonErrorMessage();
         }
 
+        // ShoppingCartPage Tests
         [Test]
         public void ShoppingCartPageLoadedCorrectly_When_ProductAddedToCartFromQuickView()
         {           
@@ -289,5 +292,9 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);
         }
+
+        // AuthenticationPage Tests - TODO
+
+        // CreateAccountPage Tests - TODO
     }
 }
