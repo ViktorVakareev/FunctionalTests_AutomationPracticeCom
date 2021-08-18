@@ -7,9 +7,9 @@ namespace FunctionalTests_AutomationPracticeCom
         public QuickViewPage()
         {
         }
-             public void AssertQuickViewPageNavigationToProduct(string dressName)
+             public void AssertQuickViewPageNavigationToProduct(string expectedDressName)
         {
-            Assert.AreEqual(dressName, DressNameTextFieldInQuickView(dressName).Text);
+            Assert.AreEqual(expectedDressName, DressNameTextFieldInQuickView(expectedDressName).Text);
         }
   
     }

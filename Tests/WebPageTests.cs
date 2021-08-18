@@ -65,8 +65,9 @@ namespace FunctionalTests_AutomationPracticeCom
             var expectedDressInfo = new OrderDressInfo()
             {
                 DressName = "Printed Dress",
-                ColorAndSize = "Orange, S",
-                Quantity = "1",
+                Color = "Orange",
+                Size = "S",
+                Quantity = 1,
                 Price = "$26.00"
             };
 
@@ -75,7 +76,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage.ClickAddToCart();
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(expectedDressInfo);
+            _mainPage.AssertValidDress(expectedDressInfo);
         }
 
         [Test]
@@ -84,8 +85,9 @@ namespace FunctionalTests_AutomationPracticeCom
             var expectedDressInfo = new OrderDressInfo()
             {
                 DressName = "Printed Summer Dress",
-                ColorAndSize = "Yellow, S",
-                Quantity = "1",
+                Color = "Yellow",
+                Size = "S",
+                Quantity = 1,
                 Price = "$28.98"
             };
 
@@ -94,7 +96,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage.ClickAddToCart();
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(expectedDressInfo);
+            _mainPage.AssertValidDress(expectedDressInfo);
         }
 
         [Test]
@@ -103,8 +105,9 @@ namespace FunctionalTests_AutomationPracticeCom
             var expectedDressInfo = new OrderDressInfo()
             {
                 DressName = "Printed Chiffon Dress",
-                ColorAndSize = "Yellow, S",
-                Quantity = "1",
+                Color = "Yellow",
+                Size = "S",
+                Quantity = 1,
                 Price = "$16.40"
             };
 
@@ -113,7 +116,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage.AddToCartButton.Click();
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(expectedDressInfo);
+            _mainPage.AssertValidDress(expectedDressInfo);
         }
 
         [Test]
@@ -122,8 +125,9 @@ namespace FunctionalTests_AutomationPracticeCom
             var order = new OrderDressInfo()
             {
                 DressName = "Printed Dress",
-                ColorAndSize = "Orange, L",
-                Quantity = "2",
+                Color = "Orange",
+                Size = "L",
+                Quantity = 2,
                 Price = "$52.00"
             };
 
@@ -132,7 +136,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(order);
+            _mainPage.AssertValidDress(order);
         }
 
         [Test]
@@ -141,8 +145,9 @@ namespace FunctionalTests_AutomationPracticeCom
             var order = new OrderDressInfo()
             {
                 DressName = "Printed Summer Dress",
-                ColorAndSize = "Blue, L",
-                Quantity = "2",
+                Color = "Blue",
+                Size = "L",
+                Quantity = 2,
                 Price = "$57.96"
             };
 
@@ -151,7 +156,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(order);
+            _mainPage.AssertValidDress(order);
         }
 
         [Test]
@@ -160,8 +165,9 @@ namespace FunctionalTests_AutomationPracticeCom
             var order = new OrderDressInfo()
             {
                 DressName = "Printed Chiffon Dress",
-                ColorAndSize = "Green, M",
-                Quantity = "6",
+                Color = "Green",
+                Size = "M",
+                Quantity = 6,
                 Price = "$98.40"
             };
 
@@ -170,7 +176,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDressName(order);
+            _mainPage.AssertValidDress(order);
         }
 
         [Test]
@@ -180,15 +186,17 @@ namespace FunctionalTests_AutomationPracticeCom
             var dress1 = new OrderDressInfo()
             {
                 DressName = "Printed Summer Dress",
-                ColorAndSize = "Yellow, S",
-                Quantity = "1",
+                Color = "Yellow",
+                Size = "S",
+                Quantity = 1,
                 Price = "$28.98"
             };
             var dress2 = new OrderDressInfo()
             {
                 DressName = "Printed Chiffon Dress",
-                ColorAndSize = "Yellow, S",
-                Quantity = "1",
+                Color = "Yellow",
+                Size = "S",
+                Quantity = 1,
                 Price = "$16.40"
             };            
             

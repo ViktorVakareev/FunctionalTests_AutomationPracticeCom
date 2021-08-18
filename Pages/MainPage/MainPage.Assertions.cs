@@ -5,11 +5,13 @@ namespace FunctionalTests_AutomationPracticeCom
     public partial class MainPage
     {
 
-        public void AssertValidDressName(OrderDressInfo expectedDressInfo)
+        public void AssertValidDress(OrderDressInfo expectedDressInfo)
         {
+            var expectedColorAndSize = $"{expectedDressInfo.Color}, {expectedDressInfo.Size}";
+
             Assert.AreEqual(expectedDressInfo.DressName, DressNameBeforeCheckout.Text);
-            Assert.AreEqual(expectedDressInfo.Quantity, DressQuantityBeforeCheckout.Text);
-            Assert.AreEqual(expectedDressInfo.ColorAndSize, DressColorAndSizeBeforeCheckout.Text);
+            Assert.AreEqual(expectedDressInfo.Quantity.ToString(), DressQuantityBeforeCheckout.Text);
+            Assert.AreEqual(expectedColorAndSize, DressColorAndSizeBeforeCheckout.Text);
             Assert.AreEqual(expectedDressInfo.Price, DressPriceBeforeCheckout.Text);
         }
 

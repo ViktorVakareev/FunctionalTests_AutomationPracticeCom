@@ -26,12 +26,12 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public By CompareButtonLocator => By.XPath("(//form[@class='compare-form']/button[@type='submit'])[1]");
 
-        public IWebElement HoverDressByName(string dressName)
+        public IWebElement HoverDressByNameSpan(string dressName)
         {
             return _driver.FindElement(By.XPath($"//div[@class='right-block']//a[@class='product-name' and @title='{dressName}']"));
         }
 
-        public IWebElement HoverDressByName(string dressName, string type)
+        public IWebElement HoverDressByNameSpan(string dressName, string type)
         {
             return _driver.FindElement(By.XPath($"(//div[@class='right-block']//a[@class='product-name' and @title='{dressName}'])[{type}]"));
         }

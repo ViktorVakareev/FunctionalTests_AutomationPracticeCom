@@ -28,21 +28,17 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void AddOrderToCart(OrderDressInfo order)
         {
-            // IWebElement quantity, IWebElement color, IWebElement sizeDropdown, string size
             string dressName = order.DressName;
-            string size = order.ColorAndSize.Split(", ")[1];
-            string color = order.ColorAndSize.Split(", ")[0];
-            int quantity = Int32.Parse(order.Quantity);
+            string size = order.Size;
+            string color = order.Color;
+            int quantity = order.Quantity;
 
-            for (int i = 1; i < quantity; i++)
-            {
-                IncreaseQuantityButton(dressName).Click();
-            }
-           
-            SelectColorByName(dressName,color).Click();
+            QuantityButtonInput().Clear();
+            QuantityButtonInput().SendKeys($"{quantity}");
+            SelectColorByName(dressName, color).Click();
             var selectElement = new SelectElement(SizeDropDownByName(dressName));
             selectElement.SelectByText(size);
             ClickAddToCart();
-        }        
+        }
     }
 }

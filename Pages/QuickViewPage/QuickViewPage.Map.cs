@@ -21,6 +21,8 @@ namespace FunctionalTests_AutomationPracticeCom
             return _driver.FindElement(By.XPath($"(//h1[contains(text(),'{dressName}')]//following::form//following::p//following::a/span)[2]"));
         }
 
+        public IWebElement QuantityButtonInput() => _driver.FindElement(By.XPath("//input[@id='quantity_wanted']"));        
+
         public IWebElement SizeDropDownByName(string dressName)
         {
             return _driver.FindElement(By.XPath($"//h1[contains(text(),'{dressName}')]//following::form//following::p//following::div[@class='selector']//following::select"));

@@ -15,15 +15,15 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         public void AssertCorrectProductAddedToProductComparisonPage(List<OrderDressInfo> dressesToCompare)
-        {
-            for (int i = 0; i < dressesToCompare.Count; i++)
+        {           
+            foreach (var dress in dressesToCompare)
             {
-                string currentDressName = dressesToCompare[i].DressName;
-                string currentDressPrice = dressesToCompare[i].Price;
+                string expectedCurrentDressName = dress.DressName;
+                string expectedCurrentDressPrice = dress.Price;
 
-                Assert.AreEqual(currentDressPrice, DressPriceField(currentDressName).Text);
-                Assert.AreEqual(currentDressName, DressNameField(currentDressName).Text);                
-            }
+                Assert.AreEqual(expectedCurrentDressPrice, DressPriceField(expectedCurrentDressName).Text);
+                Assert.AreEqual(expectedCurrentDressName, DressNameField(expectedCurrentDressName).Text);
+            }            
         }
     }
 }

@@ -23,7 +23,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void ProceedToCheckoutClick()
         {
-            ProceedToCheckout.Click(); ;
+            ProceedToCheckoutButton.Click(); ;
         }
     }
 }
