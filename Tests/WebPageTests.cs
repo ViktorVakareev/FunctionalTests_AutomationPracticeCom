@@ -240,7 +240,18 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         [Test]
-        public void ShoppingCartPageLoaded_When_ProductsAddedToCartFromQuickView()
+        public void ShoppingCartPageLoadedCorrectly_When_ProductAddedToCartFromQuickView()
+        {           
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+
+            _shoppingCartPage.AssertShppoingCartPageLoaded();
+        }
+
+        [Test]
+        public void CorrectTotalPriceCalculatedInShoppingCard_When_ProductAddedToCartFromQuickView()
         {
             var order = new OrderDressInfo()
             {
@@ -258,9 +269,9 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _shoppingCartPage.AssertCorrectTotalPriceInShoppingCart(order);
         }
-
+        
         [Test]
-        public void CorrectShoppingCartPageProductInfo_When_AddedToCartFromQuickView()
+        public void CorrectShoppingCartPageProductInfo_When_ProductAddedToCartFromQuickView()
         {
             var order = new OrderDressInfo()
             {
