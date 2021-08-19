@@ -20,7 +20,7 @@ namespace FunctionalTests_AutomationPracticeCom
         private YourAddressesPage _yourAddressesPage;
         private ShippingPage _shippingCartPage;
         private PaymentPage _paymentPage;
-        private ForgottenPasswordPage _forgottenPasswordPage;
+        private ForgottenPasswordPage _forgottenPasswordPage;        
 
         [SetUp]
         public void Setup()
@@ -214,13 +214,13 @@ namespace FunctionalTests_AutomationPracticeCom
                 Size = "S",
                 Quantity = 1,
                 Price = "$16.40"
-            };            
-            
+            };
+
             dressesToCompare.Add(dress1);
             dressesToCompare.Add(dress2);
 
             _mainPage.Open();
-            _mainPage.AddToCompare("Printed Summer Dress", 5);            
+            _mainPage.AddToCompare("Printed Summer Dress", 5);
             _mainPage.AddToCompare("Printed Chiffon Dress", 7);
             _mainPage.CompareButtonClick();
 
@@ -231,8 +231,8 @@ namespace FunctionalTests_AutomationPracticeCom
         public void ProductComparisonPageLoaded_When_ProductsAddedToCompare()
         {
             _mainPage.Open();
-            _mainPage.AddToCompare("Printed Summer Dress", 5);            
-            _mainPage.AddToCompare("Printed Chiffon Dress", 7);            
+            _mainPage.AddToCompare("Printed Summer Dress", 5);
+            _mainPage.AddToCompare("Printed Chiffon Dress", 7);
             _mainPage.CompareButtonClick();
 
             _productComparisonPage.AssertComparisonPageLoaded();
@@ -258,14 +258,14 @@ namespace FunctionalTests_AutomationPracticeCom
         public void CorrectMessageDisplayed_When_ViewMyShoppingCartLinkClickedInMainPage()
         {
             _mainPage.Open();
-            _mainPage.ClickViewMyShoppingCartButton();           
+            _mainPage.ClickViewMyShoppingCartButton();
 
             _shoppingCartPage.AssertEmptyShoppingCartMessageDisplayed();
         }
 
         [Test]
         public void ShoppingCartPageLoadedCorrectly_When_ProductAddedToCartFromQuickView()
-        {           
+        {
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
@@ -289,11 +289,11 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.AddOrderToCart(order);
-            _mainPage.ClickProceedToCheckoutButton();      
+            _mainPage.ClickProceedToCheckoutButton();
 
             _shoppingCartPage.AssertCorrectTotalPriceInShoppingCart(order);
         }
-        
+
         [Test]
         public void CorrectShoppingCartPageProductInfo_When_ProductAddedToCartFromQuickView()
         {
@@ -333,6 +333,43 @@ namespace FunctionalTests_AutomationPracticeCom
             _authenticationPage.ClickForgottenPasswordLink();
 
             _forgottenPasswordPage.AssertForgottenPasswordPageLoaded();
+        }
+
+        [Test]
+        public void RetrievePasswordWithInvalidEmail_When_InForgottenPasswordPage()
+        {
+            var email = "wrong_mail@gmail.com";
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.ClickForgottenPasswordLink();
+            _forgottenPasswordPage.EmailInputField.Clear();
+            _forgottenPasswordPage.EmailInputField.SendKeys(email);
+            _forgottenPasswordPage.ClickRetrievePasswordButton();
+
+            _forgottenPasswordPage.AssertRetriveForgottenPasswordErrorMessage();
+        }
+
+        [Test]
+        public void RetrievePasswordWithValidEmail_When_InForgottenPasswordPage()
+        {
+            var personalInfo = new PersonalInfo();
+            var validEmail = personalInfo.ValidEmail;            
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.ClickForgottenPasswordLink();
+            _forgottenPasswordPage.EmailInputField.Clear();
+            _forgottenPasswordPage.EmailInputField.SendKeys(validEmail);
+            _forgottenPasswordPage.ClickRetrievePasswordButton();
+
+            _forgottenPasswordPage.AssertRetriveForgottenPasswordConfirmationMessage(validEmail);
         }
         // CreateAccountPage Tests - TODO
         // 1. Create new account through objects of PersonalInfo and AdressesInfo
