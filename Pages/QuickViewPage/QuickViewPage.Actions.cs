@@ -17,10 +17,7 @@ namespace FunctionalTests_AutomationPracticeCom
         {         
         }
 
-        public void ClickAddToCart()
-        {
-            AddToCartButton.Click();
-        }
+        public void ClickAddToCart() => AddToCartButton.Click();        
 
         public void AddOrderToCart(OrderDressInfo order)
         {

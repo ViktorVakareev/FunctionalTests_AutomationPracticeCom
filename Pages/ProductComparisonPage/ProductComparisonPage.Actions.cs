@@ -9,11 +9,6 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public ProductComparisonPage(IWebDriver driver) : base(driver)
         { 
-        }
-            
-        //public void Open()
-        //{
-        //    _driver.Navigate().GoToUrl(Url);
-        //}
+        }            
     }
 }

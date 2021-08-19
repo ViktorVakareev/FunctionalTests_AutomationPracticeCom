@@ -17,9 +17,6 @@ namespace FunctionalTests_AutomationPracticeCom
         {        
         }
          
-        public void ClickRegisterButton()
-        {
-            RegisterButton.Click(); ;
-        }                
+        public void ClickRegisterButton() => RegisterButton.Click();
     }
 }

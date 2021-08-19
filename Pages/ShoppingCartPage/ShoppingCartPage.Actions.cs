@@ -17,11 +17,6 @@ namespace FunctionalTests_AutomationPracticeCom
         {        
         }
 
-        //public void Open()
-        //{
-        //    _driver.Navigate().GoToUrl(Url);
-        //}
-
         public void ClickProceedToCheckout()
         {
             ProceedToCheckoutButton.Click(); ;

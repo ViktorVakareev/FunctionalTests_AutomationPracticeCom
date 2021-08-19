@@ -15,7 +15,6 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public PaymentPage(IWebDriver driver) : base(driver)
         {        
-        }
-      
+        }      
     }
 }
