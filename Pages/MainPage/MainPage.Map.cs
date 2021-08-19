@@ -4,8 +4,10 @@ using OpenQA.Selenium;
 namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class MainPage //: Base
-    {
+    {        
         public IWebElement QuickViewIframeWindow => _driver.FindElement(By.XPath("//iframe[@class='fancybox-iframe']"));
+
+        public IWebElement ViewMyShoppingCartLink => _driver.FindElement(By.XPath("//a[@title='View my shopping cart']"));
 
         public IWebElement CompareButton => _driver.FindElement(By.XPath("(//form[@class='compare-form']/button[@type='submit'])[1]"));
 

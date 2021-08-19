@@ -243,6 +243,15 @@ namespace FunctionalTests_AutomationPracticeCom
 
         // ShoppingCartPage Tests
         [Test]
+        public void CorrectMessageDisplayed_When_ViewMyShoppingCartLinkClickedInMainPage()
+        {
+            _mainPage.Open();
+            _mainPage.ClickViewMyShoppingCartButton();           
+
+            _shoppingCartPage.AssertEmptyShoppingCartMessageDisplayed();
+        }
+
+        [Test]
         public void ShoppingCartPageLoadedCorrectly_When_ProductAddedToCartFromQuickView()
         {           
             _mainPage.Open();
@@ -292,7 +301,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);
         }
-
+        
         // AuthenticationPage Tests - TODO
         // 1. Create account
         // 2. Sign in with existing acc. -> silviano.tiesto@gmail.com ... 12345
@@ -309,12 +318,12 @@ namespace FunctionalTests_AutomationPracticeCom
         // 1. Assert creating new address
 
         // ShippingPage Tests - TODO
-         // 1. Shipping cost is $2.00
-         // 2. Read Terms Link opens
-         // 3. Try proceed to checkout without clickinг Agree to terms
+        // 1. Shipping cost is $2.00
+        // 2. Read Terms Link opens
+        // 3. Try proceed to checkout without clickinг Agree to terms
 
         // PaymentPage Tests
-         // 1.        
+        // 1.        
 
     }
 }

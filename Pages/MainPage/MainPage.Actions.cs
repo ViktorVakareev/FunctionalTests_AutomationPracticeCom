@@ -19,11 +19,6 @@ namespace FunctionalTests_AutomationPracticeCom
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }
 
-        //public void Open()
-        //{
-        //    _driver.Navigate().GoToUrl(Url);
-        //}
-
         public void OpenQuickViewPage(string dressName)
         {
             _actions.MoveToElement(HoverDressByNameSpan(dressName))
@@ -65,14 +60,10 @@ namespace FunctionalTests_AutomationPracticeCom
             CompareButton.Click();
         }
 
-        public void ClickProceedToCheckoutButton()
-        {
-            ProceedToCheckoutButton.Click();
-        }
+        public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click(); 
+        
+        public void ClickViewMyShoppingCartButton() => ViewMyShoppingCartLink.Click();
 
-        public void WaitUntilProductIsAddeToCart()
-        {
-            _wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));
-        }
+        public void WaitUntilProductIsAddeToCart() => _wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));        
     }
 }

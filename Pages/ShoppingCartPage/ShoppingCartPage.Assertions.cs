@@ -6,11 +6,16 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ShoppingCartPage
     {
+        public void AssertEmptyShoppingCartMessageDisplayed()
+        {            
+            Assert.AreEqual("Your shopping cart is empty.", EmptyCartMessage.Text);
+            Assert.AreEqual("http://automationpractice.com/index.php?controller=order", _driver.Url);
+        }
+
         public void AssertShoppingCartPageLoaded()
         {
             Assert.AreEqual("SHOPPING-CART SUMMARY", ShoppingCartPageHeading.Text);
             Assert.AreEqual("http://automationpractice.com/index.php?controller=order", _driver.Url);
-
         }
 
         public void AssertCorrectProductAddedToShoppingCart(OrderDressInfo expectedOrder)
