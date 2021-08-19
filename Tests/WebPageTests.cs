@@ -83,8 +83,8 @@ namespace FunctionalTests_AutomationPracticeCom
             {
                 DressName = "Printed Dress",
                 Color = "Orange",
-                Size = "S",
-                Quantity = 1,
+                Size = "L",
+                Quantity = 3,
                 Price = "$26.00"
             };
 
@@ -92,8 +92,8 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.OpenQuickViewPage("Printed Dress");
             _quickViewPage.ClickAddToCart();
             _mainPage.WaitUntilProductIsAddeToCart();
-            _mainPage.ClickContinueButton();
-
+            _mainPage.ClickContinueShoppingButton();
+            _mainPage.ClickCartCheckoutButton();
 
             _shoppingCartPage.AssertShoppingCartPageLoaded();
         }

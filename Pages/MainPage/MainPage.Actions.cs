@@ -54,6 +54,14 @@ namespace FunctionalTests_AutomationPracticeCom
                     .Perform();
         }
 
+        public void ClickCartCheckoutButton()
+        {
+            _actions.MoveToElement(ViewMyShoppingCartLink)
+                    .MoveToElement(CartCheckoutButton)                    
+                    .Click()
+                    .Perform();
+        }
+
         public void CompareButtonClick()
         {
             _wait.Until(ExpectedConditions.ElementToBeClickable(CompareButtonLocator));
@@ -62,7 +70,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click();
 
-        public void ClickContinueButton() => ContinueShoppingButton.Click(); 
+        public void ClickContinueShoppingButton() => ContinueShoppingButton.Click(); 
         
         public void ClickViewMyShoppingCartButton() => ViewMyShoppingCartLink.Click();
 
