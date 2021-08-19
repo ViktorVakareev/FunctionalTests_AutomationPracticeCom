@@ -60,7 +60,9 @@ namespace FunctionalTests_AutomationPracticeCom
             CompareButton.Click();
         }
 
-        public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click(); 
+        public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click();
+
+        public void ClickContinueButton() => ContinueShoppingButton.Click(); 
         
         public void ClickViewMyShoppingCartButton() => ViewMyShoppingCartLink.Click();
 

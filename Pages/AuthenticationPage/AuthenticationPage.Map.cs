@@ -12,7 +12,11 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement EmailSignInTextBox => _driver.FindElement(By.Id("email"));     
         
-        public IWebElement PasswordSignInTextBox => _driver.FindElement(By.Id("passwd"));   
+        public IWebElement PasswordSignInTextBox => _driver.FindElement(By.Id("passwd")); 
+        
+        public IWebElement SuccessfulSignIn => _driver.FindElement(By.Id(""));   
+        
+        public IWebElement UnsuccessfulSignInMessage => _driver.FindElement(By.XPath("//li[contains(text(),'Invalid email address.')]")); 
         
         public IWebElement ForgottenPasswordLink => _driver.FindElement(By.LinkText("Forgot your password?"));  
 

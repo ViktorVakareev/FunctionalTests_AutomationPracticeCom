@@ -6,11 +6,19 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class AuthenticationPage
     {
-        public void AssertAuthenticationCartPageLoaded()
+        public void AssertAuthenticationPageLoaded()
         {
-            Assert.AreEqual("AUTHENTICATION", AuthenticationPageHeading.Text);  
+            Assert.AreEqual("AUTHENTICATION", AuthenticationPageHeading.Text);
         }
 
-       
+        public void AssertSignInSuccessful()
+        {
+            Assert.AreEqual("", SuccessfulSignIn.Text);
+        }
+
+        public void AssertSignInErrorMessage()
+        {
+            Assert.AreEqual("", UnsuccessfulSignInMessage.Text);
+        }
     }
 }

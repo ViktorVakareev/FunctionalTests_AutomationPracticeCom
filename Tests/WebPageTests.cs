@@ -21,6 +21,7 @@ namespace FunctionalTests_AutomationPracticeCom
         private ShippingPage _shippingCartPage;
         private PaymentPage _paymentPage;
         private ForgottenPasswordPage _forgottenPasswordPage;        
+        private MyAccountPage _myAccountPage;        
 
         [SetUp]
         public void Setup()
@@ -38,6 +39,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shippingCartPage = new ShippingPage(_driver);
             _paymentPage = new PaymentPage(_driver);
             _forgottenPasswordPage = new ForgottenPasswordPage(_driver);
+            _myAccountPage = new MyAccountPage(_driver);
         }
 
         [TearDown]
@@ -72,6 +74,28 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
 
             _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Chiffon Dress");
+        }
+
+        [Test]
+        public void OpenShoppingCartPage_When_ClickingCheckoutButtonFromCart()
+        {
+            var expectedDressInfo = new OrderDressInfo()
+            {
+                DressName = "Printed Dress",
+                Color = "Orange",
+                Size = "S",
+                Quantity = 1,
+                Price = "$26.00"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.WaitUntilProductIsAddeToCart();
+            _mainPage.ClickContinueButton();
+
+
+            _shoppingCartPage.AssertShoppingCartPageLoaded();
         }
 
         [Test]
@@ -316,12 +340,54 @@ namespace FunctionalTests_AutomationPracticeCom
 
         // AuthenticationPage Tests - TODO
         // 1. Create account
-        // 2. Sign in with existing acc. -> silviano.tiesto@gmail.com ... 12345
-        // 3. Try signing with invalid data
+        // 2. 
+        // 3. 
+
+        [Test]
+        public void SignInWithValidRegistration_When_InAuthenticationPage()
+        {
+            var personalInfo = new PersonalInfo();
+            var validEmail = personalInfo.ValidEmail;
+            var validPassword = personalInfo.ValidPassword;
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.ClickForgottenPasswordLink();
+            _authenticationPage.EmailSignInTextBox.Clear();
+            _authenticationPage.EmailSignInTextBox.SendKeys(validEmail); 
+            _authenticationPage.PasswordSignInTextBox.Clear();
+            _authenticationPage.PasswordSignInTextBox.SendKeys(validPassword);
+            _authenticationPage.ClickSignIn();
+
+            _myAccountPage.AssertMyAccountPageLoaded();
+        }
+
+        [Test]
+        public void SignInWithInValidRegistration_When_InAuthenticationPage()
+        {
+            
+            var inValidEmail = "wrong@email.com";
+            var inValidPassword = "wrong-pass";
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.ClickForgottenPasswordLink();
+            _authenticationPage.EmailSignInTextBox.Clear();
+            _authenticationPage.EmailSignInTextBox.SendKeys(inValidEmail);
+            _authenticationPage.PasswordSignInTextBox.Clear();
+            _authenticationPage.PasswordSignInTextBox.SendKeys(inValidPassword);
+            _authenticationPage.ClickSignIn();
+
+            _authenticationPage.AssertSignInErrorMessage();
+        }
 
         // ForgottenPaswordPageTests
-        // 1. "Forgot your password" link
-        // 2. Retrieve password
         [Test]
         public void OpenForgotYourPasswordLink_When_SigningInFromAuthenticationPage()
         {
@@ -383,10 +449,14 @@ namespace FunctionalTests_AutomationPracticeCom
         // ShippingPage Tests - TODO
         // 1. Shipping cost is $2.00
         // 2. Read Terms Link opens
-        // 3. Try proceed to checkout without clickinг Agree to terms
+        // 3. Try proceed to checkout without clicking Agree to terms
 
-        // PaymentPage Tests
-        // 1.        
+        // PaymentPage Tests - TODO
+        // 1. 
+
+        // MyAccountPage Tests - TODO
+        // 1.
+
 
     }
 }

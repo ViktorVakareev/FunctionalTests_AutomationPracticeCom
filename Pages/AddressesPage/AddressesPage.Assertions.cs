@@ -6,7 +6,7 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class AddressesPage
     {
-        public void AssertAddressesCartPageLoaded()
+        public void AssertAddressesPageLoaded()
         {
             Assert.AreEqual("ADDRESSES", AddressesPageHeading.Text);  
         }
