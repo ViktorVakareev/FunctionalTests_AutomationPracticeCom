@@ -22,7 +22,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement SummarySectionLink => _driver.FindElement(By.LinkText("Summary"));
         
-        public IWebElement SummarySignInLink => _driver.FindElement(By.LinkText("Sign in"));  
+        public IWebElement SignInSectionLink => _driver.FindElement(By.LinkText("Sign in"));  
         
         public IWebElement AddressesPageHeading => _driver.FindElement(By.XPath("//h1[@class='page-heading']"));          
     }

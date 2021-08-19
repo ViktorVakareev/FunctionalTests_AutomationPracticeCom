@@ -294,7 +294,27 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         // AuthenticationPage Tests - TODO
+        // 1. Create account
+        // 2. Sign in with existing acc. -> silviano.tiesto@gmail.com ... 12345
+        // 3. "Forgot your password" link
+        // 4. Try signing with invalid data
 
         // CreateAccountPage Tests - TODO
+        // 1. Create new account through objects of PersonalInfo and AdressesInfo
+
+        // AddressesPage Tests - TODO
+        // 1. Assert Delivery address info are correct -> (first+last) name, address, (city, state zip), country, mobile
+
+        // YourAddressesPage Tests - TODO
+        // 1. Assert creating new address
+
+        // ShippingPage Tests - TODO
+         // 1. Shipping cost is $2.00
+         // 2. Read Terms Link opens
+         // 3. Try proceed to checkout without clickinг Agree to terms
+
+        // PaymentPage Tests
+         // 1.        
+
     }
 }

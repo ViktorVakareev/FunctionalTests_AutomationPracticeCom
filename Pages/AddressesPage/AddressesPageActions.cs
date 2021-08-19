@@ -14,42 +14,21 @@ namespace FunctionalTests_AutomationPracticeCom
         public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public AddressesPage(IWebDriver driver) : base(driver)
-        {        
-        }
-         
-        public void ClickUpdateDeliveryAddress()
         {
-            DeliveryAddressButton.Click(); ;
-        } 
-        
-        public void ClickUpdateBillingAddress()
-        {
-            BillingAddressButton.Click(); ;
         }
 
-        public void ClickCreateNewAddress()
-        {
-            CreateNewAddressButton.Click(); ;
-        }
+        public void ClickUpdateDeliveryAddress() => DeliveryAddressButton.Click();
 
-        public void ChooseDeliveryAddress()   // Address Alias
-        {
-            ChooseDeliveryAddressDropDown.Click(); ;
-        }
+        public void ClickUpdateBillingAddress() => BillingAddressButton.Click();
 
-        public void ClickProceedToCheckpoint()
-        {
-            ProceedToCheckpointButton.Click(); ;
-        }
+        public void ClickCreateNewAddress() => CreateNewAddressButton.Click();
 
-        public void AddComment()
-        {
-            AddCommentTextBox.Click(); 
-        }
+        public void ChooseDeliveryAddress() => ChooseDeliveryAddressDropDown.Click();           // Address Alias
 
-        public void ContinueShopping()
-        {
-            ContinueShoppingLink.Click(); ;
-        }
+        public void ClickProceedToCheckpoint() => ProceedToCheckpointButton.Click();
+
+        public void AddComment() => AddCommentTextBox.Click();
+
+        public void ContinueShopping() => ContinueShoppingLink.Click();
     }
 }
