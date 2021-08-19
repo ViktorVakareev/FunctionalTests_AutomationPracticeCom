@@ -15,6 +15,12 @@ namespace FunctionalTests_AutomationPracticeCom
         private QuickViewPage _quickViewPage;
         private ProductComparisonPage _productComparisonPage;
         private ShoppingCartPage _shoppingCartPage;
+        private AuthenticationPage _authenticationPage;
+        private AddressesPage _addressesPage;
+        private YourAddressesPage _yourAddressesPage;
+        private ShippingPage _shippingCartPage;
+        private PaymentPage _paymentPage;
+        private ForgottenPasswordPage _forgottenPasswordPage;
 
         [SetUp]
         public void Setup()
@@ -26,6 +32,12 @@ namespace FunctionalTests_AutomationPracticeCom
             _quickViewPage = new QuickViewPage(_driver);
             _productComparisonPage = new ProductComparisonPage(_driver);
             _shoppingCartPage = new ShoppingCartPage(_driver);
+            _authenticationPage = new AuthenticationPage(_driver);
+            _addressesPage = new AddressesPage(_driver);
+            _yourAddressesPage = new YourAddressesPage(_driver);
+            _shippingCartPage = new ShippingPage(_driver);
+            _paymentPage = new PaymentPage(_driver);
+            _forgottenPasswordPage = new ForgottenPasswordPage(_driver);
         }
 
         [TearDown]
@@ -301,13 +313,27 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);
         }
-        
+
         // AuthenticationPage Tests - TODO
         // 1. Create account
         // 2. Sign in with existing acc. -> silviano.tiesto@gmail.com ... 12345
-        // 3. "Forgot your password" link
-        // 4. Try signing with invalid data
+        // 3. Try signing with invalid data
 
+        // ForgottenPaswordPageTests
+        // 1. "Forgot your password" link
+        // 2. Retrieve password
+        [Test]
+        public void OpenForgotYourPasswordLink_When_SigningInFromAuthenticationPage()
+        {
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.ClickForgottenPasswordLink();
+
+            _forgottenPasswordPage.AssertForgottenPasswordPageLoaded();
+        }
         // CreateAccountPage Tests - TODO
         // 1. Create new account through objects of PersonalInfo and AdressesInfo
 

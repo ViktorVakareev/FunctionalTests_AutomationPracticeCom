@@ -11,8 +11,8 @@ namespace FunctionalTests_AutomationPracticeCom
         {        
         }
 
-        public void ClickProceedToCheckout() => ProceedToCheckoutButton.Click();        
+        public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click();        
 
-        public void ClickReturnToHomeButton() => ReturnToHomeButton.Click();
+        public void ClickReturnToHomeButton() => ReturnToHomeButton.Click();        
     }
 }

@@ -19,6 +19,8 @@ namespace FunctionalTests_AutomationPracticeCom
          
         public void ClickCreateAccount() => CreateAccountButton.Click();        
         
-        public void ClickSignIn() => SignInButton.Click();        
+        public void ClickSignIn() => SignInButton.Click();
+
+        public void ClickForgottenPasswordLink() => ForgottenPasswordLink.Click();
     }
 }
