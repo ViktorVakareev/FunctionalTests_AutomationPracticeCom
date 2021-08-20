@@ -8,7 +8,7 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public void AssertAddressesPageLoaded()
         {
-            Assert.AreEqual("ADDRESSES", AddressesPageHeading.Text);  
+            Assert.AreEqual("ADDRESSES", AddressesPageHeading.Text);
         }
 
         public void AssertCreateNewAccountSuccessful(PersonalInfo expectedPersonalInfo, AddressInfo expectedAddressInfo)

@@ -4,9 +4,9 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class PaymentPage
     {        
-        public IWebElement PayByBankButton => _driver.FindElement(By.Id(""));   
+        public IWebElement PayByBankWireLink => _driver.FindElement(By.XPath("//a[@title='Pay by bank wire']"));   
      
-        public IWebElement PayByCheckButton => _driver.FindElement(By.Id(""));   
+        public IWebElement PayByCheckLink => _driver.FindElement(By.XPath("//a[@title='Pay by check.']"));   
         
         public IWebElement TotalCostField => _driver.FindElement(By.XPath(""));  
 

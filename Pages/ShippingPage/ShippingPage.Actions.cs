@@ -5,7 +5,7 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class ShippingPage : BasePage
     {
-        public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
+        public override string Url => "http://automationpractice.com/index.php?id_cms=3&controller=cms&content_only=1";
 
         public ShippingPage(IWebDriver driver) : base(driver)
         {        
@@ -13,7 +13,12 @@ namespace FunctionalTests_AutomationPracticeCom
          
         public void ClickAgreeToTermsCheckBox() => AgreeToTermsCheckBox.Click();
 
-        public void ClickReadTheTermsLink() => ReadTheTermsLink.Click();
+        public void ClickReadTheTermsLink()
+        {
+            ReadTheTermsLink.Click();
+            _driver.Navigate().GoToUrl(Url);           
+        }
+        
 
         public void ClickProceedToCheckpointButton() => ProceedToCheckpointButton.Click();
     }

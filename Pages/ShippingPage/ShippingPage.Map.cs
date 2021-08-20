@@ -8,9 +8,11 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement AgreeToTermsCheckBox => _driver.FindElement(By.Id(""));
 
-        public IWebElement ReadTheTermsLink => _driver.FindElement(By.Id(""));
+        public IWebElement ReadTheTermsLink => _driver.FindElement(By.Id("//a[@class='iframe']"));  // iframe
 
-        public IWebElement ShippingCostField => _driver.FindElement(By.LinkText(""));  
+        public IWebElement ReadTheTermsPageHeading => _driver.FindElement(By.Id("//h1[@class='page-heading']"));  // iframe
+
+        public IWebElement ShippingDeliveryPriceField => _driver.FindElement(By.XPath("//div[@class='delivery_option_price']"));  
 
         public IWebElement ContinueShoppingLink => _driver.FindElement(By.LinkText(""));  
         

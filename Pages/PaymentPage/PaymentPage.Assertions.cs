@@ -10,7 +10,5 @@ namespace FunctionalTests_AutomationPracticeCom
         {
             Assert.AreEqual("PLEASE CHOOSE YOUR PAYMENT METHOD", PaymentPageHeading.Text);  
         }
-
-       
     }
 }

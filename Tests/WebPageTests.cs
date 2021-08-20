@@ -22,7 +22,9 @@ namespace FunctionalTests_AutomationPracticeCom
         private YourAddressesPage _yourAddressesPage;
         private ShippingPage _shippingCartPage;
         private PaymentPage _paymentPage;
-        private ForgottenPasswordPage _forgottenPasswordPage;        
+        private ForgottenPasswordPage _forgottenPasswordPage;
+        private OrderSummaryPage _orderSummaryPage;
+        private OrderConfirmationPage _orderConfirmation;
         private MyAccountPage _myAccountPage;        
 
         [SetUp]
@@ -42,6 +44,8 @@ namespace FunctionalTests_AutomationPracticeCom
             _shippingCartPage = new ShippingPage(_driver);
             _paymentPage = new PaymentPage(_driver);
             _forgottenPasswordPage = new ForgottenPasswordPage(_driver);
+            _orderSummaryPage = new OrderSummaryPage(_driver);
+            _orderConfirmation = new OrderConfirmationPage(_driver);
             _myAccountPage = new MyAccountPage(_driver);
         }
 
@@ -450,6 +454,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
 
+            _addressesPage.AssertAddressesPageLoaded();
             _addressesPage.AssertCreateNewAccountSuccessful(personalInfo, addressInfo);
         }              
 
@@ -503,26 +508,338 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _forgottenPasswordPage.AssertRetriveForgottenPasswordConfirmationMessage(validEmail);
         }
-        // CreateAccountPage Tests - TODO
-        // 1. Create new account through objects of PersonalInfo and AdressesInfo
-
-        // AddressesPage Tests - TODO
-        // 1. Assert Delivery address info are correct -> (first+last) name, address, (city, state zip), country, mobile
 
         // YourAddressesPage Tests - TODO
         // 1. Assert creating new address
 
-        // ShippingPage Tests - TODO
-        // 1. Shipping cost is $2.00
-        // 2. Read Terms Link opens
-        // 3. Try proceed to checkout without clicking Agree to terms
+        // ShippingPage Tests        
+        [Test]
+        public void ShippingCostIsTheRightAmountBeforePayment_When_InShippingPage()
+        {
+            var newEmail = GenerateNewGuidEmailOrPassword();
+            var newPassword = GenerateNewGuidEmailOrPassword();
+            var dateOfBirth = new Date(1981, 7, 20);
+            var personalInfo = new PersonalInfo()
+            {
+                Title = "Mr.",
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Email = newEmail,
+                Password = newPassword,
+                DateOfBirth = dateOfBirth
 
-        // PaymentPage Tests - TODO
-        // 1. 
+            };
+            var addressInfo = new AddressInfo()
+            {
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Address = "22, Jump Street",
+                City = "Tom's River",
+                State = "New Jersey",
+                Zip = "08751",
+                Country = "United States",
+                MobilePhone = "222555888",
+                AddressAlias = "Jimmy's Home",
+
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
+            _createAccountPage.ClickRegisterButton();
+            _addressesPage.ClickProceedToCheckpoint();
+
+            _shippingCartPage.AssertShippingPageLoaded();
+            _shippingCartPage.AssertDeliveryPriceIsRightAmount();
+        }
+                
+        [Test]
+        public void ReadTermsOfServiceLinkWorking_When_InShippingPage()
+        {
+            var newEmail = GenerateNewGuidEmailOrPassword();
+            var newPassword = GenerateNewGuidEmailOrPassword();
+            var dateOfBirth = new Date(1981, 7, 20);
+            var personalInfo = new PersonalInfo()
+            {
+                Title = "Mr.",
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Email = newEmail,
+                Password = newPassword,
+                DateOfBirth = dateOfBirth
+
+            };
+            var addressInfo = new AddressInfo()
+            {
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Address = "22, Jump Street",
+                City = "Tom's River",
+                State = "New Jersey",
+                Zip = "08751",
+                Country = "United States",
+                MobilePhone = "222555888",
+                AddressAlias = "Jimmy's Home",
+
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
+            _createAccountPage.ClickRegisterButton();
+            _addressesPage.ClickProceedToCheckpoint();
+            _shippingCartPage.ClickReadTheTermsLink();
+
+            _shippingCartPage.AssertReadTheTermsLinkFollowed();            
+        }
+
+        [Test]
+        public void AgreeToTermsErrorMessage_When_TryingToProceedToPaymentPageFromShippingPage()
+        {
+            var newEmail = GenerateNewGuidEmailOrPassword();
+            var newPassword = GenerateNewGuidEmailOrPassword();
+            var dateOfBirth = new Date(1981, 7, 20);
+            var personalInfo = new PersonalInfo()
+            {
+                Title = "Mr.",
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Email = newEmail,
+                Password = newPassword,
+                DateOfBirth = dateOfBirth
+
+            };
+            var addressInfo = new AddressInfo()
+            {
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Address = "22, Jump Street",
+                City = "Tom's River",
+                State = "New Jersey",
+                Zip = "08751",
+                Country = "United States",
+                MobilePhone = "222555888",
+                AddressAlias = "Jimmy's Home",
+
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
+            _createAccountPage.ClickRegisterButton();
+            _addressesPage.ClickProceedToCheckpoint();
+            _shippingCartPage.ClickProceedToCheckpointButton();
+
+            _shippingCartPage.AssertAgreeToTermsErrorMessage();
+            
+        }
+        // PaymentPage Tests 
+        [Test]
+        public void PaymentPageLoadedCorrectly_When_ClickingProceedToCheckoutFromShippingPage()
+        {
+            var newEmail = GenerateNewGuidEmailOrPassword();
+            var newPassword = GenerateNewGuidEmailOrPassword();
+            var dateOfBirth = new Date(1981, 7, 20);
+            var personalInfo = new PersonalInfo()
+            {
+                Title = "Mr.",
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Email = newEmail,
+                Password = newPassword,
+                DateOfBirth = dateOfBirth
+
+            };
+            var addressInfo = new AddressInfo()
+            {
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Address = "22, Jump Street",
+                City = "Tom's River",
+                State = "New Jersey",
+                Zip = "08751",
+                Country = "United States",
+                MobilePhone = "222555888",
+                AddressAlias = "Jimmy's Home",
+
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
+            _createAccountPage.ClickRegisterButton();
+            _addressesPage.ClickProceedToCheckpoint();
+            _shippingCartPage.ClickProceedToCheckpointButton();
+            _shippingCartPage.ClickAgreeToTermsCheckBox();
+            _shippingCartPage.ClickProceedToCheckpointButton();
+                        
+            _paymentPage.AssertPaymentPageLoaded();
+        }
+
+        [Test]
+        public void PayByBankWire_When_InPaymentPage()
+        {
+            var newEmail = GenerateNewGuidEmailOrPassword();
+            var newPassword = GenerateNewGuidEmailOrPassword();
+            var dateOfBirth = new Date(1981, 7, 20);
+            var personalInfo = new PersonalInfo()
+            {
+                Title = "Mr.",
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Email = newEmail,
+                Password = newPassword,
+                DateOfBirth = dateOfBirth
+
+            };
+            var addressInfo = new AddressInfo()
+            {
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Address = "22, Jump Street",
+                City = "Tom's River",
+                State = "New Jersey",
+                Zip = "08751",
+                Country = "United States",
+                MobilePhone = "222555888",
+                AddressAlias = "Jimmy's Home",
+
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
+            _createAccountPage.ClickRegisterButton();
+            _addressesPage.ClickProceedToCheckpoint();
+            _shippingCartPage.ClickReadTheTermsLink();
+            _shippingCartPage.ClickProceedToCheckpointButton();
+            _paymentPage.ClickPayByBankWireLink();
+
+            _orderSummaryPage.AssertOrderSummaryBankWirePaymentPageLoaded();
+        }
+
+        [Test]
+        public void PayByCheck_When_InPaymentPage()
+        {
+            var newEmail = GenerateNewGuidEmailOrPassword();
+            var newPassword = GenerateNewGuidEmailOrPassword();
+            var dateOfBirth = new Date(1981, 7, 20);
+            var personalInfo = new PersonalInfo()
+            {
+                Title = "Mr.",
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Email = newEmail,
+                Password = newPassword,
+                DateOfBirth = dateOfBirth
+
+            };
+            var addressInfo = new AddressInfo()
+            {
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Address = "22, Jump Street",
+                City = "Tom's River",
+                State = "New Jersey",
+                Zip = "08751",
+                Country = "United States",
+                MobilePhone = "222555888",
+                AddressAlias = "Jimmy's Home",
+
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
+            _createAccountPage.ClickRegisterButton();
+            _addressesPage.ClickProceedToCheckpoint();
+            _shippingCartPage.ClickReadTheTermsLink();
+            _shippingCartPage.ClickProceedToCheckpointButton();
+            _paymentPage.ClickPayByCheckLink();
+
+            _orderSummaryPage.AssertOrderSummaryCheckPaymentPageLoaded();
+        }
+
+        // OrderSummaryPage Tests
+        [Test]
+        public void OrderIsSuccesfullyCompleted()
+        {
+            var newEmail = GenerateNewGuidEmailOrPassword();
+            var newPassword = GenerateNewGuidEmailOrPassword();
+            var dateOfBirth = new Date(1981, 7, 20);
+            var personalInfo = new PersonalInfo()
+            {
+                Title = "Mr.",
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Email = newEmail,
+                Password = newPassword,
+                DateOfBirth = dateOfBirth
+
+            };
+            var addressInfo = new AddressInfo()
+            {
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Address = "22, Jump Street",
+                City = "Tom's River",
+                State = "New Jersey",
+                Zip = "08751",
+                Country = "United States",
+                MobilePhone = "222555888",
+                AddressAlias = "Jimmy's Home",
+
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
+            _createAccountPage.ClickRegisterButton();
+            _addressesPage.ClickProceedToCheckpoint();
+            _shippingCartPage.ClickReadTheTermsLink();
+            _shippingCartPage.ClickProceedToCheckpointButton();
+            _paymentPage.ClickPayByCheckLink();
+            _orderSummaryPage.ClickConfirmOrderButton();
+
+            _orderConfirmation.AssertOrderIsSuccessfullyCompleted();
+        }
 
         // MyAccountPage Tests - TODO
         // 1.
-
-
     }
 }
