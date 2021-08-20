@@ -306,7 +306,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
 
             _shoppingCartPage.AssertShoppingCartPageLoaded();
         }
@@ -326,7 +326,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.AddOrderToCart(order);
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
 
             _shoppingCartPage.AssertCorrectTotalPriceInShoppingCart(order);
         }
@@ -346,7 +346,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.AddOrderToCart(order);
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
 
             _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);
         }
@@ -363,7 +363,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.ClickForgottenPasswordLink();
             _authenticationPage.EmailSignInTextBox.Clear();
@@ -385,7 +385,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.ClickForgottenPasswordLink();
             _authenticationPage.EmailSignInTextBox.Clear();
@@ -405,7 +405,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -447,7 +447,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -465,7 +465,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.ClickForgottenPasswordLink();
 
@@ -480,7 +480,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.ClickForgottenPasswordLink();
             _forgottenPasswordPage.EmailInputField.Clear();
@@ -499,7 +499,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.ClickForgottenPasswordLink();
             _forgottenPasswordPage.EmailInputField.Clear();
@@ -546,7 +546,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -591,7 +591,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -636,7 +636,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -682,7 +682,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -729,10 +729,11 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
@@ -776,7 +777,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -824,7 +825,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
-            _mainPage.ClickProceedToCheckoutButton();
+            _quickViewPage.ClickProceedToCheckoutButton();
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);

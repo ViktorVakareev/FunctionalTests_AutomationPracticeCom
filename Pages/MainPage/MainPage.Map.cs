@@ -53,7 +53,7 @@ namespace FunctionalTests_AutomationPracticeCom
             return _driver.FindElement(By.XPath($"//a[@class='product-name' and @title='{dressName}']//following::a[@class='add_to_compare' and @data-id-product='{productId}']"));
         }
 
-        public IWebElement ProceedToCheckoutButton => _driver.FindElement(By.XPath("(//a[@title='Proceed to checkout'])[1]"));
+        public IWebElement ProceedToCheckoutButton => _driver.FindElement(By.XPath("//a[@title='Proceed to checkout']"));
         
         public IWebElement TotalCostFieldBeforeCheckout => _driver.FindElement(By.XPath("//span[@class='ajax_block_cart_total']"));
     }

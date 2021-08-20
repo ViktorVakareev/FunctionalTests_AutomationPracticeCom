@@ -33,5 +33,7 @@ namespace FunctionalTests_AutomationPracticeCom
             selectElement.SelectByText(size);
             ClickAddToCart();
         }
+
+        public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click();
     }
 }

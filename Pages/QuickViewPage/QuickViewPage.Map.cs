@@ -32,6 +32,8 @@ namespace FunctionalTests_AutomationPracticeCom
         {
             return _driver.FindElement(By.XPath($"//h1[contains(text(),'{dressName}')]//following::form//following::p//following::ul//a[@name='{color}']"));
         }
+
+        public IWebElement ProceedToCheckoutButton => _driver.FindElement(By.XPath("//a[@title='Proceed to checkout']"));
     }
 }
 
