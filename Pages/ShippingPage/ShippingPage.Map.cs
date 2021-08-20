@@ -6,7 +6,7 @@ namespace FunctionalTests_AutomationPracticeCom
     {      
         public IWebElement ProceedToCheckpointButton => _driver.FindElement(By.XPath("//button[@name='processCarrier']"));
 
-        public IWebElement AgreeToTermsCheckBox => _driver.FindElement(By.XPath("//input[@type='checkbox']"));
+        public IWebElement AgreeToTermsCheckBox => _driver.FindElement(By.XPath("//div[@class='checker']"));
 
         public IWebElement ReadTheTermsLink => _driver.FindElement(By.Id("//a[@class='iframe']"));  // iframe
 
