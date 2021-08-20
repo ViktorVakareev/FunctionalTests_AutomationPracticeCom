@@ -14,7 +14,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public string LastName { get; set; }   // Tiesto
 
-        public string Email { get; set; }   // silvanio.tiesto@gmail.com
+        public string Email { get; }   // silvanio.tiesto@gmail.com
 
         public string Password { get; set; }  // 12345
 

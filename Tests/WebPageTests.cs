@@ -55,10 +55,10 @@ namespace FunctionalTests_AutomationPracticeCom
             _driver.Quit();
         }
 
-        private static string GenerateNewGuidEmailOrPassword()
+        private static string GenerateNewRandomEmailOrPassword()
         {
-            var guid = new Guid();
-            return $"vic{guid}@gmail.com";
+            var rnd = new Random(10);
+            return $"vic{rnd.Next(10,1000)}@gmail.com";
         }
 
         // MainPage and QuickViewPage Tests
@@ -417,15 +417,14 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void CreateNewValidAccount_When_InAuthenticationPage()
         {
-            var newEmail = GenerateNewGuidEmailOrPassword();
-            var newPassword = GenerateNewGuidEmailOrPassword();
+            var newEmail = GenerateNewRandomEmailOrPassword();
+            var newPassword = GenerateNewRandomEmailOrPassword();
             var dateOfBirth = new Date(1981,7,20);
             var personalInfo = new PersonalInfo()
             {
                 Title = "Mr.",
                 FirstName = "Jimmy",
-                LastName = "Fallon",
-                Email = newEmail,
+                LastName = "Fallon",                
                 Password = newPassword,
                 DateOfBirth = dateOfBirth
                 
@@ -516,15 +515,14 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void ShippingCostIsTheRightAmountBeforePayment_When_InShippingPage()
         {
-            var newEmail = GenerateNewGuidEmailOrPassword();
-            var newPassword = GenerateNewGuidEmailOrPassword();
+            var newEmail = GenerateNewRandomEmailOrPassword();
+            var newPassword = GenerateNewRandomEmailOrPassword();
             var dateOfBirth = new Date(1981, 7, 20);
             var personalInfo = new PersonalInfo()
             {
                 Title = "Mr.",
                 FirstName = "Jimmy",
-                LastName = "Fallon",
-                Email = newEmail,
+                LastName = "Fallon",                
                 Password = newPassword,
                 DateOfBirth = dateOfBirth
 
@@ -561,15 +559,14 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void ReadTermsOfServiceLinkWorking_When_InShippingPage()
         {
-            var newEmail = GenerateNewGuidEmailOrPassword();
-            var newPassword = GenerateNewGuidEmailOrPassword();
+            var newEmail = GenerateNewRandomEmailOrPassword();
+            var newPassword = GenerateNewRandomEmailOrPassword();
             var dateOfBirth = new Date(1981, 7, 20);
             var personalInfo = new PersonalInfo()
             {
                 Title = "Mr.",
                 FirstName = "Jimmy",
-                LastName = "Fallon",
-                Email = newEmail,
+                LastName = "Fallon",                
                 Password = newPassword,
                 DateOfBirth = dateOfBirth
 
@@ -606,15 +603,14 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void AgreeToTermsErrorMessage_When_TryingToProceedToPaymentPageFromShippingPage()
         {
-            var newEmail = GenerateNewGuidEmailOrPassword();
-            var newPassword = GenerateNewGuidEmailOrPassword();
+            var newEmail = GenerateNewRandomEmailOrPassword();
+            var newPassword = GenerateNewRandomEmailOrPassword();
             var dateOfBirth = new Date(1981, 7, 20);
             var personalInfo = new PersonalInfo()
             {
                 Title = "Mr.",
                 FirstName = "Jimmy",
-                LastName = "Fallon",
-                Email = newEmail,
+                LastName = "Fallon",                
                 Password = newPassword,
                 DateOfBirth = dateOfBirth
 
@@ -652,15 +648,14 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void PaymentPageLoadedCorrectly_When_ClickingProceedToCheckoutFromShippingPage()
         {
-            var newEmail = GenerateNewGuidEmailOrPassword();
-            var newPassword = GenerateNewGuidEmailOrPassword();
+            var newEmail = GenerateNewRandomEmailOrPassword();
+            var newPassword = GenerateNewRandomEmailOrPassword();
             var dateOfBirth = new Date(1981, 7, 20);
             var personalInfo = new PersonalInfo()
             {
                 Title = "Mr.",
                 FirstName = "Jimmy",
-                LastName = "Fallon",
-                Email = newEmail,
+                LastName = "Fallon",                
                 Password = newPassword,
                 DateOfBirth = dateOfBirth
 
@@ -699,17 +694,16 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void PayByBankWire_When_InPaymentPage()
         {
-            var newEmail = GenerateNewGuidEmailOrPassword();
-            var newPassword = GenerateNewGuidEmailOrPassword();
+            var newEmail = GenerateNewRandomEmailOrPassword();
+            var newPassword = GenerateNewRandomEmailOrPassword();
             var dateOfBirth = new Date(1981, 7, 20);
             var personalInfo = new PersonalInfo()
             {
                 Title = "Mr.",
                 FirstName = "Jimmy",
-                LastName = "Fallon",
-                Email = newEmail,
+                LastName = "Fallon",                
                 Password = newPassword,
-                DateOfBirth = dateOfBirth
+                //DateOfBirth = dateOfBirth
 
             };
             var addressInfo = new AddressInfo()
@@ -747,15 +741,14 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void PayByCheck_When_InPaymentPage()
         {
-            var newEmail = GenerateNewGuidEmailOrPassword();
-            var newPassword = GenerateNewGuidEmailOrPassword();
+            var newEmail = GenerateNewRandomEmailOrPassword();
+            var newPassword = GenerateNewRandomEmailOrPassword();
             var dateOfBirth = new Date(1981, 7, 20);
             var personalInfo = new PersonalInfo()
             {
                 Title = "Mr.",
                 FirstName = "Jimmy",
-                LastName = "Fallon",
-                Email = newEmail,
+                LastName = "Fallon",               
                 Password = newPassword,
                 DateOfBirth = dateOfBirth
 
@@ -795,15 +788,14 @@ namespace FunctionalTests_AutomationPracticeCom
         [Test]
         public void OrderIsSuccesfullyCompleted()
         {
-            var newEmail = GenerateNewGuidEmailOrPassword();
-            var newPassword = GenerateNewGuidEmailOrPassword();
+            var newEmail = GenerateNewRandomEmailOrPassword();
+            var newPassword = GenerateNewRandomEmailOrPassword();
             var dateOfBirth = new Date(1981, 7, 20);
             var personalInfo = new PersonalInfo()
             {
                 Title = "Mr.",
                 FirstName = "Jimmy",
-                LastName = "Fallon",
-                Email = newEmail,
+                LastName = "Fallon",                
                 Password = newPassword,
                 DateOfBirth = dateOfBirth
 
