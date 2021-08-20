@@ -24,27 +24,27 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement EmailTextBox => _driver.FindElement(By.Id("email"));
 
-        public IWebElement PasswordTextBox => _driver.FindElement(By.XPath("passwd"));
+        public IWebElement PasswordTextBox => _driver.FindElement(By.Id("passwd"));
 
         public IWebElement DayDropDown => _driver.FindElement(By.Id("days"));
 
-        public IWebElement MonthDropDown => _driver.FindElement(By.XPath("months"));
+        public IWebElement MonthDropDown => _driver.FindElement(By.Id("months"));
 
-        public IWebElement YearDropDown => _driver.FindElement(By.XPath("years"));
+        public IWebElement YearDropDown => _driver.FindElement(By.Id("years"));
 
-        public IWebElement AddressTextBox => _driver.FindElement(By.XPath("address1"));
+        public IWebElement AddressTextBox => _driver.FindElement(By.Id("address1"));
 
-        public IWebElement CityTextBox => _driver.FindElement(By.XPath("city"));
+        public IWebElement CityTextBox => _driver.FindElement(By.Id("city"));
 
-        public IWebElement StateDropDown => _driver.FindElement(By.XPath("id_state"));
+        public IWebElement StateDropDown => _driver.FindElement(By.Id("id_state"));
 
-        public IWebElement ZipTextBox => _driver.FindElement(By.XPath("postcode"));
+        public IWebElement ZipTextBox => _driver.FindElement(By.Id("postcode"));
 
-        public IWebElement CountryDropDown => _driver.FindElement(By.XPath("id_country"));
+        public IWebElement CountryDropDown => _driver.FindElement(By.Id("id_country"));
 
-        public IWebElement MobilePhoneTextBox => _driver.FindElement(By.XPath("phone_mobile"));
+        public IWebElement MobilePhoneTextBox => _driver.FindElement(By.Id("phone_mobile"));
 
-        public IWebElement AddressAliasTextBox => _driver.FindElement(By.XPath("alias"));
+        public IWebElement AddressAliasTextBox => _driver.FindElement(By.Id("alias"));
 
         public IWebElement NewsLetterCheckBox => _driver.FindElement(By.Id("newsletter"));
 

@@ -34,6 +34,7 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         public IWebElement ProceedToCheckoutButton => _driver.FindElement(By.XPath("//a[@title='Proceed to checkout']"));
+        public By ProceedToCheckoutButtonLocator => By.XPath("//a[@title='Proceed to checkout']");
     }
 }
 

@@ -11,10 +11,13 @@ namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class QuickViewPage : BasePage
     {
+        private WebDriverWait _wait;
+
         public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public QuickViewPage(IWebDriver driver) : base(driver)
-        {         
+        {
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }
 
         public void ClickAddToCart() => AddToCartButton.Click();        
@@ -34,6 +37,10 @@ namespace FunctionalTests_AutomationPracticeCom
             ClickAddToCart();
         }
 
-        public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click();
+        public void ClickProceedToCheckoutButton() 
+        {
+            _wait.Until(ExpectedConditions.ElementIsVisible(ProceedToCheckoutButtonLocator));
+            ProceedToCheckoutButton.Click();
+        } 
     }
 }
