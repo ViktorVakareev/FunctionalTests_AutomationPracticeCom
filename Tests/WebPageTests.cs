@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.OData.Edm;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -16,6 +17,7 @@ namespace FunctionalTests_AutomationPracticeCom
         private ProductComparisonPage _productComparisonPage;
         private ShoppingCartPage _shoppingCartPage;
         private AuthenticationPage _authenticationPage;
+        private CreateAccountPage _createAccountPage;
         private AddressesPage _addressesPage;
         private YourAddressesPage _yourAddressesPage;
         private ShippingPage _shippingCartPage;
@@ -35,6 +37,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage = new ShoppingCartPage(_driver);
             _authenticationPage = new AuthenticationPage(_driver);
             _addressesPage = new AddressesPage(_driver);
+            _createAccountPage = new CreateAccountPage(_driver);
             _yourAddressesPage = new YourAddressesPage(_driver);
             _shippingCartPage = new ShippingPage(_driver);
             _paymentPage = new PaymentPage(_driver);
@@ -338,11 +341,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);
         }
 
-        // AuthenticationPage Tests - TODO
-        // 1. Create account
-        // 2. 
-        // 3. 
-
+        // AuthenticationPage Tests    
         [Test]
         public void SignInWithValidRegistration_When_InAuthenticationPage()
         {
@@ -384,7 +383,73 @@ namespace FunctionalTests_AutomationPracticeCom
             _authenticationPage.PasswordSignInTextBox.SendKeys(inValidPassword);
             _authenticationPage.ClickSignIn();
 
-            _authenticationPage.AssertSignInErrorMessage();
+            _authenticationPage.AssertInvalidEmailMessage();
+        }
+
+        [Test]
+        public void CreateNewAccountWithInvalidEmailAddress_When_InAuthenticationPage()
+        {
+            var newEmail = "wrong--mail";           
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
+
+            _authenticationPage.AssertInvalidEmailMessage();
+        }
+
+        [Test]
+        public void CreateNewValidAccount_When_InAuthenticationPage()
+        {
+            var newEmail = GenerateNewGuidEmailOrPassword();
+            var newPassword = GenerateNewGuidEmailOrPassword();
+            var dateOfBirth = new Date(1981,7,20);
+            var personalInfo = new PersonalInfo()
+            {
+                Title = "Mr.",
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Email = newEmail,
+                Password = newPassword,
+                DateOfBirth = dateOfBirth
+                
+            };
+            var addressInfo = new AddressInfo()
+            {
+                FirstName = "Jimmy",
+                LastName = "Fallon",
+                Address = "22, Jump Street",
+                City = "Tom's River",
+                State = "New Jersey",
+                Zip = "08751",
+                Country = "United States",
+                MobilePhone = "222555888",
+                AddressAlias = "Jimmy's Home",
+                
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _mainPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailCreateAccountTextBox.Clear();
+            _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
+            _createAccountPage.ClickRegisterButton();
+
+            _authenticationPage.AssertCreateNewAccountSuccessful(personalInfo, addressInfo);
+        }
+
+        private static string GenerateNewGuidEmailOrPassword()
+        {
+            var guid = new Guid();
+            return $"vic{guid}@gmail.com";
         }
 
         // ForgottenPaswordPageTests

@@ -8,15 +8,15 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement SignInButton => _driver.FindElement(By.Id("SubmitLogin")); 
         
-        public IWebElement EmailCreateAccountBox => _driver.FindElement(By.Id("email_create"));    
+        public IWebElement EmailCreateAccountTextBox => _driver.FindElement(By.Id("email_create"));    
 
         public IWebElement EmailSignInTextBox => _driver.FindElement(By.Id("email"));     
         
-        public IWebElement PasswordSignInTextBox => _driver.FindElement(By.Id("passwd")); 
-        
-        public IWebElement SuccessfulSignIn => _driver.FindElement(By.Id(""));   
+        public IWebElement PasswordSignInTextBox => _driver.FindElement(By.Id("passwd"));          
         
         public IWebElement UnsuccessfulSignInMessage => _driver.FindElement(By.XPath("//li[contains(text(),'Invalid email address.')]")); 
+
+        public IWebElement InvalidEmailMessage => _driver.FindElement(By.XPath("//li[contains(text(),'Invalid email address.')]")); 
         
         public IWebElement ForgottenPasswordLink => _driver.FindElement(By.LinkText("Forgot your password?"));  
 

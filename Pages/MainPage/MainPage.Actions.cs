@@ -56,18 +56,16 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void ClickCartCheckoutButton()
         {
-            _actions.MoveToElement(ViewMyShoppingCartLink)
-                    .MoveToElement(CartCheckoutButton)                    
-                    .Click()
-                    .Perform();
+            ViewMyShoppingCartLink.Click();           
         }
 
         public void CompareButtonClick()
         {
+            var elementToClick = 
             _wait.Until(ExpectedConditions.ElementToBeClickable(CompareButtonLocator));
             CompareButton.Click();
         }
-
+        
         public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click();
 
         public void ClickContinueShoppingButton() => ContinueShoppingButton.Click(); 

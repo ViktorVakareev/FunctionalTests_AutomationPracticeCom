@@ -14,7 +14,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void AssertShoppingCartPageLoaded()
         {
-            Assert.AreEqual("SHOPPING-CART SUMMARY", ShoppingCartPageHeading.Text);
+            StringAssert.Contains("SHOPPING-CART SUMMARY", ShoppingCartPageHeading.Text);
             Assert.AreEqual("http://automationpractice.com/index.php?controller=order", _driver.Url);
         }
 

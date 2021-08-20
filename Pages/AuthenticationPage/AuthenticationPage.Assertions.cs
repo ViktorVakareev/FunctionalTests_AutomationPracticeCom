@@ -10,15 +10,18 @@ namespace FunctionalTests_AutomationPracticeCom
         {
             Assert.AreEqual("AUTHENTICATION", AuthenticationPageHeading.Text);
         }
-
-        public void AssertSignInSuccessful()
+        
+        public void AssertCreateNewAccountSuccessful(PersonalInfo expectedPersonalInfo, AddressInfo expectedAddressInfo)
         {
-            Assert.AreEqual("", SuccessfulSignIn.Text);
-        }
-
-        public void AssertSignInErrorMessage()
+            Assert.AreEqual("", "");
+            Assert.AreEqual("", "");
+            Assert.AreEqual("", "");
+            Assert.AreEqual("", "");
+        } 
+        
+        public void AssertInvalidEmailMessage()
         {
-            Assert.AreEqual("", UnsuccessfulSignInMessage.Text);
+            Assert.AreEqual("Invalid email address.", InvalidEmailMessage.Text);
         }
     }
 }

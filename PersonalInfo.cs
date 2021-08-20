@@ -8,17 +8,17 @@ namespace FunctionalTests_AutomationPracticeCom
 
         private readonly string validPassword = "12345";
 
-        public string Title { get; }   // Mr. or Mrs.
+        public string Title { get; set; }   // Mr. or Mrs.
 
-        public string FirstName { get; }  // Test
+        public string FirstName { get; set; }  // Test
 
-        public string LastName { get; }   // Tiesto
+        public string LastName { get; set; }   // Tiesto
 
-        public int Email { get; }   // silvanio.tiesto@gmail.com
+        public string Email { get; set; }   // silvanio.tiesto@gmail.com
 
-        public string Password { get; }  // 12345
+        public string Password { get; set; }  // 12345
 
-        public Date dateOfBirth { get; }  //  Date(int year, int month, int day); 1981, 07 , 21
+        public Date DateOfBirth { get; set; }  //  Date(int year, int month, int day); 1981, 07 , 21
 
         public string ValidEmail => validEmail;
 
