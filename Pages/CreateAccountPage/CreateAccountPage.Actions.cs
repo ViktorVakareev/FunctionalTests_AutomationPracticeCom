@@ -20,27 +20,38 @@ namespace FunctionalTests_AutomationPracticeCom
         public void ClickRegisterButton() => RegisterButton.Click();
 
         public void FillInNewAccountInfo(PersonalInfo personalInfo, AddressInfo addressInfo)
+        {           
+            TitleRadioButton(personalInfo.Title).Click();
+            FirstNameTextBox.SendKeys(personalInfo.FirstName);
+            LastNameTextBox.SendKeys(personalInfo.LastName);
+            EmailTextBox.SendKeys(personalInfo.Email);
+            PasswordTextBox.SendKeys(personalInfo.Password);
+            SelectDateFromDropDown(DayDropDown, MonthDropDown, YearDropDown,
+                personalInfo.DateOfBirth.Day,personalInfo.DateOfBirth.Month, personalInfo.DateOfBirth.Year);            
+            AddressTextBox.SendKeys(addressInfo.Address);
+            CityTextBox.SendKeys(addressInfo.City);
+            SelectFromDropDown(StateDropDown, addressInfo.State);  
+            ZipTextBox.SendKeys(addressInfo.Zip);
+            SelectFromDropDown(CountryDropDown, addressInfo.Country);            
+            MobilePhoneTextBox.SendKeys(addressInfo.MobilePhone);
+            AddressAliasTextBox.SendKeys(addressInfo.AddressAlias);
+        }
+
+        private static void SelectFromDropDown(IWebElement element, string name)
         {
-        //    Title = "Mr.",
-        //        FirstName = "Jimmy",
-        //        LastName = "Fallon",
-        //        Email = newEmail,
-        //        Password = newPassword,
-        //        DateOfBirth = dateOfBirth
+            var selectElement = new SelectElement(element);            
+            selectElement.SelectByText(name);            
+        }
 
-
-        //var addressInfo = new AddressInfo()
-
-
-        //    FirstName = "Jimmy",
-        //    LastName = "Fallon",
-        //    Address = "22, Jump Street",
-        //    City = "Tom's River",
-        //    State = "New Jersey",
-        //    Zip = "08751",
-        //    Country = "United States",
-        //    MobilePhone = "222555888",
-        //    AddressAlias = "Jimmy's Home",
+        private static void SelectDateFromDropDown(IWebElement dayElement, IWebElement monthElement, IWebElement yearElement,
+            int day, int month, int year)
+        {            
+            var selectElementDay = new SelectElement(dayElement);
+            selectElementDay.SelectByText(day.ToString());
+            var selectElementMonth = new SelectElement(monthElement);
+            selectElementMonth.SelectByText(month.ToString());
+            var selectElementYear = new SelectElement(yearElement);
+            selectElementYear.SelectByText(year.ToString());
         }
     }
 }

@@ -51,6 +51,12 @@ namespace FunctionalTests_AutomationPracticeCom
             _driver.Quit();
         }
 
+        private static string GenerateNewGuidEmailOrPassword()
+        {
+            var guid = new Guid();
+            return $"vic{guid}@gmail.com";
+        }
+
         // MainPage and QuickViewPage Tests
         [Test]
         public void NavigationToQuickViewForPrintedDress_When_QuickViewButtonClicked()
@@ -341,7 +347,8 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);
         }
 
-        // AuthenticationPage Tests    
+        // AuthenticationPage Tests
+        //// TODO Create Account with invalid info and assert validation error messages!
         [Test]
         public void SignInWithValidRegistration_When_InAuthenticationPage()
         {
@@ -443,14 +450,8 @@ namespace FunctionalTests_AutomationPracticeCom
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
 
-            _authenticationPage.AssertCreateNewAccountSuccessful(personalInfo, addressInfo);
-        }
-
-        private static string GenerateNewGuidEmailOrPassword()
-        {
-            var guid = new Guid();
-            return $"vic{guid}@gmail.com";
-        }
+            _addressesPage.AssertCreateNewAccountSuccessful(personalInfo, addressInfo);
+        }              
 
         // ForgottenPaswordPageTests
         [Test]

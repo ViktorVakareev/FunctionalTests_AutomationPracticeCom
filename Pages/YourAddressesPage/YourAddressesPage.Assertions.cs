@@ -8,9 +8,7 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public void AssertYourAddressesPageLoaded()
         {
-            Assert.AreEqual("YOUR ADDRESSES", YourAddressesPageHeading.Text);  
-        }
-
-       
+            Assert.AreEqual("YOUR ADDRESSES", YourAddressesPageHeading.Text);
+        }       
     }
 }

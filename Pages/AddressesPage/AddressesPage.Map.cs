@@ -14,9 +14,19 @@ namespace FunctionalTests_AutomationPracticeCom
         
         public IWebElement ProceedToCheckpointButton => _driver.FindElement(By.Id(""));   
         
-        public IWebElement AddCommentTextBox => _driver.FindElement(By.LinkText(""));  
+        public IWebElement AddCommentTextBox => _driver.FindElement(By.LinkText(""));
+        
+        public IWebElement DeliveryAddressNameField => _driver.FindElement(By.ClassName("address_firstname address_lastname"));  
 
-        public IWebElement ContinueShoppingLink => _driver.FindElement(By.LinkText(""));  
+        public IWebElement DeliveryAddress_AddressField => _driver.FindElement(By.ClassName("address_address1 address_address2")); 
+        
+        public IWebElement DeliveryAddressCityStateZipField => _driver.FindElement(By.ClassName("address_city address_state_name address_postcode")); 
+        
+        public IWebElement DeliveryAddressCountryField => _driver.FindElement(By.ClassName("address_country_name")); 
+        
+        public IWebElement DeliveryAddressMobilePhoneField => _driver.FindElement(By.ClassName("address_phone_mobile"));  
+
+        public IWebElement ContinueShoppingLink => _driver.FindElement(By.XPath("//a[@title='Previous']"));  
 
         public IWebElement AddressesAreEqualCheckBox => _driver.FindElement(By.Id("addressesAreEquals"));  
 
