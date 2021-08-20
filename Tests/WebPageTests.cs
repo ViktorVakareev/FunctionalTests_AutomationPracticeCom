@@ -57,7 +57,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         private static string GenerateNewRandomEmailOrPassword()
         {
-            var rnd = new Random(10);
+            var rnd = new Random();
             return $"vic{rnd.Next(10,1000)}@gmail.com";
         }
 
