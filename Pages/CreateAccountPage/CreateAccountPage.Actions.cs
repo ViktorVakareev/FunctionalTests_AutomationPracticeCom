@@ -20,32 +20,31 @@ namespace FunctionalTests_AutomationPracticeCom
         public void ClickRegisterButton() => RegisterButton.Click();
 
         public void FillInNewAccountInfo(PersonalInfo personalInfo, AddressInfo addressInfo)
-        {           
+        {
             TitleRadioButton(personalInfo.Title).Click();
             FirstNameTextBox.SendKeys(personalInfo.FirstName);
-            LastNameTextBox.SendKeys(personalInfo.LastName);
-            EmailTextBox.SendKeys(personalInfo.Email);
+            LastNameTextBox.SendKeys(personalInfo.LastName);            
             PasswordTextBox.SendKeys(personalInfo.Password);
-            SelectDateFromDropDown(DayDropDown, MonthDropDown, YearDropDown,
-                personalInfo.DateOfBirth.Day,personalInfo.DateOfBirth.Month, personalInfo.DateOfBirth.Year);            
+            //SelectDateFromDropDown(DayDropDown, MonthDropDown, YearDropDown,
+            //    personalInfo.DateOfBirth.Day, personalInfo.DateOfBirth.Month, personalInfo.DateOfBirth.Year);
             AddressTextBox.SendKeys(addressInfo.Address);
             CityTextBox.SendKeys(addressInfo.City);
-            SelectFromDropDown(StateDropDown, addressInfo.State);  
+            SelectFromDropDown(StateDropDown, addressInfo.State);
             ZipTextBox.SendKeys(addressInfo.Zip);
-            SelectFromDropDown(CountryDropDown, addressInfo.Country);            
+            SelectFromDropDown(CountryDropDown, addressInfo.Country);
             MobilePhoneTextBox.SendKeys(addressInfo.MobilePhone);
             AddressAliasTextBox.SendKeys(addressInfo.AddressAlias);
         }
 
         private static void SelectFromDropDown(IWebElement element, string name)
         {
-            var selectElement = new SelectElement(element);            
-            selectElement.SelectByText(name);            
+            var selectElement = new SelectElement(element);
+            selectElement.SelectByText(name);
         }
 
         private static void SelectDateFromDropDown(IWebElement dayElement, IWebElement monthElement, IWebElement yearElement,
             int day, int month, int year)
-        {            
+        {
             var selectElementDay = new SelectElement(dayElement);
             selectElementDay.SelectByText(day.ToString());
             var selectElementMonth = new SelectElement(monthElement);

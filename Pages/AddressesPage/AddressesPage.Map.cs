@@ -12,7 +12,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement ChooseDeliveryAddressDropDown => _driver.FindElement(By.Id(""));     
         
-        public IWebElement ProceedToCheckpointButton => _driver.FindElement(By.Id(""));   
+        public IWebElement ProceedToCheckpointButton => _driver.FindElement(By.XPath("//button[@name='processAddress']"));   
         
         public IWebElement AddCommentTextBox => _driver.FindElement(By.LinkText(""));
         
