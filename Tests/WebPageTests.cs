@@ -731,7 +731,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
-            _shippingCartPage.ClickReadTheTermsLink();
+            _shippingCartPage.ClickAgreeToTermsCheckBox();
             _shippingCartPage.ClickProceedToCheckpointButton();
             _paymentPage.ClickPayByBankWireLink();
 
@@ -777,7 +777,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
-            _shippingCartPage.ClickReadTheTermsLink();
+            _shippingCartPage.ClickAgreeToTermsCheckBox();
             _shippingCartPage.ClickProceedToCheckpointButton();
             _paymentPage.ClickPayByCheckLink();
 
@@ -824,7 +824,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
-            _shippingCartPage.ClickReadTheTermsLink();
+            _shippingCartPage.ClickAgreeToTermsCheckBox();
             _shippingCartPage.ClickProceedToCheckpointButton();
             _paymentPage.ClickPayByCheckLink();
             _orderSummaryPage.ClickConfirmOrderButton();
