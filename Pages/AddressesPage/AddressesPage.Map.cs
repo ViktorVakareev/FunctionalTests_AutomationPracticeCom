@@ -16,7 +16,7 @@ namespace FunctionalTests_AutomationPracticeCom
         
         public IWebElement AddCommentTextBox => _driver.FindElement(By.LinkText(""));
         
-        public IWebElement DeliveryAddressNameField => _driver.FindElement(By.ClassName("address_firstname address_lastname"));  
+        public IWebElement DeliveryAddressNameField => _driver.FindElement(By.XPath("address_firstname address_lastname"));  
 
         public IWebElement DeliveryAddress_AddressField => _driver.FindElement(By.ClassName("address_address1 address_address2")); 
         
