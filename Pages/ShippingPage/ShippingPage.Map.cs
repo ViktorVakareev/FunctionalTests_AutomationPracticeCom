@@ -10,6 +10,8 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public IWebElement ReadTheTermsLink => _driver.FindElement(By.XPath("//a[@class='iframe']"));  // iframe
 
+        public IWebElement ReadTheTermsIframeWindow => _driver.FindElement(By.XPath("//iframe[@class='fancybox-iframe']"));  // iframe
+
         public IWebElement ReadTheTermsPageHeading => _driver.FindElement(By.XPath("//h1[@class='page-heading']"));  // iframe
 
         public IWebElement ShippingDeliveryPriceField => _driver.FindElement(By.XPath("//div[@class='delivery_option_price']"));  

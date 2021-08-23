@@ -16,7 +16,7 @@ namespace FunctionalTests_AutomationPracticeCom
         public void ClickReadTheTermsLink()
         {
             ReadTheTermsLink.Click();
-            _driver.Navigate().GoToUrl(Url);           
+            _driver.SwitchTo().Frame(ReadTheTermsIframeWindow);
         }
         
 

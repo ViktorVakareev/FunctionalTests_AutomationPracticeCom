@@ -19,8 +19,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void AssertReadTheTermsLinkFollowed()
         {
-            Assert.AreEqual("TERMS AND CONDITIONS OF USE", ReadTheTermsPageHeading.Text);
-            Assert.AreEqual("http://automationpractice.com/index.php?id_cms=3&controller=cms&content_only=1", _driver.Url);
+            Assert.AreEqual("TERMS AND CONDITIONS OF USE", ReadTheTermsPageHeading.Text);           
         }
 
         public void AssertAgreeToTermsErrorMessage()
