@@ -490,6 +490,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
 
