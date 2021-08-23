@@ -588,6 +588,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
@@ -632,6 +633,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
@@ -676,6 +678,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
@@ -721,10 +724,10 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
-            _addressesPage.ClickProceedToCheckpoint();
-            _shippingCartPage.ClickProceedToCheckpointButton();
+            _addressesPage.ClickProceedToCheckpoint();            
             _shippingCartPage.ClickAgreeToTermsCheckBox();
             _shippingCartPage.ClickProceedToCheckpointButton();
                         
@@ -814,6 +817,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
@@ -861,6 +865,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
+            _authenticationPage.ClickCreateAccount();
             _createAccountPage.FillInNewAccountInfo(personalInfo, addressInfo);
             _createAccountPage.ClickRegisterButton();
             _addressesPage.ClickProceedToCheckpoint();
