@@ -11,9 +11,9 @@ namespace FunctionalTests_AutomationPracticeCom
             Assert.AreEqual("AUTHENTICATION", AuthenticationPageHeading.Text);
         }              
         
-        public void AssertInvalidEmailMessage()
+        public void AssertValidationMessage(string expectedValidationMessage)
         {
-            Assert.AreEqual("Invalid email address.", InvalidEmailMessage.Text);
-        }
+            Assert.AreEqual(expectedValidationMessage, ValidationMessage(expectedValidationMessage).Text);
+        }       
     }
 }

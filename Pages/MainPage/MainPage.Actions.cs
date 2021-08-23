@@ -41,7 +41,8 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void AddToCompare(string dressName, int productId)
         {
-            _actions.MoveToElement(HoverDressByNameSpan(dressName))                
+            _driver.Navigate()
+            _actions//.MoveToElement(HoverDressByNameSpan(dressName))                
                     .MoveToElement(AddToCompareButtonDressByName(dressName, productId))
                     .Click()                    
                     .Perform();

@@ -6,19 +6,22 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public IWebElement CreateAccountButton => _driver.FindElement(By.Id("SubmitCreate"));
 
-        public IWebElement SignInButton => _driver.FindElement(By.Id("SubmitLogin")); 
-        
-        public IWebElement EmailCreateAccountTextBox => _driver.FindElement(By.Id("email_create"));    
+        public IWebElement SignInButton => _driver.FindElement(By.Id("SubmitLogin"));
 
-        public IWebElement EmailSignInTextBox => _driver.FindElement(By.Id("email"));     
-        
-        public IWebElement PasswordSignInTextBox => _driver.FindElement(By.Id("passwd"));          
-        
-        public IWebElement UnsuccessfulSignInMessage => _driver.FindElement(By.XPath("//li[contains(text(),'Invalid email address.')]")); 
+        public IWebElement EmailCreateAccountTextBox => _driver.FindElement(By.Id("email_create"));
 
-        public IWebElement InvalidEmailMessage => _driver.FindElement(By.XPath("//li[contains(text(),'Invalid email address.')]")); 
-        
-        public IWebElement ForgottenPasswordLink => _driver.FindElement(By.LinkText("Forgot your password?"));  
+        public IWebElement EmailSignInTextBox => _driver.FindElement(By.Id("email"));
+
+        public IWebElement PasswordSignInTextBox => _driver.FindElement(By.Id("passwd"));
+
+        public IWebElement UnsuccessfulSignInMessage => _driver.FindElement(By.XPath("//li[contains(text(),'Invalid email address.')]"));
+
+        public IWebElement ValidationMessage(string validationMessage) 
+            {
+            return _driver.FindElement(By.XPath($"//li[contains(text(),'{validationMessage}')]")); 
+            }
+
+    public IWebElement ForgottenPasswordLink => _driver.FindElement(By.LinkText("Forgot your password?"));  
 
         public IWebElement SummarySectionLink => _driver.FindElement(By.LinkText("Summary"));  
         

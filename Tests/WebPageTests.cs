@@ -375,7 +375,7 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         [Test]
-        public void TryToSignInWithInValidRegistration_When_InAuthenticationPage()
+        public void TryToSignInWithInvalidAccount_When_InAuthenticationPage()
         {
             
             var inValidEmail = "wrong@email.com";
@@ -392,7 +392,49 @@ namespace FunctionalTests_AutomationPracticeCom
             _authenticationPage.PasswordSignInTextBox.SendKeys(inValidPassword);
             _authenticationPage.ClickSignIn();
 
-            _authenticationPage.AssertInvalidEmailMessage();
+            _authenticationPage.AssertValidationMessage("Authentication failed.");
+        }
+
+        [Test]
+        public void TryToSignInWithInvalidEmail_When_InAuthenticationPage()
+        {
+
+            var inValidEmail = "wrong";
+            var inValidPassword = "wrong-pass";
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _quickViewPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailSignInTextBox.Clear();
+            _authenticationPage.EmailSignInTextBox.SendKeys(inValidEmail);
+            _authenticationPage.PasswordSignInTextBox.Clear();
+            _authenticationPage.PasswordSignInTextBox.SendKeys(inValidPassword);
+            _authenticationPage.ClickSignIn();
+
+            _authenticationPage.AssertValidationMessage("Invalid email address.");
+        }
+
+        [Test]
+        public void TryToSignInWithInvalidPassword_When_InAuthenticationPage()
+        {
+
+            var inValidEmail = "valid@email.com";
+            var inValidPassword = "w";
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.ClickAddToCart();
+            _quickViewPage.ClickProceedToCheckoutButton();
+            _shoppingCartPage.ClickProceedToCheckoutButton();
+            _authenticationPage.EmailSignInTextBox.Clear();
+            _authenticationPage.EmailSignInTextBox.SendKeys(inValidEmail);
+            _authenticationPage.PasswordSignInTextBox.Clear();
+            _authenticationPage.PasswordSignInTextBox.SendKeys(inValidPassword);
+            _authenticationPage.ClickSignIn();
+
+            _authenticationPage.AssertValidationMessage("Invalid password.");
         }
 
         [Test]
@@ -409,7 +451,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
             _authenticationPage.ClickCreateAccount();
 
-            _authenticationPage.AssertInvalidEmailMessage();
+            _authenticationPage.AssertValidationMessage("Invalid email address.");
         }
 
         [Test]
