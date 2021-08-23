@@ -70,7 +70,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Dress");
         }
-
+        
         [Test]
         public void NavigationToQuickViewForPrintedSummerDress_When_QuickViewButtonClicked()
         {
@@ -364,19 +364,18 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
             _quickViewPage.ClickProceedToCheckoutButton();
-            _shoppingCartPage.ClickProceedToCheckoutButton();
-            _authenticationPage.ClickForgottenPasswordLink();
+            _shoppingCartPage.ClickProceedToCheckoutButton();            
             _authenticationPage.EmailSignInTextBox.Clear();
             _authenticationPage.EmailSignInTextBox.SendKeys(validEmail); 
             _authenticationPage.PasswordSignInTextBox.Clear();
             _authenticationPage.PasswordSignInTextBox.SendKeys(validPassword);
             _authenticationPage.ClickSignIn();
 
-            _myAccountPage.AssertMyAccountPageLoaded();
+            _addressesPage.AssertAddressesPageLoaded();
         }
 
         [Test]
-        public void SignInWithInValidRegistration_When_InAuthenticationPage()
+        public void TryToSignInWithInValidRegistration_When_InAuthenticationPage()
         {
             
             var inValidEmail = "wrong@email.com";
@@ -386,8 +385,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
             _quickViewPage.ClickProceedToCheckoutButton();
-            _shoppingCartPage.ClickProceedToCheckoutButton();
-            _authenticationPage.ClickForgottenPasswordLink();
+            _shoppingCartPage.ClickProceedToCheckoutButton();            
             _authenticationPage.EmailSignInTextBox.Clear();
             _authenticationPage.EmailSignInTextBox.SendKeys(inValidEmail);
             _authenticationPage.PasswordSignInTextBox.Clear();

@@ -9,7 +9,6 @@ namespace FunctionalTests_AutomationPracticeCom
         public void AssertMyAccountPageLoaded()
         {
             Assert.AreEqual("MY ACCOUNT", MyAccountPageHeading.Text);  
-            Assert.AreEqual("http://automationpractice.com/index.php?controller=my-account", _driver.Url);  
         }
     }
 }

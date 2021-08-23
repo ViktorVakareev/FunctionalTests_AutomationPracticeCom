@@ -41,9 +41,9 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void AddToCompare(string dressName, int productId)
         {
-            _actions.MoveToElement(HoverDressByNameSpan(dressName))
+            _actions.MoveToElement(HoverDressByNameSpan(dressName))                
                     .MoveToElement(AddToCompareButtonDressByName(dressName, productId))
-                    .Click()
+                    .Click()                    
                     .Perform();
         }
         public void AddToCompare(string dressName, int productId, string type)
@@ -51,7 +51,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _actions.MoveToElement(HoverDressByNameSpan(dressName, type))
                     .MoveToElement(AddToCompareButtonDressByName(dressName, productId))
                     .Click()
-                    .Perform();
+                    .Perform();            
         }
 
         public void ClickCartCheckoutButton()
@@ -61,11 +61,13 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void CompareButtonClick()
         {
-            var elementToClick = 
-            _wait.Until(ExpectedConditions.ElementToBeClickable(CompareButtonLocator));
-            CompareButton.Click();
+            //var elementToClick =
+            //_wait.Until(ExpectedConditions.ElementToBeClickable(CompareButtonLocator));
+            _actions.MoveToElement(CompareButton)
+                    .Click()
+                    .Perform();
         }
-        
+
         public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click();
 
         public void ClickContinueShoppingButton() => ContinueShoppingButton.Click(); 
