@@ -45,7 +45,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <Compile Update="Tests\FunctionalTests.cs">
+	  <Compile Update="Tests\FunctionalTests.Setup.cs">
 	    <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
 	    <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
 	  </Compile>

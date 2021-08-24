@@ -5,15 +5,14 @@ using System;
 namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class FunctionalTests
-    {
-        //// TODO Create Account with invalid info and assert validation error messages!
-        // Login with the shortest email possible
-        // Login shortest password possible
-        // Login shortest username possible
-        // Login with longest email possible
-        // Login with longest username possible
-        // Login with longest password possible
-        // Login with password containing special symbols
+    {        
+        // Login with the shortest email possible - 1 symbol
+        // Login shortest password possible - 1 symbol
+        // Login shortest username possible - 1 symbol
+        // Login with longest email possible - 32 symbols
+        // Login with longest username possible - 32 symbols
+        // Login with longest password possible - 32 symbols
+        // Login with password containing special symbols - !#@$#%^&*()_+
         // Login with email with empty space at beginning - should be trimmed- logged-in successfully
         // Login with email with empty spaces at end - should be trimmed- logged-in successfully
         // Login with username with empty space at beginning - should be trimmed- logged-in successfully
@@ -22,10 +21,12 @@ namespace FunctionalTests_AutomationPracticeCom
         // Login with password with empty spaces at end - should be trimmed- logged-in successfully
         // Verify that the password is in *** format when entered
         // Verify that the client should not be able to login with the old password after changing the password
+        // Login with correct email and password after resetting password
+        // Login with correct username and password after resetting password
 
         [Test]
         [Obsolete]
-        public void SignInWithValidRegistration_When_InAuthenticationPage()
+        public void LoginInWithCorrectEmailAndPassword_When_InAuthenticationPage()
         {
             var personalInfo = new PersonalInfo();
             var validEmail = personalInfo.ValidEmail;
@@ -47,7 +48,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         [Test]
         [Obsolete]
-        public void TryToSignInWithInvalidAccount_When_InAuthenticationPage()
+        public void TryLoginWithWrongEmailAndPassword_When_InAuthenticationPage()
         {
 
             var inValidEmail = "wrong@email.com";
@@ -69,7 +70,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         [Test]
         [Obsolete]
-        public void TryToSignInWithInvalidEmail_When_InAuthenticationPage()
+        public void TryLoginWithInvalidEmailAndValidPassword_When_InAuthenticationPage()
         {
 
             var inValidEmail = "wrong";
@@ -91,7 +92,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         [Test]
         [Obsolete]
-        public void TryToSignInWithInvalidPassword_When_InAuthenticationPage()
+        public void TryLoginWithValidEmailAndInvalidPassword_When_InAuthenticationPage()
         {
 
             var inValidEmail = "valid@email.com";
@@ -113,7 +114,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         [Test]
         [Obsolete]
-        public void CreateNewAccountWithInvalidEmailAddress_When_InAuthenticationPage()
+        public void TryCreateNewAccountWithInvalidEmailAddress_When_InAuthenticationPage()
         {
             var newEmail = "wrong--mail";
 
@@ -189,7 +190,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         [Test]
         [Obsolete]
-        public void RetrievePasswordWithInvalidEmail_When_InForgottenPasswordPage()
+        public void TryRetrievePasswordWithInvalidEmail_When_InForgottenPasswordPage()
         {
             var email = "wrong_mail@gmail.com";
 
