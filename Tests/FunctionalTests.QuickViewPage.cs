@@ -72,5 +72,87 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.AssertValidDress(expectedDressInfo);
         }
 
+        [Test]
+        [Obsolete]
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressAddedToCart()
+        {
+            var expectedDressInfo = new OrderDressInfo()
+            {
+                DressName = "Printed Chiffon Dress",
+                Color = "Yellow",
+                Size = "S",
+                Quantity = 1,
+                Price = "$16.40"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.AddToCartButton.Click();
+            _mainPage.WaitUntilProductIsAddeToCart();
+
+            _mainPage.AssertValidDress(expectedDressInfo);
+        }
+
+        [Test]
+        [Obsolete]
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedDressWithChangedParametersAddedToCart()
+        {
+            var order = new OrderDressInfo()
+            {
+                DressName = "Printed Dress",
+                Color = "Orange",
+                Size = "L",
+                Quantity = 2,
+                Price = "$52.00"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Dress");
+            _quickViewPage.AddOrderToCart(order);
+            _mainPage.WaitUntilProductIsAddeToCart();
+
+            _mainPage.AssertValidDress(order);
+        }
+
+        [Test]
+        [Obsolete]
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressWithChangedParametersAddedToCart()
+        {
+            var order = new OrderDressInfo()
+            {
+                DressName = "Printed Summer Dress",
+                Color = "Blue",
+                Size = "L",
+                Quantity = 2,
+                Price = "$57.96"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Summer Dress");
+            _quickViewPage.AddOrderToCart(order);
+            _mainPage.WaitUntilProductIsAddeToCart();
+            _mainPage.AssertValidDress(order);
+        }
+
+        [Test]
+        [Obsolete]
+        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressWithChangedParametersAddedToCart()
+        {
+            var order = new OrderDressInfo()
+            {
+                DressName = "Printed Chiffon Dress",
+                Color = "Green",
+                Size = "M",
+                Quantity = 6,
+                Price = "$98.40"
+            };
+
+            _mainPage.Open();
+            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
+            _quickViewPage.AddOrderToCart(order);
+            _mainPage.WaitUntilProductIsAddeToCart();
+
+            _mainPage.AssertValidDress(order);
+        }
     }
 }

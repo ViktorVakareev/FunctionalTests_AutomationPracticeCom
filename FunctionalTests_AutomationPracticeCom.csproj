@@ -6,8 +6,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<CodeAnalysisRuleSet>..\ю
-		„\StyleCopeRules.ruleset</CodeAnalysisRuleSet>
+		<CodeAnalysisRuleSet>..\StyleCopeRules.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

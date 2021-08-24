@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
-    public partial class FunctionalTests
+    public partial class FunctionalTestsMainPage
     {
 
     }
