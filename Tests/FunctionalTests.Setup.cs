@@ -2,14 +2,14 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
-    [TestFixture]
     public partial class FunctionalTests
     {
-        private IWebDriver _driver;
-        protected MainPage _mainPage;
+        private ChromeDriver _driver;
+        private MainPage _mainPage;
         private QuickViewPage _quickViewPage;
         private ProductComparisonPage _productComparisonPage;
         private ShoppingCartPage _shoppingCartPage;
@@ -22,12 +22,13 @@ namespace FunctionalTests_AutomationPracticeCom
         private ForgottenPasswordPage _forgottenPasswordPage;
         private OrderSummaryPage _orderSummaryPage;
         private OrderConfirmationPage _orderConfirmation;
-        private MyAccountPage _myAccountPage;        
+        private MyAccountPage _myAccountPage;
 
         [SetUp]
         public void Setup()
         {
-            _driver = new ChromeDriver();
+            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
+            _driver = new ChromeDriver();            
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
             _driver.Manage().Window.Maximize();
             _mainPage = new MainPage(_driver);
@@ -46,11 +47,13 @@ namespace FunctionalTests_AutomationPracticeCom
             _myAccountPage = new MyAccountPage(_driver);
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void CleanUp()
         {
-            _driver.Quit();
-            _driver.Close();
-        }       
+            if (_driver != null)
+            {                
+                _driver.Dispose();
+            }
+        }
     }
 }
