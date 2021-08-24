@@ -37,6 +37,7 @@ namespace FunctionalTests_AutomationPracticeCom
             ClickAddToCart();
         }
 
+        [Obsolete]
         public void ClickProceedToCheckoutButton() 
         {
             _wait.Until(ExpectedConditions.ElementIsVisible(ProceedToCheckoutButtonLocator));

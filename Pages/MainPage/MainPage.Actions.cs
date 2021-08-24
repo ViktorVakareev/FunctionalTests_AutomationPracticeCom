@@ -74,6 +74,7 @@ namespace FunctionalTests_AutomationPracticeCom
         
         public void ClickViewMyShoppingCartButton() => ViewMyShoppingCartLink.Click();
 
+        [Obsolete]
         public void WaitUntilProductIsAddeToCart() => _wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));        
     }
 }

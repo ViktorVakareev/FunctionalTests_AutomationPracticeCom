@@ -8,11 +8,11 @@ using System.Collections.Generic;
 namespace FunctionalTests_AutomationPracticeCom
 {
     [TestFixture]
-    public class WebPageTests
+    public partial class FunctionalTests
 
     {
         private IWebDriver _driver;
-        private MainPage _mainPage;
+        protected MainPage _mainPage;
         private QuickViewPage _quickViewPage;
         private ProductComparisonPage _productComparisonPage;
         private ShoppingCartPage _shoppingCartPage;
@@ -57,101 +57,16 @@ namespace FunctionalTests_AutomationPracticeCom
 
         private static string GenerateNewRandomEmailOrPassword()
         {
-            var rnd = new Random();
-            return $"vic{rnd.Next(10,1000)}@gmail.com";
+            var guid = new Guid();
+            return $"vic{guid}@gmail.com";
         }
 
         // MainPage and QuickViewPage Tests
-        [Test]
-        public void NavigationToQuickViewForPrintedDress_When_QuickViewButtonClicked()
-        {
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Dress");
-
-            _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Dress");
-        }
         
+        
+                
         [Test]
-        public void NavigationToQuickViewForPrintedSummerDress_When_QuickViewButtonClicked()
-        {
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Summer Dress");
-
-            _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Summer Dress");
-        }
-
-        [Test]
-        public void NavigationToQuickViewForPrintedChiffonDress_When_QuickViewButtonClicked()
-        {
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
-
-            _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Chiffon Dress");
-        }
-
-        [Test]
-        public void OpenShoppingCartPage_When_ClickingCheckoutButtonFromCart()
-        {
-            var expectedDressInfo = new OrderDressInfo()
-            {
-                DressName = "Printed Dress",
-                Color = "Orange",
-                Size = "L",
-                Quantity = 3,
-                Price = "$26.00"
-            };
-
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Dress");
-            _quickViewPage.ClickAddToCart();
-            _mainPage.WaitUntilProductIsAddeToCart();
-            _mainPage.ClickContinueShoppingButton();
-            _mainPage.ClickCartCheckoutButton();
-
-            _shoppingCartPage.AssertShoppingCartPageLoaded();
-        }
-
-        [Test]
-        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedDressAddedToCart()
-        {
-            var expectedDressInfo = new OrderDressInfo()
-            {
-                DressName = "Printed Dress",
-                Color = "Orange",
-                Size = "S",
-                Quantity = 1,
-                Price = "$26.00"
-            };
-
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Dress");
-            _quickViewPage.ClickAddToCart();
-            _mainPage.WaitUntilProductIsAddeToCart();
-
-            _mainPage.AssertValidDress(expectedDressInfo);
-        }
-
-        [Test]
-        public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressAddedToCart()
-        {
-            var expectedDressInfo = new OrderDressInfo()
-            {
-                DressName = "Printed Summer Dress",
-                Color = "Yellow",
-                Size = "S",
-                Quantity = 1,
-                Price = "$28.98"
-            };
-
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Summer Dress");
-            _quickViewPage.ClickAddToCart();
-            _mainPage.WaitUntilProductIsAddeToCart();
-
-            _mainPage.AssertValidDress(expectedDressInfo);
-        }
-
-        [Test]
+        [Obsolete]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressAddedToCart()
         {
             var expectedDressInfo = new OrderDressInfo()
@@ -172,6 +87,7 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         [Test]
+        [Obsolete]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedDressWithChangedParametersAddedToCart()
         {
             var order = new OrderDressInfo()
@@ -192,6 +108,7 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         [Test]
+        [Obsolete]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressWithChangedParametersAddedToCart()
         {
             var order = new OrderDressInfo()
@@ -207,7 +124,6 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.OpenQuickViewPage("Printed Summer Dress");
             _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
-
             _mainPage.AssertValidDress(order);
         }
 
@@ -226,7 +142,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.AddOrderToCart(order);
+#pragma warning disable CS0612 // Type or member is obsolete
             _mainPage.WaitUntilProductIsAddeToCart();
+#pragma warning restore CS0612 // Type or member is obsolete
 
             _mainPage.AssertValidDress(order);
         }
@@ -306,7 +224,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
 
             _shoppingCartPage.AssertShoppingCartPageLoaded();
         }
@@ -326,7 +246,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.AddOrderToCart(order);
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
 
             _shoppingCartPage.AssertCorrectTotalPriceInShoppingCart(order);
         }
@@ -346,14 +268,33 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.AddOrderToCart(order);
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
 
             _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);
         }
 
         // AuthenticationPage Tests
         //// TODO Create Account with invalid info and assert validation error messages!
+// Login with the shortest email possible
+// Login shortest password possible
+// Login shortest username possible
+// Login with longest email possible
+// Login with longest username possible
+// Login with longest password possible
+// Login with password containing special symbols
+// Login with email with empty space at beginning - should be trimmed- logged-in successfully
+// Login with email with empty spaces at end - should be trimmed- logged-in successfully
+// Login with username with empty space at beginning - should be trimmed- logged-in successfully
+// Login with username with empty spaces at end - should be trimmed- logged-in successfully
+// Login with password with empty space at beginning - should be trimmed- logged-in successfully
+// Login with password with empty spaces at end - should be trimmed- logged-in successfully
+// Verify that the password is in *** format when entered
+// Verify that the client should not be able to login with the old password after changing the password
+
         [Test]
+        [Obsolete]
         public void SignInWithValidRegistration_When_InAuthenticationPage()
         {
             var personalInfo = new PersonalInfo();
@@ -384,7 +325,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();            
             _authenticationPage.EmailSignInTextBox.Clear();
             _authenticationPage.EmailSignInTextBox.SendKeys(inValidEmail);
@@ -405,7 +348,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailSignInTextBox.Clear();
             _authenticationPage.EmailSignInTextBox.SendKeys(inValidEmail);
@@ -426,7 +371,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailSignInTextBox.Clear();
             _authenticationPage.EmailSignInTextBox.SendKeys(inValidEmail);
@@ -445,7 +392,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -486,7 +435,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -505,7 +456,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.ClickForgottenPasswordLink();
 
@@ -520,7 +473,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.ClickForgottenPasswordLink();
             _forgottenPasswordPage.EmailInputField.Clear();
@@ -539,7 +494,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.ClickForgottenPasswordLink();
             _forgottenPasswordPage.EmailInputField.Clear();
@@ -585,7 +542,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -630,7 +589,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -675,7 +636,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -721,7 +684,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -767,7 +732,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -814,7 +781,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);
@@ -862,7 +831,9 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickAddToCart();
+#pragma warning disable CS0612 // Type or member is obsolete
             _quickViewPage.ClickProceedToCheckoutButton();
+#pragma warning restore CS0612 // Type or member is obsolete
             _shoppingCartPage.ClickProceedToCheckoutButton();
             _authenticationPage.EmailCreateAccountTextBox.Clear();
             _authenticationPage.EmailCreateAccountTextBox.SendKeys(newEmail);

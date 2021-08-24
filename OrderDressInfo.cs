@@ -14,6 +14,6 @@
 
         public string Price { get; set; }
 
-        public string DeliveryPrice => deliveryPrice;
+        public string DeliveryPrice => this.deliveryPrice;
     }
 }

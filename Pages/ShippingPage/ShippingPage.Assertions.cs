@@ -8,18 +8,18 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public void AssertShippingPageLoaded()
         {
-            Assert.AreEqual("SHIPPING", ShippingPageHeading.Text);  
+            Assert.AreEqual("SHIPPING", ShippingPageHeading.Text);
         }
-        
+
         public void AssertDeliveryPriceIsRightAmount()
         {
             var orderDressInfo = new OrderDressInfo();
-            Assert.AreEqual(orderDressInfo.DeliveryPrice, ShippingDeliveryPriceField.Text);  
+            Assert.AreEqual(orderDressInfo.DeliveryPrice, ShippingDeliveryPriceField.Text);
         }
 
         public void AssertReadTheTermsLinkFollowed()
         {
-            Assert.AreEqual("TERMS AND CONDITIONS OF USE", ReadTheTermsPageHeading.Text);           
+            Assert.AreEqual("TERMS AND CONDITIONS OF USE", ReadTheTermsPageHeading.Text);
         }
 
         public void AssertAgreeToTermsErrorMessage()
