@@ -1,5 +1,4 @@
-﻿using FunctionalTests_AutomationPracticeCom.Pages;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace FunctionalTests_AutomationPracticeCom
 {

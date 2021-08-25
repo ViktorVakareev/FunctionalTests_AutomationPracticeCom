@@ -1,5 +1,4 @@
-﻿using FunctionalTests_AutomationPracticeCom.Pages;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace FunctionalTests_AutomationPracticeCom
 {

@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace FunctionalTests_AutomationPracticeCom.Pages
+namespace FunctionalTests_AutomationPracticeCom
 {
     public abstract class BasePage
     {

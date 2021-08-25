@@ -54,6 +54,7 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         [Test]
+        [Obsolete]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressAddedToCart()
         {
             var expectedDressInfo = new OrderDressInfo()
@@ -68,6 +69,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Summer Dress");
             _quickViewPage.ClickAddToCart();
+            _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDress(expectedDressInfo);
         }
@@ -87,7 +89,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
-            _quickViewPage.AddToCartButton.Click();
+            _quickViewPage.ClickAddToCart();
             _mainPage.WaitUntilProductIsAddeToCart();
 
             _mainPage.AssertValidDress(expectedDressInfo);
@@ -131,6 +133,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _mainPage.OpenQuickViewPage("Printed Summer Dress");
             _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
+
             _mainPage.AssertValidDress(order);
         }
 
