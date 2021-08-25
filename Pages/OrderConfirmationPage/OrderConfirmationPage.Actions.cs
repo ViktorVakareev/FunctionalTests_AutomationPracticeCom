@@ -11,6 +11,9 @@ namespace FunctionalTests_AutomationPracticeCom
         {
         }
 
-        public void ClickBackToOrdersLink() => BackToOrdersLink.Click();
+        public void ClickBackToOrdersLink() 
+        {
+            BackToOrdersLink.Click();
+        }            
     }
 }

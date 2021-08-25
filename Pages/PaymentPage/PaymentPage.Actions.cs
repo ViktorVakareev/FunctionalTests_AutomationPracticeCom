@@ -14,10 +14,16 @@ namespace FunctionalTests_AutomationPracticeCom
         public override string Url => "http://automationpractice.com/index.php?fc=module&module=cheque&controller=payment";
 
         public PaymentPage(IWebDriver driver) : base(driver)
-        {        
+        {
         }
-        public void ClickPayByBankWireLink() => PayByBankWireLink.Click();
+        public void ClickPayByBankWireLink()
+        {
+            PayByBankWireLink.Click();
+        }
 
-        public void ClickPayByCheckLink() => PayByCheckLink.Click();
+        public void ClickPayByCheckLink()
+        {
+            PayByCheckLink.Click();
+        }
     }
 }

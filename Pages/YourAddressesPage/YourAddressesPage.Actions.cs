@@ -11,9 +11,15 @@ namespace FunctionalTests_AutomationPracticeCom
         {        
         }
          
-        public void ClickBackToYourAddressesLink() => BackToYourAddressesLink.Click();
+        public void ClickBackToYourAddressesLink() 
+        {
+            BackToYourAddressesLink.Click();
+        }
 
-        public void ClickSaveButton() => SaveButton.Click();
+        public void ClickSaveButton() 
+        {
+            SaveButton.Click();
+        }
                
     }
 }

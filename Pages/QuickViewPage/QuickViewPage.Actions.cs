@@ -20,7 +20,10 @@ namespace FunctionalTests_AutomationPracticeCom
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }
 
-        public void ClickAddToCart() => AddToCartButton.Click();        
+        public void ClickAddToCart() 
+        {
+            AddToCartButton.Click();
+        }        
 
         public void AddOrderToCart(OrderDressInfo order)
         {
