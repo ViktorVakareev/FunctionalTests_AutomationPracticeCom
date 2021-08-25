@@ -78,7 +78,7 @@ namespace FunctionalTests_AutomationPracticeCom
         [Obsolete]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedChiffonDressAddedToCart()
         {
-            var expectedDressInfo = new OrderDressInfo()
+            var order = new OrderDressInfo()
             {
                 DressName = "Printed Chiffon Dress",
                 Color = "Yellow",
@@ -89,10 +89,10 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
-            _quickViewPage.ClickAddToCart();
+            _quickViewPage.AddOrderToCart(order);
             _mainPage.WaitUntilProductIsAddeToCart();
 
-            _mainPage.AssertValidDress(expectedDressInfo);
+            _mainPage.AssertValidDress(order);
         }
 
         [Test]
