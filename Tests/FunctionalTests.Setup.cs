@@ -47,7 +47,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _myAccountPage = new MyAccountPage(_driver);
         }
 
-        [OneTimeTearDown]
+        [TearDown]
         public void CleanUp()
         {
             if (_driver != null)
