@@ -11,8 +11,14 @@ namespace FunctionalTests_AutomationPracticeCom
         {        
         }
          
-        public void ClickBackToLoginLink() => BackToLoginLink.Click();
+        public void ClickBackToLoginLink() 
+        {
+            BackToLoginLink.Click();
+        }
 
-        public void ClickRetrievePasswordButton() => RetrievePasswordButton.Click();
+        public void ClickRetrievePasswordButton() 
+        {
+            RetrievePasswordButton.Click();
+        }
     }
 }

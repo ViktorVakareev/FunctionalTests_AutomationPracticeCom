@@ -17,18 +17,39 @@ namespace FunctionalTests_AutomationPracticeCom
         {
         }
 
-        public void ClickUpdateDeliveryAddress() => DeliveryAddressButton.Click();
+        public void ClickUpdateDeliveryAddress()
+        {
+            DeliveryAddressButton.Click();
+        }
 
-        public void ClickUpdateBillingAddress() => BillingAddressButton.Click();
+        public void ClickUpdateBillingAddress()
+        {
+            BillingAddressButton.Click();
+        }       
 
-        public void ClickCreateNewAddress() => CreateNewAddressButton.Click();
+        public void ClickCreateNewAddress() 
+        {
+            CreateNewAddressButton.Click();
+        }
 
-        public void ChooseDeliveryAddress() => ChooseDeliveryAddressDropDown.Click();           // Address Alias
+        public void ChooseDeliveryAddress() 
+        {
+            ChooseDeliveryAddressDropDown.Click();
+        }          
 
-        public void ClickProceedToCheckpoint() => ProceedToCheckpointButton.Click();
+        public void ClickProceedToCheckpoint() 
+        {
+            ProceedToCheckpointButton.Click();
+        }
 
-        public void AddComment() => AddCommentTextBox.Click();
+        public void AddComment() 
+        {
+            AddCommentTextBox.Click();
+        }
 
-        public void ContinueShopping() => ContinueShoppingLink.Click();
+        public void ContinueShopping() 
+        {
+            ContinueShoppingLink.Click();
+        }
     }
 }

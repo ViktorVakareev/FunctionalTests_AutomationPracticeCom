@@ -7,14 +7,14 @@ using System;
 namespace FunctionalTests_AutomationPracticeCom
 {
     public partial class MainPage : BasePage
-    {        
+    {
         private Actions _actions;
         private WebDriverWait _wait;
 
-        public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";        
+        public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
         public MainPage(IWebDriver driver) : base(driver)
-        {            
+        {
             _actions = new Actions(driver);
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }
@@ -40,10 +40,10 @@ namespace FunctionalTests_AutomationPracticeCom
         }
 
         public void AddToCompare(string dressName, int productId)
-        {            
-            _actions.MoveToElement(HoverDressByNameSpan(dressName))                
+        {
+            _actions.MoveToElement(HoverDressByNameSpan(dressName))
                     .MoveToElement(AddToCompareButtonDressByName(dressName, productId))
-                    .Click()                    
+                    .Click()
                     .Perform();
         }
         public void AddToCompare(string dressName, int productId, string type)
@@ -51,30 +51,41 @@ namespace FunctionalTests_AutomationPracticeCom
             _actions.MoveToElement(HoverDressByNameSpan(dressName, type))
                     .MoveToElement(AddToCompareButtonDressByName(dressName, productId))
                     .Click()
-                    .Perform();            
+                    .Perform();
         }
 
         public void ClickCartCheckoutButton()
         {
-            ViewMyShoppingCartLink.Click();           
+            ViewMyShoppingCartLink.Click();
         }
 
         public void CompareButtonClick()
         {
-            //var elementToClick =
-            //_wait.Until(ExpectedConditions.ElementToBeClickable(CompareButtonLocator));
             _actions.MoveToElement(CompareButton)
                     .Click()
                     .Perform();
         }
 
-        public void ClickProceedToCheckoutButton() => ProceedToCheckoutButton.Click();
+        public void ClickProceedToCheckoutButton()
+        {
+            ProceedToCheckoutButton.Click();
+        }
 
-        public void ClickContinueShoppingButton() => ContinueShoppingButton.Click(); 
-        
-        public void ClickViewMyShoppingCartButton() => ViewMyShoppingCartLink.Click();
+        public void ClickContinueShoppingButton()
+        {
+            ContinueShoppingButton.Click();
+        }
+
+
+        public void ClickViewMyShoppingCartButton()
+        {
+            ViewMyShoppingCartLink.Click();
+        }
 
         [Obsolete]
-        public void WaitUntilProductIsAddeToCart() => _wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));        
+        public void WaitUntilProductIsAddeToCart()
+        {
+            _wait.Until(ExpectedConditions.ElementIsVisible(ValidationMessageForSuccessfullyAddedToCart));
+        }
     }
 }

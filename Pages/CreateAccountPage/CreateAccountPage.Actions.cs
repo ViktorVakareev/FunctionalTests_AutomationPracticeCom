@@ -17,22 +17,25 @@ namespace FunctionalTests_AutomationPracticeCom
         {
         }
 
-        public void ClickRegisterButton() => RegisterButton.Click();
+        public void ClickRegisterButton()
+        {
+            RegisterButton.Click();
+        }
 
         public void FillInNewAccountInfo(PersonalInfo personalInfo, AddressInfo addressInfo)
         {
             TitleRadioButton(personalInfo.Title).Click();
             FirstNameTextBox.SendKeys(personalInfo.FirstName);
-            LastNameTextBox.SendKeys(personalInfo.LastName);            
+            LastNameTextBox.SendKeys(personalInfo.LastName);
             PasswordTextBox.SendKeys(personalInfo.Password);
             //SelectDateFromDropDown(DayDropDown, MonthDropDown, YearDropDown, personalInfo.DateOfBirth.Day, personalInfo.DateOfBirth.Month, personalInfo.DateOfBirth.Year);
             AddressTextBox.SendKeys(addressInfo.Address);
             CityTextBox.SendKeys(addressInfo.City);
-            StateDropDown.SelectElementFromDropDownByName(addressInfo.State);            
+            StateDropDown.SelectElementFromDropDownByName(addressInfo.State);
             ZipTextBox.SendKeys(addressInfo.Zip);
             CountryDropDown.SelectElementFromDropDownByName(addressInfo.Country);
             MobilePhoneTextBox.SendKeys(addressInfo.MobilePhone);
             AddressAliasTextBox.SendKeys(addressInfo.AddressAlias);
-        }        
+        }
     }
 }
