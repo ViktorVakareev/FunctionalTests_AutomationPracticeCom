@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 
 namespace FunctionalTests_AutomationPracticeCom
@@ -32,7 +33,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public void AssertCorrectTotalPriceInShoppingCart(OrderDressInfo expectedOrder)
         {
-            int totalShippingCost = 2;
+            int totalShippingCost = Int32.Parse(expectedOrder.DeliveryPrice.Substring(1, 1));
             var totalPrice = double.Parse(expectedOrder.Price.Substring(1)) + totalShippingCost;
             var expectedTotalPrice = "$" + $"{totalPrice}" + "0";
 

@@ -9,7 +9,7 @@ namespace FunctionalTests_AutomationPracticeCom
         [Obsolete]
         public void OpenShoppingCartPage_When_ClickingCheckoutButtonFromCart()
         {
-            var expectedDressInfo = new OrderDressInfo()
+            var order = new OrderDressInfo()
             {
                 DressName = "Printed Dress",
                 Color = "Orange",
@@ -18,10 +18,8 @@ namespace FunctionalTests_AutomationPracticeCom
                 Price = "$26.00"
             };
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Dress");
-            _quickViewPage.ClickAddToCart();
-            _mainPage.WaitUntilProductIsAddeToCart();
+            _facade.OpenQuickViewPage(order.DressName, order);
+            _quickViewPage.ClickProceedToCheckoutButton();
             _mainPage.ClickContinueShoppingButton();
             _mainPage.ClickCartCheckoutButton();
 
@@ -41,9 +39,7 @@ namespace FunctionalTests_AutomationPracticeCom
         [Obsolete]
         public void ShoppingCartPageLoadedCorrectly_When_ProductAddedToCartFromQuickView()
         {
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
-            _quickViewPage.ClickAddToCart();
+            _facade.OpenQuickViewPage("Printed Chiffon Dress");
             _quickViewPage.ClickProceedToCheckoutButton();
 
             _shoppingCartPage.AssertShoppingCartPageLoaded();
@@ -62,9 +58,7 @@ namespace FunctionalTests_AutomationPracticeCom
                 Price = "$98.40"
             };
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
-            _quickViewPage.AddOrderToCart(order);
+            _facade.OpenQuickViewPage(order.DressName, order);
             _quickViewPage.ClickProceedToCheckoutButton();
 
             _shoppingCartPage.AssertCorrectTotalPriceInShoppingCart(order);
@@ -83,9 +77,7 @@ namespace FunctionalTests_AutomationPracticeCom
                 Price = "$98.40"
             };
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
-            _quickViewPage.AddOrderToCart(order);
+            _facade.OpenQuickViewPage(order.DressName, order);
             _quickViewPage.ClickProceedToCheckoutButton();
 
             _shoppingCartPage.AssertCorrectProductAddedToShoppingCart(order);

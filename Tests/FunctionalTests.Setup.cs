@@ -23,7 +23,7 @@ namespace FunctionalTests_AutomationPracticeCom
         private OrderSummaryPage _orderSummaryPage;
         private OrderConfirmationPage _orderConfirmation;
         private MyAccountPage _myAccountPage;
-        private QuickViewPageFacade _quickViewPageFacade;
+        private Facade _facade;
 
         [SetUp]
         public void Setup()
@@ -46,7 +46,7 @@ namespace FunctionalTests_AutomationPracticeCom
             _orderSummaryPage = new OrderSummaryPage(_driver);
             _orderConfirmation = new OrderConfirmationPage(_driver);
             _myAccountPage = new MyAccountPage(_driver);
-            _quickViewPageFacade = new QuickViewPageFacade(_mainPage, _quickViewPage);
+            _facade = new Facade(_mainPage, _quickViewPage);
         }
 
         [TearDown]

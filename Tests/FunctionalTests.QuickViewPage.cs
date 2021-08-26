@@ -23,23 +23,7 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Summer Dress");
         }
-        public void test()
-        {
-            string pattern = @"((?<IT>[[a-z\s,.^I]*))((?<taxPercent>[0-9]*))((?<taxType>[A-Z]*))(?<currency>[\$\€\¥\₹\¥]*)((?<TaxType>[A-Z]*))((?<taxPrice>[0-9.]*))";
-            Regex regex = new Regex(pattern);
-
-            // Step 2: call Match on Regex instance.
-            Match match = regex.Match("VAT");
-
-            var groupNames = regex.GetGroupNames();
-            // Step 3: test for Success.
-            if (match.Success)
-            {
-                Console.WriteLine("MATCH VALUE: " + match.Value);
-            }
-            
-            ////, Incl. 20 % VAT(€3.08
-        }
+       
         [Test]
         public void NavigationToQuickViewForPrintedChiffonDress_When_QuickViewButtonClicked()
         {
@@ -53,22 +37,19 @@ namespace FunctionalTests_AutomationPracticeCom
         [Obsolete]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedDressAddedToCart()
         {
-            var expectedDressInfo =
-                new OrderDressInfo("Printed Dress", "Orange", "S", 1, "$26.00");            
+            var order =
+                new OrderDressInfo("Printed Dress", "Orange", "S", 1, "$26.00");
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Dress");
-            _quickViewPage.ClickAddToCart();
-            _mainPage.WaitUntilProductIsAddeToCart();
+            _facade.OpenQuickViewPage(order.DressName, order);
 
-            _mainPage.AssertValidDress(expectedDressInfo);
+            _mainPage.AssertValidDress(order);
         }
 
         [Test]
         [Obsolete]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedSummerDressAddedToCart()
         {
-            var expectedDressInfo = new OrderDressInfo()
+            var order = new OrderDressInfo()
             {
                 DressName = "Printed Summer Dress",
                 Color = "Yellow",
@@ -77,12 +58,9 @@ namespace FunctionalTests_AutomationPracticeCom
                 Price = "$28.98"
             };
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Summer Dress");
-            _quickViewPage.ClickAddToCart();
-            _mainPage.WaitUntilProductIsAddeToCart();
+            _facade.OpenQuickViewPage(order.DressName, order);
 
-            _mainPage.AssertValidDress(expectedDressInfo);
+            _mainPage.AssertValidDress(order);
         }
 
         [Test]
@@ -98,10 +76,7 @@ namespace FunctionalTests_AutomationPracticeCom
                 Price = "$16.40"
             };
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
-            _quickViewPage.AddOrderToCart(order);
-            _mainPage.WaitUntilProductIsAddeToCart();
+            _facade.OpenQuickViewPage(order.DressName, order);
 
             _mainPage.AssertValidDress(order);
         }
@@ -118,11 +93,8 @@ namespace FunctionalTests_AutomationPracticeCom
                 Quantity = 2,
                 Price = "$52.00"
             };
-
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Dress");
-            _quickViewPage.AddOrderToCart(order);
-            _mainPage.WaitUntilProductIsAddeToCart();
+                        
+            _facade.OpenQuickViewPage(order.DressName, order);
 
             _mainPage.AssertValidDress(order);
         }
@@ -140,10 +112,7 @@ namespace FunctionalTests_AutomationPracticeCom
                 Price = "$57.96"
             };
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Summer Dress");
-            _quickViewPage.AddOrderToCart(order);
-            _mainPage.WaitUntilProductIsAddeToCart();
+            _facade.OpenQuickViewPage(order.DressName, order);
 
             _mainPage.AssertValidDress(order);
         }
@@ -161,10 +130,7 @@ namespace FunctionalTests_AutomationPracticeCom
                 Price = "$98.40"
             };
 
-            _mainPage.Open();
-            _mainPage.OpenQuickViewPage("Printed Chiffon Dress");
-            _quickViewPage.AddOrderToCart(order);
-            _mainPage.WaitUntilProductIsAddeToCart();
+            _facade.OpenQuickViewPage(order.DressName, order);
 
             _mainPage.AssertValidDress(order);
         }
