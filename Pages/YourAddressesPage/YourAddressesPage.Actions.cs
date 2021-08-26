@@ -6,19 +6,20 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
-        public YourAddressesPage(IWebDriver driver) : base(driver)
-        {        
+        public YourAddressesPage(IWebDriver driver)
+            : base(driver)
+        {
         }
-         
-        public void ClickBackToYourAddressesLink() 
+
+        public void ClickBackToYourAddressesLink()
         {
             BackToYourAddressesLink.Click();
         }
 
-        public void ClickSaveButton() 
+        public void ClickSaveButton()
         {
             SaveButton.Click();
         }
-               
+
     }
 }

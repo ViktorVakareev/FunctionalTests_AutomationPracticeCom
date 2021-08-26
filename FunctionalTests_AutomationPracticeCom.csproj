@@ -50,5 +50,9 @@
 	    <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
 	  </Compile>
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <Folder Include="Sections\" />
+	</ItemGroup>
 
 </Project>

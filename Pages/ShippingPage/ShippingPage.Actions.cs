@@ -6,7 +6,8 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public override string Url => "http://automationpractice.com/index.php?id_cms=3&controller=cms&content_only=1";
 
-        public ShippingPage(IWebDriver driver) : base(driver)
+        public ShippingPage(IWebDriver driver) 
+            : base(driver)
         {
         }
 

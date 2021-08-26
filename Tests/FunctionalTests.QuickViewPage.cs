@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Text.RegularExpressions;
 
 namespace FunctionalTests_AutomationPracticeCom
 {
@@ -22,7 +23,23 @@ namespace FunctionalTests_AutomationPracticeCom
 
             _quickViewPage.AssertQuickViewPageNavigationToProduct("Printed Summer Dress");
         }
+        public void test()
+        {
+            string pattern = @"((?<IT>[[a-z\s,.^I]*))((?<taxPercent>[0-9]*))((?<taxType>[A-Z]*))(?<currency>[\$\€\¥\₹\¥]*)((?<TaxType>[A-Z]*))((?<taxPrice>[0-9.]*))";
+            Regex regex = new Regex(pattern);
 
+            // Step 2: call Match on Regex instance.
+            Match match = regex.Match("VAT");
+
+            var groupNames = regex.GetGroupNames();
+            // Step 3: test for Success.
+            if (match.Success)
+            {
+                Console.WriteLine("MATCH VALUE: " + match.Value);
+            }
+            
+            ////, Incl. 20 % VAT(€3.08
+        }
         [Test]
         public void NavigationToQuickViewForPrintedChiffonDress_When_QuickViewButtonClicked()
         {
@@ -36,14 +53,8 @@ namespace FunctionalTests_AutomationPracticeCom
         [Obsolete]
         public void ValidateDressInfoOnPreCheckoutScreen_When_PrintedDressAddedToCart()
         {
-            var expectedDressInfo = new OrderDressInfo()
-            {
-                DressName = "Printed Dress",
-                Color = "Orange",
-                Size = "S",
-                Quantity = 1,
-                Price = "$26.00"
-            };
+            var expectedDressInfo =
+                new OrderDressInfo("Printed Dress", "Orange", "S", 1, "$26.00");            
 
             _mainPage.Open();
             _mainPage.OpenQuickViewPage("Printed Dress");

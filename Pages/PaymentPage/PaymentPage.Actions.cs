@@ -6,7 +6,8 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public override string Url => "http://automationpractice.com/index.php?fc=module&module=cheque&controller=payment";
 
-        public PaymentPage(IWebDriver driver) : base(driver)
+        public PaymentPage(IWebDriver driver) 
+            : base(driver)
         {
         }
         public void ClickPayByBankWireLink()

@@ -6,7 +6,8 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public override string Url => "http://automationpractice.com/index.php?controller=my-account";
 
-        public MyAccountPage(IWebDriver driver) : base(driver)
+        public MyAccountPage(IWebDriver driver) 
+            : base(driver)
         {        
         }       
     }

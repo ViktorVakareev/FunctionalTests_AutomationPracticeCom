@@ -6,7 +6,8 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
-        public ProductComparisonPage(IWebDriver driver) : base(driver)
+        public ProductComparisonPage(IWebDriver driver) 
+            : base(driver)
         { 
         }            
     }

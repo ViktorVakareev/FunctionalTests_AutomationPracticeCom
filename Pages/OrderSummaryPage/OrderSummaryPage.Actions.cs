@@ -6,7 +6,8 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public override string Url => "http://automationpractice.com/index.php?fc=module&module=cheque&controller=payment";
 
-        public OrderSummaryPage(IWebDriver driver) : base(driver)
+        public OrderSummaryPage(IWebDriver driver) 
+            : base(driver)
         {
         }
 

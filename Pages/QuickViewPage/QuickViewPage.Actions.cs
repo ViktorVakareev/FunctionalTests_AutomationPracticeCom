@@ -10,7 +10,8 @@ namespace FunctionalTests_AutomationPracticeCom
 
         public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
-        public QuickViewPage(IWebDriver driver) : base(driver)
+        public QuickViewPage(IWebDriver driver) 
+            : base(driver)
         {
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
         }

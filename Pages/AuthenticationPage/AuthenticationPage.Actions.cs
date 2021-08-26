@@ -6,7 +6,8 @@ namespace FunctionalTests_AutomationPracticeCom
     {
         public override string Url => "http://automationpractice.com/index.php?id_category=8&controller=category";
 
-        public AuthenticationPage(IWebDriver driver) : base(driver)
+        public AuthenticationPage(IWebDriver driver) 
+            : base(driver)
         {        
         }
          
